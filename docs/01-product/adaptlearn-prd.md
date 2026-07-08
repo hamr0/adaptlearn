@@ -70,8 +70,20 @@ escalation stand outside the emergent part, permanently.
 - **Across runs: selection on cost, correctness held fixed.** "Solid but needs fine-tuning" is
   a second-order signal the binary close can't express — so it lives in the inheritance layer:
   among green harnesses, selection runs on **cost-to-green / iterations**. The agent may
-  **mutate an inherited green harness**; the mutant must still close green and replaces its
-  parent only if it dominates on cost. Ralph never gets smarter; the harness population does.
+  **mutate an inherited green harness — one free axis at a time** (one-knob mutation keeps
+  attribution clean; change three things and a better outcome credits nothing); the mutant must
+  still close green and replaces its parent only if it dominates on cost. Ralph never gets
+  smarter; the harness population does.
+- **Green gates, cost ranks — never one score.** Correctness (the close) and quality (the cost
+  profile) are never collapsed into a single fitness number: first gate on green, then rank by
+  cost among greens. A combined score would let efficiency negotiate with truth.
+- **Goals are three-tier, and improvement is nobody's goal.** Human-set and fixed: task + close
+  + cap. Agent-set and fluid: the harness. Nobody-set and emergent: improvement. Ralph is
+  **stateless across runs** — it never receives a new goal from the learning layer (that would
+  make the arbiter emergent); the *only* thing that differs between run N and run N+1 is the
+  state of the store the middle assembles from. The learning curve is a reading on the ledger
+  (observer-measured), never a target in the loop — anything optimizable inside the system will
+  eventually be optimized against.
 
 **Required primitives (the schema's non-negotiable fields):** a config **cannot validate**
 without its bareguard gate + write-scope binding, its memory-store binding, and its escalation
@@ -127,6 +139,31 @@ ordering, memory policy, decomposition — are where emergence lives.
   escalation count + decision-readiness; **fit-to-pass attempts caught by the shell** (expected
   >0 in an adaptive setting — count them, don't hide them); harness diversity over time
   (convergence to a niche vs collapse to one config).
+
+### §5b Reading a red (attribution doctrine)
+
+A red is **evidence, not a verdict on the harness** — a single red is ambiguous across five
+meanings, and cohort results must be read through contrast, never through counts alone:
+
+1. **Worker ceiling** (relayfact F20: the model, not the loop, is usually the limit).
+2. **Bad harness** — the thing under study.
+3. **Broken close** (spawn-err/terminal) → escalate immediately, never retry; a broken arbiter
+   must not masquerade as a bad harness.
+4. **Cap halt** — means "not under $2," not "can't." Counted as its own category, never merged
+   with wrong.
+5. **Schema can't express the needed harness** — indicts the vocabulary (M3-class finding).
+
+**Meaning comes from contrast:** same task + different harness green → harness implicated; same
+harness red everywhere → harness/interpreter broken; every harness red including the fixed pipe
+→ task/worker ceiling → escalate (the HITL boundary). **Asymmetry rule:** reds never mint
+inheritance (the gate), but reds do steer mutation (the gap feeds back) — failure information
+is used, never trusted as a credential. A red→green config revision is self-attributing (the
+diff is the lesson — failure-transition evidence, free in the event log).
+
+**A decision-ready escalation is a truthful terminal, not a failure.** The two honest outcomes
+are deliver-green and escalate-decision-ready; the only real failure is the one the system is
+built to make impossible — a confident fake green. Scoring counts every run in the denominator
+and names every fail-mode by category above.
 
 ## §6 Module ladder (build-incrementally: every module POCs, graduates, and stands alone before the next)
 
