@@ -8,8 +8,14 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 ## [Unreleased]
 
 - M2: interpreter (first live tokens; hand-authored config → green close on one easy task)
-- Pending upstream: A1 (bareagent clipipe structured-output parsing) — see
-  `docs/00-context/UPSTREAM-ASKS.md`
+
+### Added
+- `bare-agent` file-dependency; **A1 consumed** — clipipe `parse: 'claude-json'` verified live
+  (mapped text/usage/model/costUsd; loud ProviderError on malformed output). FINDINGS F2
+  resolved; M2 local runs will cap on real USD, not counts.
+- `tests/ralph.test.js`: regression test proving the `NODE_TEST_CONTEXT` strip is load-bearing
+  (a real failing `node --test` close reds under the runner; with the strip removed the test
+  fails — mutation-checked). Closes the fake-green gap found in the AGENT_RULES audit.
 
 ## [0.5.0] — 2026-07-08
 

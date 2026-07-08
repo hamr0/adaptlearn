@@ -77,6 +77,21 @@ test('a middle that fixes the world by iteration 2 closes green under the same c
   assert.equal(events.at(-1).iterations, 2);
 });
 
+test('a real node --test close reds under the test runner (NODE_TEST_CONTEXT strip is load-bearing)', () => {
+  // Confound check: this test only proves the strip if the hazard is present here.
+  // Verified 2026-07-08: with NODE_TEST_CONTEXT set, a failing `node --test` exits 0 — a fake green.
+  assert.ok(process.env.NODE_TEST_CONTEXT, 'runner must set NODE_TEST_CONTEXT or this test is vacuous');
+  const failing = join(dir, 'failing-close.js');
+  writeFileSync(failing, `
+    const { test } = require('node:test');
+    const assert = require('node:assert');
+    test('close red', () => { assert.equal(1, 2); });
+  `);
+  const { outcome, events } = run('real-close-red', ['node', '--test', failing], 1);
+  assert.equal(outcome, 'escalated', 'a failing real close must red, never fake-green');
+  assert.equal(events.find((e) => e.type === 'close-verdict').verdict, 'needs_revision');
+});
+
 test('spine: seq monotonic from 1, ts stamped last on every event', () => {
   const { events } = run('spine-shape', RED, 2);
   events.forEach((e, i) => {

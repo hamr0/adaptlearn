@@ -27,3 +27,11 @@ design: worker is tool-free, and local runs cap on bareguard's `counts` dimensio
 fails closed on unpriced cost — `bareguard/src/gate.js:573`). **Fix belongs upstream in
 bareagent** (parse CLI JSON usage); until then, counts-capping is the honest workaround, logged
 here per no-papering-over. (Extends relayfact F5, which established the no-tools limit.)
+
+**Resolved (2026-07-08, same day):** fixed upstream as UPSTREAM-ASKS A1 — `CLIPipeProvider`
+`parse: 'claude-json'` maps `result`/`usage`/`total_cost_usd` onto `GenerateResult` (loud
+`ProviderError` on malformed/`is_error`), and the Loop now prefers a finite provider `costUsd`
+over `estimateCost`, so the CLI feeds bareguard's USD axis directly. Consumed via
+`bare-agent@file:../bareagent`, verified live (both paths). Note for pricing: the CLI reports
+real equivalent-API cost even on subscription (~$0.05–0.32 observed), and `model` can carry a
+`[1m]` suffix. Counts-capping workaround dies at M2.

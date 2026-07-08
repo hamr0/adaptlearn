@@ -5,8 +5,45 @@ upstream, consume the fixed version, continue. One entry per ask; status tracked
 
 ## A1 — bareagent `CLIPipeProvider`: parse structured CLI output (usage + cost)
 
-**Status:** OPEN (asked 2026-07-08). Blocks nothing yet; wanted before M2 first live run.
-**Finding:** FINDINGS.md F2. **Repo:** `bareagent` (`src/provider-clipipe.js`).
+**Status:** ✅ CONSUMED (2026-07-08) — adaptlearn depends on `bare-agent@file:../bareagent` (the
+house pattern, same as relayfact) and verified the fix live through the shipped provider:
+success path (`text:"OK"`, non-zero usage incl. cache tiers, `model:"claude-opus-4-8[1m]"` with
+the documented suffix, authoritative `costUsd`) and the loud-error path (non-JSON stdout →
+`ProviderError`, no silent fallback). FINDINGS F2 resolved; the counts-capping workaround dies
+at M2 — local runs cap on real USD. Asked and fixed same day.
+**Finding:** FINDINGS.md F2. **Repo:** `bareagent` (`src/provider-clipipe.js`, `src/loop.js`, `types/index.d.ts`).
+
+### Delivered (exactly as asked)
+
+- `new CLIPipeProvider({ parse: 'claude-json' })` — opt-in; default (unset) stays raw-text/zero-usage
+  (byte-identical, regression-guarded). A `parse: (stdout) => Partial<GenerateResult>` **function** is
+  the CLI-agnostic escape hatch; `'claude-json'` is a shipped preset over it (your alternative accepted).
+- Mapping onto `GenerateResult`/`Usage`: `text ← result`, `usage.{input,output}Tokens`,
+  `cache{Read,Creation}Tokens` (absent ⇒ **omitted**, per Usage docs), `model ← ` first `modelUsage`
+  key, `costUsd ← total_cost_usd`. Malformed JSON / non-object / `is_error` / non-`success` subtype →
+  **loud `ProviderError`**, never a silent raw-text fall-back.
+- **The cost axis actually enforces now:** `GenerateResult` gains optional `costUsd?: number` AND the
+  **Loop prefers a finite `result.costUsd` over `estimateCost`** (both main + summarize cost paths),
+  forwarding it to `onLlmResult` as `pricing:'priced'`. A CLI whose `model` has no local rate table
+  therefore feeds bareguard's USD axis directly — this is the part that kills your `counts`-capping
+  workaround. A provider-supplied `0` is a valid priced value (marginal-$0 subscription run), distinct
+  from omitted/null (which falls back to the rate table). *(Note: item 4 asked to "surface" cost; the
+  complete fix also required the Loop to honor it, else `costUsd` is dead weight when model is null.)*
+- Acceptance met: 11 fixture unit tests (success mapping, is_error, non-success subtype, malformed &
+  non-object JSON, absent-cache-omitted, missing-model→null, `costUsd:0`-priced, function-parser merge,
+  no-parse regression, end-to-end routing) + 3 Loop tests (provider-cost preference, 0-is-priced,
+  non-finite-falls-back) — all able to fail. **Live smoke** through the shipped provider on the real
+  `claude -p "say OK" --output-format json`: `text:"OK"`, `inputTokens` > 0, authoritative `costUsd`
+  surfaced. CHANGELOG + JSDoc done.
+
+### Two implementation notes for your consume step
+
+- `modelUsage` in the real 2.1.204 envelope is an **object keyed by model id** (e.g.
+  `{"claude-opus-4-8[1m]": {...}}`), so `model` is the first key — it can carry a `[1m]` context-window
+  suffix. If you price off `model` downstream, expect that suffix; `costUsd` is unaffected (taken from
+  `total_cost_usd` directly).
+- The live CLI reports a real *equivalent-API* cost even on a subscription (~$0.05–0.32 in smokes), not
+  $0 — so your USD cap will see genuine non-zero spend, not a marginal $0. Size the cap accordingly.
 
 ### The gap (grounded)
 

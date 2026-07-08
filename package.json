@@ -13,6 +13,7 @@
     "url": "git+https://github.com/hamr0/adaptlearn.git"
   },
   "dependencies": {
+    "bare-agent": "file:../bareagent",
     "litectx": "file:../litectx"
   }
 }
