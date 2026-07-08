@@ -1,0 +1,87 @@
+// M0 exit criteria, as behavior tests over the public API (spine read back as a
+// pure listener). Mirrors probe-01's scenarios; the suite can fail — scenario B
+// exists so a shell hardwired to red is caught.
+
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { makeSpine } from '../src/spine.js';
+import { ralph } from '../src/ralph.js';
+
+const noop = () => {};
+const dir = mkdtempSync(join(tmpdir(), 'ralph-test-'));
+
+function run(name, close, capRuns = 3, middle = noop) {
+  const file = join(dir, `${name}.jsonl`);
+  const outcome = ralph({ middle, close, capRuns, emit: makeSpine(file) });
+  const events = readFileSync(file, 'utf8').trimEnd().split('\n').map((l) => JSON.parse(l));
+  return { outcome, events };
+}
+
+const RED = ['node', '-e', 'console.error("gap: artifact missing"); process.exit(1)'];
+const GREEN = ['node', '-e', 'process.exit(0)'];
+const BROKEN = [join(dir, 'no-such-close')];
+
+test('noop middle: red every iteration, cap-halt own category, decision-ready escalation', () => {
+  const { outcome, events } = run('noop-red', RED);
+  assert.equal(outcome, 'escalated');
+  assert.deepEqual(
+    events.filter((e) => e.type === 'close-verdict').map((e) => e.verdict),
+    ['needs_revision', 'needs_revision', 'needs_revision'],
+  );
+  const halt = events.find((e) => e.type === 'cap-halt');
+  assert.equal(halt.category, 'cap-halt');
+  const esc = events.find((e) => e.type === 'escalation');
+  assert.ok(esc.decisionReady);
+  assert.equal(esc.category, 'cap-halt');
+  assert.ok(esc.options.length >= 2);
+  assert.deepEqual(esc.spend, { runs: 3, capRuns: 3 });
+  assert.equal(esc.verdicts.length, 3);
+  assert.equal(events.at(-1).outcome, 'escalated');
+});
+
+test('passing close: green at first iteration, stop-at-first-green, no escalation', () => {
+  const { outcome, events } = run('green', GREEN);
+  assert.equal(outcome, 'green');
+  assert.deepEqual(
+    events.map((e) => e.type),
+    ['run-start', 'iteration-start', 'middle-done', 'close-verdict', 'run-end'],
+  );
+  assert.equal(events.at(-1).outcome, 'green');
+});
+
+test('broken close: failed verdict escalates immediately, never retried', () => {
+  const { outcome, events } = run('broken', BROKEN);
+  assert.equal(outcome, 'escalated');
+  assert.equal(events.filter((e) => e.type === 'iteration-start').length, 1);
+  const esc = events.find((e) => e.type === 'escalation');
+  assert.equal(esc.category, 'broken-close');
+  assert.ok(esc.decisionReady);
+});
+
+test('gap feeds back to the middle on the next iteration', () => {
+  const gaps = [];
+  run('gap-feedback', RED, 2, (_i, gap) => gaps.push(gap));
+  assert.equal(gaps[0], undefined);
+  assert.match(gaps[1], /artifact missing/);
+});
+
+test('a middle that fixes the world by iteration 2 closes green under the same cap', () => {
+  const flag = join(dir, 'fixed-marker');
+  const close = ['node', '-e', `require('node:fs').existsSync(${JSON.stringify(flag)}) ? process.exit(0) : process.exit(1)`];
+  const middle = (i) => { if (i === 2) writeFileSync(flag, 'green'); };
+  const { outcome, events } = run('recovers', close, 3, middle);
+  assert.equal(outcome, 'green');
+  assert.equal(events.at(-1).iterations, 2);
+});
+
+test('spine: seq monotonic from 1, ts stamped last on every event', () => {
+  const { events } = run('spine-shape', RED, 2);
+  events.forEach((e, i) => {
+    assert.equal(e.seq, i + 1);
+    assert.equal(Object.keys(e).at(-1), 'ts');
+    assert.ok(!Number.isNaN(Date.parse(e.ts)));
+  });
+});

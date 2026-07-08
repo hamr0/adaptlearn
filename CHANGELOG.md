@@ -7,8 +7,22 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-- M0: Ralph shell + JSONL spine (token-free; probe-01 shape — noop middle → red, cap halt,
-  decision-ready escalation)
+- M1: schema v1 validator (token-free; fixture per named red)
+
+## [0.4.0] — 2026-07-08
+
+### Added
+- **M0 graduated:** `src/ralph.js` (the fixed dumb outer loop — arbiter + budget, stop at
+  first green, cap-halt its own category, broken close escalates immediately without retry,
+  gap fed back to the middle) and `src/spine.js` (append-only JSONL, seq monotonic, ts
+  stamped last). stdlib only, token-free, outside all three libs by design.
+- `tests/ralph.test.js` — 6 behavior tests over the public API covering the M0 exit
+  criteria, including the negative case (a passing close goes green at iteration 1, so a
+  shell hardwired to red fails the suite) and a recovery case (middle fixes the world at
+  iteration 2 → green under the same cap).
+- `poc/probe-01-ralph-noop.mjs` — the validating POC (PASS; kept as evidence, superseded by
+  the rewrite per house rules).
+- `package.json` — ESM, no dependencies, `npm test` via `node --test`.
 
 ## [0.3.0] — 2026-07-08
 
