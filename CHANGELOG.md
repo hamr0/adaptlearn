@@ -7,7 +7,31 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-- M1: schema v1 validator (token-free; fixture per named red)
+- M2: interpreter (first live tokens; hand-authored config → green close on one easy task)
+- Pending upstream: A1 (bareagent clipipe structured-output parsing) — see
+  `docs/00-context/UPSTREAM-ASKS.md`
+
+## [0.5.0] — 2026-07-08
+
+### Added
+- **M1 graduated:** `src/validate.js` — schema v1 validator, a deterministic predicate that
+  reds before tokens burn. Distinct named reds (`missing-required` / `invalid-value` /
+  `unknown-field` / `bounds` / `slot-overflow` / `verb-illegal` / `verb-placement` /
+  `verb-params`, each with a JSON path); never throws on bad input. Vocabulary bound from
+  litectx exports (`COMPRESS_LEVELS`, `KINDS` — FINDINGS F1), 4-verb subset, `remember`
+  legal only in `on-green`. Includes `diffPaths` — the one-knob mutation checker (a legal
+  M6 mutant changes exactly one path; an added/removed subtree counts as one knob).
+- `tests/fixtures/` — one valid config + 22 red fixtures + a parse-error fixture, each
+  isolating exactly one defect; `tests/validate.test.js` (31 tests, written before the
+  implementation and failing first).
+- `litectx` file-dependency (first of the three libs consumed).
+
+### Changed
+- PRD v1.2 (§3.5): no-papering-over doctrine for lib gaps — log finding → fix upstream →
+  consume → continue. (`ccc57bd`)
+- `docs/00-context/UPSTREAM-ASKS.md` — A1: exact spec for clipipe `parse: 'claude-json'`
+  (map result/usage/total_cost_usd onto GenerateResult; loud errors; regression-guarded).
+  (`442b0ee`)
 
 ## [0.4.0] — 2026-07-08
 
