@@ -106,7 +106,11 @@ ordering, memory policy, decomposition — are where emergence lives.
    means *sequential runs with verdict-gated inheritance* — the flock exists across time, not
    across cores.
 5. **Not a framework, not a product.** Consumes the three libs; a needed primitive is a finding
-   filed upstream, never code grown here.
+   filed upstream, never code grown here. **No papering over a missing primitive** — no local
+   shims, wrappers, or workarounds that hide the gap. The libs are ours (`hamr0` origin), so
+   the path is: log the finding in `FINDINGS.md` → fix it upstream in the lib → consume the
+   fixed version → continue. adaptlearn only stops if the upstream fix itself is out of reach;
+   a third-party gap with no upstream path would be a stop, not a shim.
 6. **Not memory research redux.** Verdict-gated retention arrives as a settled import
    (relayfact D3 + the three-factor rule); litectx benches are not re-litigated.
 7. **Not a UI project.** Spine + CLI listener. No web before the loop closes.

@@ -55,8 +55,10 @@ published library. Take only the always-true hygiene (pure ESM, JSDoc, no secret
 - **Grounding is imported settled, not re-derived.** Predicate close primary; rubric advisory
   only, never the sole close; GOLD arbiter stands where a close is self-authored; retention =
   surfaced ∧ evidence-of-use ∧ green close. litectx benches are not re-litigated. (§4)
-- **Consume, don't build.** A needed primitive is a finding filed upstream (propagate from the
-  `hamr0` origin where relevant), never code grown here. No swarm, no Docker/Redis/router, one
+- **Consume, don't build — and never paper over a lib gap.** A needed primitive is a finding
+  filed upstream, never code grown here: no local shims or workarounds that hide the gap. The
+  libs are ours (`hamr0` origin), so log the finding → fix upstream → consume the fixed
+  version → continue. (§3.5) No swarm, no Docker/Redis/router, one
   process; "population" = sequential runs. Spine + CLI listener; no web before the loop closes. (§3)
 - **Event-stream spine: copy relayfact's pattern, not its code.** Append-only JSONL, stdlib,
   `type`/`seq`/`ts` stamped last, pure listeners, ABSENT-not-fabricate. Extract to a lib only on
