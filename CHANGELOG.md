@@ -7,7 +7,32 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-- M4: agent authorship (parity gate)
+- M5: mid-run revision (recovery rate > no-revision control on stall-prone tasks)
+
+## [0.8.0] — 2026-07-09
+
+### Added
+- **M4 graduated:** `src/author.js` — the authorship layer. One sealed call (task + catalog
+  only; never the close, never coaching), one shot, validated: invalid output is DATA
+  (`{valid:false, reds}`), never a throw or a retry. `renderCatalog()` renders the config
+  space bound to the validator's exported vocabulary and states the run contract (artifact
+  under `src/`; shell cap echoed, not hardcoded).
+- **M4 exit met** (probe-04 round 2): first-shot validity 3/3; parity **agent 3/3 green @1 vs
+  hand 2/3** on the easy cohort (hand miss = honest cap-halt on worker syntax fumbles);
+  fit-to-pass 0 by construction; ~$0.53 round. Authored configs were coherent and
+  task-tailored (tighter budgets than the hand config, correct verb placement, all `refine`).
+  FINDINGS F10; round-1 NO PARITY diagnosed and recorded in F9, superseded, not papered over.
+- `tests/author.test.js` (8 tests, 64/64, stub provider): one-shot contract, fence-tolerant
+  parse, parse-error-as-data, named reds surfaced with the parsed config, shell cap enforced
+  against authored budgets, catalog↔validator vocabulary drift guard, run-contract regression,
+  arbiter-fields-illegal warning present.
+
+### Fixed
+- **F9:** validator accepted `gate.writeScope` strings the enforcement layer cannot express
+  (mid-path wildcards like `src/*.mjs` validated green, then gate-redded EVERY write at
+  runtime — found by agent authorship in probe-04 round 1). Wildcards now legal only as a
+  trailing `/**` or `/*`; distinct `invalid-value:gate.writeScope` red + `writescope-midglob`
+  fixture.
 
 ## [0.7.2] — 2026-07-09
 

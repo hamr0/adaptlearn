@@ -40,6 +40,7 @@ const RED_CASES = {
   'budget-over-cap':    { code: 'bounds',           path: 'gate.budgetUsd' },
   'writescope-missing': { code: 'missing-required', path: 'gate.writeScope' },
   'writescope-empty':   { code: 'invalid-value',    path: 'gate.writeScope' },
+  'writescope-midglob': { code: 'invalid-value',    path: 'gate.writeScope' },
   'escalation-missing': { code: 'missing-required', path: 'escalation.mode' },
   'escalation-wrong':   { code: 'invalid-value',    path: 'escalation.mode' },
   'slot-unknown':       { code: 'unknown-field',    path: 'hooks.run-start' },

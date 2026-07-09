@@ -178,3 +178,56 @@ dir and passes `--disallowedTools Write,Edit,NotebookEdit,Bash,WebFetch,WebSearc
 write-a-file bait outright. The worker is now tool-free in fact. Doctrine for M4+: any shell
 runner that binds a CLI provider MUST seal it this way; an unsealed `claude -p` binding is a
 gate bypass, not a provider choice.
+
+## F9 — validator accepted writeScope strings the enforcement layer cannot express: green config, gate-red on every write (found by agent authorship)
+
+M4 probe-04 round 1 (2026-07-09): first-shot authorship validity was 3/3, but the parity readout
+was **agent 1/3 vs hand 3/3 — NO PARITY**. §5b diagnosis before accepting that reading: both
+agent misses were `gate-red` escalations at iteration 1 (`fs.writeScope` deny on every write),
+not close reds. Two distinct defects:
+
+1. **Probe defect (information asymmetry):** the shell writes the artifact to `src/<name>.mjs`,
+   but the author was given only task + catalog — it had no way to know the layout, so scopes
+   like `["unique.mjs"]` deny under prefix-containment. The hand config "won" only because
+   `valid.json`'s author knew the shell's layout. Fix: the catalog now states the run contract
+   (artifact lands under `src/`) — contract, not coaching. Also fixed: round 1 didn't persist
+   the authored configs (diagnosis had to reconstruct from the F4 mapping + `within()` truth
+   table); the probe now writes `authored-<task>.json` as evidence.
+2. **System gap (this finding):** the validator accepted ANY non-empty writeScope string, but
+   bareguard enforcement is prefix-containment (F4) — so an authored `"src/*.mjs"` **validated
+   green and then gate-redded every write at runtime**. Reds-before-tokens is the validator's
+   entire job; agent authorship found a surface where it failed at it (a hand author never trips
+   this — F4 covered our mapping, not the validator's blind spot). Fixed: wildcards are now
+   legal only as a trailing `/**` or `/*`; anything else is a distinct
+   `invalid-value:gate.writeScope` red (fixture `writescope-midglob`, 57/57).
+
+**Why this is an M4 datum, not just a bug:** the authoring agent explores the schema surface in
+ways hand authors don't — its first three configs immediately exposed a validator/enforcement
+mismatch of exactly the F5 class (validates, then dies at runtime). Expect M4+ to keep doing
+this; each such find tightens the reds-before-tokens contract that M6's mutation loop depends on.
+Round-1 parity is superseded by the round-2 re-run (same probe, contract stated, F9 fixed) —
+recorded below it in this file's spirit: the miss was real, diagnosed, and not read as
+"agent can't author".
+
+## F10 — M4 authorship: PASSED — 3/3 first-shot validity, parity-or-better on the easy cohort
+
+Round 2 (2026-07-09, `poc/probe-04-authorship.mjs` after the F9 fix + run contract): authorship
+validity **3/3 first shot**; parity **agent 3/3 green (each @ iteration 1) vs hand 2/3**
+(the hand miss an honest cap-halt — three straight artifact syntax errors, the recurring worker
+fumble noted in F7; no machinery red anywhere). Fit-to-pass counted: 0 possible by construction
+(sealed workers, GOLD unseen close; gap text fed identically to both arms). Total round cost
+~$0.53 including authoring calls (~$0.05 each).
+
+**What the agent authored** (persisted as `authored-*.json`, world `/tmp/probe04-DPPWEx`):
+coherent, task-tailored configs — budgets $0.50–$1 (tighter leashes than the hand config's $2,
+which would rank WELL under green-gates/cost-ranks), maxIterations 4–6, recall k=3–4 with
+compress, `stash` in after-red, `remember` correctly confined to on-green, `src/**` scopes under
+the stated contract. All three chose `refine`; none chose `plan` — consistent with the F7
+control's finding that shape carried no detectable signal.
+
+**Honest bounds:** n=3 easy tasks, one round post-fix. "Parity or better" is the claim; the
+hand arm's 2/3 is worker noise, not evidence the hand config is worse. The load-bearing M4
+facts are: valid first-shot authorship is reliable, authored configs FUNCTION end-to-end, and
+authorship exploration surfaces real system gaps (F9) — the exact behavior M5/M6 build on.
+Round-1's NO PARITY and its diagnosis stand recorded in F9; it was a probe defect + validator
+gap, not an authorship ceiling.

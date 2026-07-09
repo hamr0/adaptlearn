@@ -90,6 +90,11 @@ export function validateConfig(input, { shellCapUsd = 2 } = {}) {
   else if (!(Array.isArray(gate.writeScope) && gate.writeScope.length > 0
              && gate.writeScope.every((s) => typeof s === 'string' && s.length > 0))) {
     red('invalid-value', 'gate.writeScope', 'non-empty array of glob strings');
+  } else if (!gate.writeScope.every((s) => !s.replace(/\/\*\*?$/, '').includes('*'))) {
+    // F9: enforcement (bareguard fs.writeScope) is prefix-containment — a wildcard anywhere
+    // but a trailing /** or /* is inexpressible there, so it would validate green and then
+    // gate-red EVERY write at runtime. Reds-before-tokens means rejecting it here.
+    red('invalid-value', 'gate.writeScope', 'wildcards only as a trailing "/**" or "/*" (enforcement is prefix-containment, F9)');
   }
 
   const escalation = isObj(c.escalation) ? c.escalation : {};
