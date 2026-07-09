@@ -11,6 +11,13 @@
 > acceptance (§2), validator-mirrors-enforcement (§2), verdict as the only claim-bearing
 > categorical axis (§5), registered M6 priors (§7), v2-registry pointer (§3.8). No change to
 > claim, falsifier, shape, or budget.
+>
+> **v1.4 (2026-07-09, explicit post-cohort amendment — F12–F14):** the instrument-channel
+> doctrine (§4b: every information path into the worker is part of the instrument), M6 cohort
+> attempt 1–2 results + superseded priors (§7c), the F13 store-furniture clarification. The
+> M6 verdict is NOT taken in this amendment: the two pre-registered doors (archive on the
+> attempt-2 null vs one opaque-close attempt 3) are recorded in §7c and F14; whichever is
+> walked through closes the ladder explicitly. No change to claim, falsifier, shape, or budget.
 
 **adaptlearn** is an experiment: can an agent's *harness* — not its plan, not its code — be an
 emergent, adapting artifact? It consumes the bare suite (`bareagent`, `litectx`, `bareguard`) and
@@ -161,6 +168,24 @@ depends on.
 - Retention rule: **surfaced ∧ evidence-of-use ∧ green close** — use-evidence ranked
   failure-transition > artifact overlap > self-citation (self-report is a candidate, never proof).
 
+### §4b Instrument channels (v1.4 — the F13/F14 lesson, learned twice)
+
+**Every information path into the worker is part of the instrument, and each must be
+registered when a claim read is designed.** The M6 cohort saturated twice through channels
+nobody had registered: attempt 1 through the *authoring* channel (catalog + environment note
+let first-shot authorship reach the catalog-expressible optimum — nothing left to learn, F13),
+attempt 2 through the *close* channel (a `node --test` close NAMES its failing tests, so gap
+text teaches the very conventions the memory store carried; verdict saturates by iteration
+2–3 and the memory effect is displaced onto iterations/cost, where doctrine §5 forbids claims,
+F14). Corollaries:
+- The close's output verbosity is an experimental condition, not an implementation detail: an
+  informative close is a teaching channel; an opaque close (counts only) starves it. Declare
+  which one a cohort runs under, in advance.
+- A registered environment regularity must be UNREACHABLE through every channel except the one
+  under test, or the read measures the leak, not the mechanism.
+- Saturation through an unregistered channel is an invalid instrument (probe-05 precedent:
+  a control that mostly greens compares nothing), never a claim verdict in either direction.
+
 ## §5 Controls & metrics (every positive arm must be able to fail)
 
 - **Control arm:** the fixed relayfact pipe on the identical task cohort — already validated,
@@ -255,3 +280,31 @@ meet its exit **stops the ladder** — that stop is a result, not a failure to r
 5. **Known worker noise:** a recurring template-literal-adjacent syntax fumble inflates
    iterations in both arms equally (F7). Worker-ceiling class; watch it — it only matters if it
    starts threatening the green-rate read.
+
+### §7c M6 cohort results, attempts 1–2 (v1.4 — F12–F14; verdict deliberately not yet taken)
+
+- **Probe-06 (F12, PASSED):** the inheritance channel is wired — extracted rules steer authored
+  configs toward their source (4.00 vs control 2.00 on 5 registered axes), and deliberately
+  FALSE rules steer to the opposite prescription (5.00 vs 0.00). The channel carries content;
+  wrong rules propagate as efficiently as right ones — the verdict gate is the only filter.
+- **Attempt 1 (F13, instrument INVALID):** ceiling — all arms 0.88→1.00, ~7% red-rate, the gate
+  starved. Design amendment: the seeded store is task FURNITURE (per-instance, identical across
+  arms); inheritance stays author-context-only. Two launcher classes fixed: broken-middle
+  outages now escalate instead of minting rows or crashing; per-row persistence + hash-verified
+  `--resume` (which later completed attempt 2 after a hang, replaying 48 rows free).
+- **Attempt 2 (F14, NULL on the claim axis):** complete, $17.93. Verdict flat in every arm
+  (gated-verbatim 0.63 does not beat ungated 0.75; fixed 0.88→0.75 best). Cause per §4b: the
+  informative close teaches by iteration 2–3 what the store carried. The regularity itself was
+  causal — `episode`-recall configs green @ iteration 1 at 0.56 vs **0.00 without (0/38)** —
+  and gated-rules L1 ran the full claimed mechanism end-to-end (discover g4 → gate → codify →
+  transmit → g4–g7 all green @ 1 at ~⅓ cost), visible only on axes that cannot carry claims.
+- **Superseded prior:** §7b.2's ~1/3 no-inheritance baseline does not transfer to informative-
+  close conditions at cap 3 — gap-fed recovery there is ~0.75. Baselines are per close-verbosity
+  condition from now on.
+- **The two doors (registered before further spend):** (a) archive on the pre-registered
+  attempt-2 null; boundary map = verdict-gated inheritance is masked wherever the close itself
+  teaches the hidden regularities, expressing on efficiency instead. (b) one amended attempt 3
+  under an OPAQUE close (counts only) — prediction registered in F14: no-episode configs stay
+  red, the verdict axis regains range, gated-vs-ungated gets its first uncontaminated read
+  (~$12–18 of ~$20 remaining). If the gate still does not separate, archive with nothing left
+  to blame. Whichever door is walked closes the ladder in an explicit v1.5 edit.

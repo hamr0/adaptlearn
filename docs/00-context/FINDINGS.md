@@ -352,3 +352,44 @@ propagate as cap-halt. **Upstream suspicion (file with F2's clipipe notes): CLIP
 leave its promise unsettled after child exit on some path — timeout option did not fire.**
 Evidence: /tmp/m6-cohort-7xErzP/g3-ungated-L1/spine.jsonl (last event stall-detected 16:10Z,
 process idle ~2h, no claude child).
+
+## F14 — M6 cohort attempt 2: NULL on the claim axis; the informative close is an unregistered teaching channel; full inheritance mechanism demonstrated in one lineage
+
+Live (2026-07-09, `poc/run-m6-cohort.mjs`, world `/tmp/m6-cohort-7xErzP`): complete, 64 rows,
+$17.93, no exclusions. One hang mid-cohort (F13 addendum) — killed, `--resume` replayed 48 rows
+free, hash-verified, and finished live: the resume machinery worked in anger on first use.
+
+**Pre-registered read (verdict axis, early gens 0–3 vs late 4–7):** flat everywhere —
+fixed 0.88→0.75, ungated 0.75→0.75, gated-verbatim 0.63→0.63, gated-rules 0.75→0.75; all
+arm differences within ±1 run at n=8 per cell. Gated-verbatim does NOT beat ungated; the fixed
+hand config is the best single arm. On the locked claim axis: **the gate is not load-bearing on
+this cohort** — the design's exit clause reads archive + boundary map.
+
+**Mechanism (ledger × persisted configs):** the attempt-2 regularity was real and causal —
+configs with `episode` in recall kinds greened **at iteration 1 in 14/25 runs (0.56)**; configs
+without: **0/38 (0.00)**. Yet total green-rate was identical (0.76 vs 0.74), because the close's
+failure output NAMES its tests, so by iteration 2–3 the gap text has taught the worker the very
+conventions the store carried. **The informative close is a parallel teaching channel nobody
+registered:** it saturates the verdict axis at cap 3 (gap-fed recovery ~0.75 — superseding the
+~1/3 §7b.2 prior, which was measured on one harder instance), pushing the memory effect onto
+iterations/cost (fixed mean cost-to-green $0.104 vs $0.28–0.35 in learning arms) — axes our own
+doctrine (F7 2×2) bars from carrying claims. Attempt 1 saturated by authorship reaching the
+catalog-expressible optimum (F13); attempt 2 saturated by the close teaching what memory was
+supposed to carry. Same lesson, two channels: **every information path into the worker is part
+of the instrument, and each must be registered when the claim read is designed.**
+
+**The claimed mechanism ran end-to-end, n=1 lineage:** gated-rules L1 ground at iterations 2–3
+without episode-recall (g0–g3), authored `episode` into kinds at g4 (rules + novelty nudge in
+hand) → green @ 1 → the extractor codified "recall across code/doc/fact/episode" → g4–g7 all
+episode-wired, ALL green @ iteration 1, at ~⅓ cost. Discover → gate → codify → transmit →
+stable expression. L0 never discovered it and kept cap-halting. Inheritance visibly worked —
+on the axis that cannot carry the claim.
+
+**Disposition (explicit, pre-registered before any further spend):** two honest doors.
+(a) Archive on the pre-registered read; boundary map: verdict-gated inheritance is masked
+wherever the close's own output teaches the task's hidden regularities — its value expresses on
+efficiency, not verdict, in informative-close environments. (b) One amended attempt 3 with an
+OPAQUE close (counts only, no test names), prediction registered now: without gap teaching,
+no-episode configs stay red, the verdict axis regains dynamic range, and gated-vs-ungated gets
+its first uncontaminated read. ~$12–18 against ~$20 remaining. Symmetric outcome: if the gate
+still fails to separate with the leak closed, archive with nothing left to blame.
