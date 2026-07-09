@@ -15,10 +15,22 @@ rules-vs-verbatim representation sub-experiment. Graduate or archive — the bar
 ## Decisions made in this design (the interview forks)
 
 1. **Channel — author context only.** Inherited material enters run N+1 as authoring input
-   (or as the mechanical mutator's parent config). The worker's litectx store stays per-run
-   and empty at start. The claim is about the *harness* improving, and the harness is
-   authored; if memory-surfacing is the live axis, the curve must show up as authors wiring
-   recall better — not as us hand-feeding the worker.
+   (or as the mechanical mutator's parent config). The claim is about the *harness* improving,
+   and the harness is authored; if memory-surfacing is the live axis, the curve must show up
+   as authors wiring recall better — not as us hand-feeding the worker.
+
+   **Amendment (2026-07-09, pre-launch — F7-falsifier check):** as first written this said the
+   worker's store "stays per-run and empty at start", which would wire OUT the one axis F7
+   proved live (probe-03b: with an empty store, MAX ≈ MIN — shape/slot machinery rescued
+   nothing) and make §7b.1 predict null on every mutable axis: a $22 designed-null. The M3/M5
+   seeded store was never inheritance — it is **task furniture**: each registered instance
+   ships its own store seed (convention notes + decoy), the shell seeds it identically for
+   every arm and lineage in that generation, and inheritance still flows only through the
+   author's context. The authoring prompt carries one uniform environment sentence (the store
+   is pre-seeded with project notes, some relevant) — environment description, not coaching;
+   without it, authored arms would differ from the hand arm by information asymmetry alone.
+   The learning curve then rides "lineages learning to wire recall well" — the intent of this
+   decision, now actually live.
 2. **Mutation/authorship split by arm.** Verbatim (and ungated) arms are fully mechanical
    after gen 0: parent config + one-knob mutation, no author call. Rules arm is
    author-mediated every generation: author sees extracted rules + one green example; the
