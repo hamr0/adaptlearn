@@ -14,10 +14,10 @@
 // to any model.
 
 const DECOYS = [
-  ['note-decoy-spine', 'The event spine is append-only JSONL: type first, seq monotonic per spine, ts stamped last as the final key; consumers are pure listeners and never read the file back.'],
-  ['note-decoy-git', 'Repo hygiene: never git add -A; stage explicit paths only, and session directories stay untracked. Only .env.example is ever committed, real env comes in at runtime.'],
-  ['note-decoy-deps', 'Dependency policy: vanilla before stdlib before external; an external dep must be maintained, lightweight and widely adopted, and security-critical code uses vetted libraries only.'],
-  ['note-decoy-poc', 'POC policy: every POC targets the riskiest assumption, must be able to fail, and is thrown away on graduation — shipping a POC is a rewrite skipped, not a shortcut earned.'],
+  ['note-decoy-spine', 'The event spine is append-only JSONL: type first, seq monotonic per spine, ts stamped last as the final key; consumers are pure listeners and never read the file back.', 'fact'],
+  ['note-decoy-git', 'Repo hygiene: never git add -A; stage explicit paths only, and session directories stay untracked. Only .env.example is ever committed, real env comes in at runtime.', 'fact'],
+  ['note-decoy-deps', 'Dependency policy: vanilla before stdlib before external; an external dep must be maintained, lightweight and widely adopted, and security-critical code uses vetted libraries only.', 'fact'],
+  ['note-decoy-poc', 'POC policy: every POC targets the riskiest assumption, must be able to fail, and is thrown away on graduation — shipping a POC is a rewrite skipped, not a shortcut earned.', 'fact'],
 ];
 const decoy = (i) => DECOYS[i % DECOYS.length];
 
@@ -26,8 +26,8 @@ export const TASKS = [
     id: 'dur', // the F7/M5 anchor instance — known stall-prone at cap 4
     task: 'Implement the file dur.mjs. It must export a named function `parseDuration(str)` that parses a duration string (like "1h30m" or "500ms") and returns the total number of milliseconds.',
     seeds: [
-      ['note-duration-format', 'Duration format house spec: valid units are h, m, s, and ms; components may be separated by single spaces (e.g. "2h 15m"); unit letters are case-insensitive, so "1H30M" equals "1h30m". Fractional values like "1.5h" are allowed.'],
-      ['note-duration-edges', 'Duration parsing edge rules: a bare numeric string with no unit (e.g. "250") means milliseconds; negative durations are invalid and must throw a RangeError; empty strings and non-string input must throw a TypeError.'],
+      ['note-duration-format', 'Duration format house spec: valid units are h, m, s, and ms; components may be separated by single spaces (e.g. "2h 15m"); unit letters are case-insensitive, so "1H30M" equals "1h30m". Fractional values like "1.5h" are allowed.', 'episode'],
+      ['note-duration-edges', 'Duration parsing edge rules: a bare numeric string with no unit (e.g. "250") means milliseconds; negative durations are invalid and must throw a RangeError; empty strings and non-string input must throw a TypeError.', 'episode'],
       decoy(0),
     ],
     suite: `
@@ -74,8 +74,8 @@ export function parseDuration(str) {
     id: 'bytes',
     task: 'Implement the file bytes.mjs. It must export a named function `formatBytes(n)` that formats a byte count as a human-readable string (like "1.5 MiB").',
     seeds: [
-      ['note-bytes-units', 'Byte formatting house spec: binary units only — 1024 steps with labels B, KiB, MiB, GiB, TiB. One decimal place for scaled values ("1.5 MiB"), but plain bytes are integers with no decimal ("512 B"). Exactly one space between number and unit.'],
-      ['note-bytes-edges', 'Byte formatting edge rules: zero formats as "0 B"; negative counts are invalid and must throw a RangeError; non-number or non-finite input must throw a TypeError.'],
+      ['note-bytes-units', 'Byte formatting house spec: binary units only — 1024 steps with labels B, KiB, MiB, GiB, TiB. One decimal place for scaled values ("1.5 MiB"), but plain bytes are integers with no decimal ("512 B"). Exactly one space between number and unit.', 'episode'],
+      ['note-bytes-edges', 'Byte formatting edge rules: zero formats as "0 B"; negative counts are invalid and must throw a RangeError; non-number or non-finite input must throw a TypeError.', 'episode'],
       decoy(1),
     ],
     suite: `
@@ -107,8 +107,8 @@ export function formatBytes(n) {
     id: 'csvline',
     task: 'Implement the file csvline.mjs. It must export a named function `parseCsvLine(str)` that splits one CSV line into an array of field strings.',
     seeds: [
-      ['note-csv-quoting', 'CSV house spec: fields may be double-quoted; inside a quoted field a doubled quote "" is a literal quote and commas do not split. Whitespace around UNQUOTED fields is trimmed; quoted fields keep their content exactly.'],
-      ['note-csv-edges', 'CSV edge rules: an empty line yields a single empty field ([""]) not an empty array; an unterminated quote must throw a RangeError; non-string input must throw a TypeError.'],
+      ['note-csv-quoting', 'CSV house spec: fields may be double-quoted; inside a quoted field a doubled quote "" is a literal quote and commas do not split. Whitespace around UNQUOTED fields is trimmed; quoted fields keep their content exactly.', 'episode'],
+      ['note-csv-edges', 'CSV edge rules: an empty line yields a single empty field ([""]) not an empty array; an unterminated quote must throw a RangeError; non-string input must throw a TypeError.', 'episode'],
       decoy(2),
     ],
     suite: `
@@ -152,8 +152,8 @@ export function parseCsvLine(str) {
     id: 'range',
     task: 'Implement the file range.mjs. It must export a named function `parseRange(str)` that parses a page-range string (like "3-7,10") and returns an array of the numbers it covers.',
     seeds: [
-      ['note-range-format', 'Range house spec: comma-separated parts, each a single number or lo-hi (inclusive both ends); single spaces around commas and hyphens are allowed. The result is deduplicated and sorted ascending regardless of input order.'],
-      ['note-range-edges', 'Range edge rules: a reversed range like "7-3" must throw a RangeError; zero and negative page numbers must throw a RangeError; empty or non-string input must throw a TypeError.'],
+      ['note-range-format', 'Range house spec: comma-separated parts, each a single number or lo-hi (inclusive both ends); single spaces around commas and hyphens are allowed. The result is deduplicated and sorted ascending regardless of input order.', 'episode'],
+      ['note-range-edges', 'Range edge rules: a reversed range like "7-3" must throw a RangeError; zero and negative page numbers must throw a RangeError; empty or non-string input must throw a TypeError.', 'episode'],
       decoy(3),
     ],
     suite: `
@@ -191,8 +191,8 @@ export function parseRange(str) {
     id: 'ver',
     task: 'Implement the file ver.mjs. It must export a named function `compareVersions(a, b)` that compares two version strings and returns -1, 0, or 1.',
     seeds: [
-      ['note-ver-format', 'Version house spec: an optional leading "v" or "V" is ignored ("v1.2" equals "1.2"); missing parts count as zero, so "1.2" equals "1.2.0"; comparison is numeric per dot-separated part, never lexicographic ("1.10" > "1.9").'],
-      ['note-ver-edges', 'Version edge rules: comparison returns exactly -1, 0 or 1; a part that is not a plain non-negative integer (e.g. "1.2-beta", "1..2") must throw a TypeError, as must non-string input.'],
+      ['note-ver-format', 'Version house spec: an optional leading "v" or "V" is ignored ("v1.2" equals "1.2"); missing parts count as zero, so "1.2" equals "1.2.0"; comparison is numeric per dot-separated part, never lexicographic ("1.10" > "1.9").', 'episode'],
+      ['note-ver-edges', 'Version edge rules: comparison returns exactly -1, 0 or 1; a part that is not a plain non-negative integer (e.g. "1.2-beta", "1..2") must throw a TypeError, as must non-string input.', 'episode'],
       decoy(0),
     ],
     suite: `
@@ -236,8 +236,8 @@ export function compareVersions(a, b) {
     id: 'money',
     task: 'Implement the file money.mjs. It must export a named function `parseMoney(str)` that parses a money string (like "$1,234.56") and returns its numeric value.',
     seeds: [
-      ['note-money-format', 'Money house spec: the return value is an INTEGER number of cents, never a float of dollars ("$1.50" → 150). A leading "$" is optional; commas are thousands separators and are ignored; at most two decimal digits are allowed.'],
-      ['note-money-edges', 'Money edge rules: accounting negatives use parentheses — "(1.00)" means minus one dollar → -100; a bare minus sign is NOT valid and must throw a RangeError; empty or non-string input must throw a TypeError.'],
+      ['note-money-format', 'Money house spec: the return value is an INTEGER number of cents, never a float of dollars ("$1.50" → 150). A leading "$" is optional; commas are thousands separators and are ignored; at most two decimal digits are allowed.', 'episode'],
+      ['note-money-edges', 'Money edge rules: accounting negatives use parentheses — "(1.00)" means minus one dollar → -100; a bare minus sign is NOT valid and must throw a RangeError; empty or non-string input must throw a TypeError.', 'episode'],
       decoy(1),
     ],
     suite: `
@@ -272,8 +272,8 @@ export function parseMoney(str) {
     id: 'hexcolor',
     task: 'Implement the file hexcolor.mjs. It must export a named function `parseColor(str)` that parses a hex color string (like "#aabbcc") and returns an object { r, g, b }.',
     seeds: [
-      ['note-color-format', 'Color house spec: the leading "#" is optional; hex digits are case-insensitive; the 3-digit shorthand expands by doubling each digit ("#abc" equals "#aabbcc").'],
-      ['note-color-edges', 'Color edge rules: only lengths 3 and 6 (after any "#") are valid — anything else must throw a RangeError; a non-hex character must throw a RangeError; non-string input must throw a TypeError.'],
+      ['note-color-format', 'Color house spec: the leading "#" is optional; hex digits are case-insensitive; the 3-digit shorthand expands by doubling each digit ("#abc" equals "#aabbcc").', 'episode'],
+      ['note-color-edges', 'Color edge rules: only lengths 3 and 6 (after any "#") are valid — anything else must throw a RangeError; a non-hex character must throw a RangeError; non-string input must throw a TypeError.', 'episode'],
       decoy(2),
     ],
     suite: `
@@ -303,8 +303,8 @@ export function parseColor(str) {
     id: 'initials',
     task: 'Implement the file initials.mjs. It must export a named function `initials(name)` that returns the initials of a person\'s name (like "Ada Lovelace" → "AL").',
     seeds: [
-      ['note-initials-format', 'Initials house spec: at most the FIRST and LAST name parts contribute ("Anna Maria Luisa Weber" → "AW"); output is always uppercase; hyphenated surnames contribute both halves ("Ada Lovelace-King" → "ALK").'],
-      ['note-initials-edges', 'Initials edge rules: lowercase connector particles (van, von, de, da, la, bin) are skipped when choosing the last part ("Ludwig van Beethoven" → "LB"); an empty or whitespace-only name must throw a RangeError; non-string input must throw a TypeError.'],
+      ['note-initials-format', 'Initials house spec: at most the FIRST and LAST name parts contribute ("Anna Maria Luisa Weber" → "AW"); output is always uppercase; hyphenated surnames contribute both halves ("Ada Lovelace-King" → "ALK").', 'episode'],
+      ['note-initials-edges', 'Initials edge rules: lowercase connector particles (van, von, de, da, la, bin) are skipped when choosing the last part ("Ludwig van Beethoven" → "LB"); an empty or whitespace-only name must throw a RangeError; non-string input must throw a TypeError.', 'episode'],
       decoy(3),
     ],
     suite: `

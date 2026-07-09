@@ -301,3 +301,43 @@ with a mechanism-level reason to expect the ungated contrast to be real.
 **Honest bounds:** easy task family (extractor material was an M2-class green, not a stall
 recovery); steering measured on authored CONFIGS, not on downstream green-rate — the cohort
 measures that; n=3 per arm.
+
+## F13 — M6 cohort attempt 1: instrument INVALID at ceiling; provider outage crashed the launcher (two gaps fixed)
+
+Live (2026-07-09, `poc/run-m6-cohort.mjs`, world `/tmp/m6-cohort-dQtNOb`): 62/64 rows completed,
+$8.40 of the $38 stop-rule. Gens 0–6 clean; from 13:00 local every run — including the fixed
+arm's known-good config — went `red:interpreter-red` at $0.00 in ~2–3s: the local `claude` CLI
+stopped answering (subscription usage window). §5b class: broken middle, not harness verdicts.
+
+**Result on the clean generations: a ceiling.** fixed 13/14, ungated 13/14, gated-verbatim
+13/14, gated-rules 13/13 green; early/late 0.88→1.00 identically in every arm; 3 cap-halts in
+55 readable runs. At a ~7% red-rate the gate never had anything to filter — verdict-blind
+inheritance almost never inherits a red, so **ungated ≡ gated by starvation, not refutation**.
+Root cause is visible at gen 0: first-shot authorship already lands in the good config region
+(catalog + environment note make recall-wiring obvious; furniture-store relevance ranking does
+the rest), so inheritance had nothing left to learn. The F7 stall priors came from BLIND
+configs; authored configs are never blind. Per probe-05's own doctrine (control mostly greens ⇒
+condition invalid, don't compare non-stressed arms): **attempt 1 is an invalid instrument, not
+an archive verdict** — no claim read taken.
+
+**Two launcher gaps the outage exposed (both a finding and a fix):**
+1. The only pause was the all-red tripwire at generation BOUNDARIES; a mid-generation provider
+   outage minted $0 interpreter-red rows until the boundary. §5b says broken middle → escalate
+   immediately, never mint rows. Fixed: $0-interpreter-red and provider throws now prompt the
+   operator (retry / record / halt) before any row is written.
+2. An outage during an AUTHORING call threw uncaught and killed the process — `cohort-result.json`
+   was never written; only the append-only ledger survived (the spine pattern earning its keep).
+   Fixed: author failures are contained rows, configs/rules/state are persisted per run, and
+   `--resume <world>` replays completed rows from the merged ledgers (hash-verified) so a killed
+   same-condition run continues instead of re-spending.
+
+**Attempt 2 difficulty redesign (pre-registered before rerun):** the learnable regularity must
+live OUTSIDE what the catalog teaches. Conventions move to the litectx `episode` kind while
+decoys stay `fact`; the interpreter's recall default is `['fact']`, so a config that omits kinds
+— or copies the common fact-only shape — never surfaces the conventions regardless of k
+(kind filters are hard; relevance ranking cannot rescue them). "Where knowledge lives" becomes
+the environment fact lineages must discover and transmit. capRuns tightens 4→3 to narrow gap-fed
+self-recovery. valid.json stays the fixed arm unchanged (it predates this trick — historical,
+not crafted; it happens to carry both kinds, making arm A a strong floor, read as context for
+C-vs-B, which alone decides the gate claim). Guard: if attempt 2 opens at an all-red generation,
+the tripwire fires at gen 0 and the operator halts cheaply — worker-ceiling, not difficulty won.
