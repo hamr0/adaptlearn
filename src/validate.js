@@ -8,7 +8,7 @@
 // exposes a 4-verb subset of it. The close and the provider are deliberately not
 // expressible here: they arrive as unknown-field reds (the shell owns both).
 
-import { COMPRESS_LEVELS, KINDS } from 'litectx';
+import { COMPRESS_LEVELS, KINDS, WRITE_KINDS } from 'litectx';
 
 export const LOOP_SHAPES = ['refine', 'plan'];
 export const SLOTS = ['before-attempt', 'after-red', 'on-green'];
@@ -17,10 +17,10 @@ const TOP_FIELDS = ['schema', 'loop', 'memory', 'hooks', 'gate', 'escalation'];
 const MAX_OPS_PER_SLOT = 2;
 
 // per-verb parameter contracts: name → check(value) (op field itself excluded)
-// remember's kinds are NARROWER than recall's: litectx remember() accepts only
-// fact|episode|doc (code enters via index()), and v1 gates the doc/upload axis out —
-// validating against full KINDS would pass configs that crash at runtime (FINDINGS F5).
-const REMEMBER_KINDS = ['fact', 'episode'];
+// remember's kinds are NARROWER than recall's: bound from litectx WRITE_KINDS (the set
+// remember() itself validates against — UPSTREAM-ASKS A2, closing FINDINGS F5's drift
+// risk), minus doc: v1 gates the doc/upload axis out deliberately.
+const REMEMBER_KINDS = WRITE_KINDS.filter((k) => k !== 'doc');
 const VERB_PARAMS = {
   recall: { k: (v) => Number.isInteger(v) && v >= 1 && v <= 20, kinds: isKinds },
   compress: { level: (v) => COMPRESS_LEVELS.includes(v) },

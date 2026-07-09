@@ -119,6 +119,17 @@ worker failure mode across all runs and both arms: template-literal-adjacent syn
 emitted files — shared noise, no contrast confound, but it inflates iterations-to-green; worth
 a dedicated look if it persists into M4.
 
+**The two runs as a 2×2 (why verdict, not iterations, is the load-bearing axis):** within-config,
+verdict was stable (MAX green 2/2, MIN cap-halt 2/2) while iterations-to-green varied wildly
+within MAX (1 → 4 across runs — as large as any plausible MAX-vs-MIN iteration gap). So at n=1,
+an iterations-to-green "categorical difference" (which design §M3 permits) would NOT have been
+trustworthy — worker fumbles alone can produce it. M3's pass rests on the verdict axis, which
+doubled as its own repeated-measures control. MIN's spine also shows the mechanism converting
+iterations into verdict: whack-a-mole — it fixed the two note-carried conventions the gap named
+(iters 1,3 → 4) only to red on the remaining two (error contracts), i.e. it was *converging* and
+the cap halted it: cap-halt as "not under cap", never "can't", with the harness deciding how many
+iterations the same cap must buy.
+
 **Honest bounds:** n=1 task, one run per arm per condition — what M3 needed and no more. The demonstrated
 variable is the *joint* MAX−MIN axis (slots + recall + shape together); per-knob attribution is
 M6's one-knob-mutation job, not M3's. Also note MIN's `recall.k:1`/`drop` were never *executed*

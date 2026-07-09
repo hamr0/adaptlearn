@@ -111,3 +111,34 @@ test('diffPaths: two knobs → two paths (illegal mutant, caught)', () => {
   child.memory.compressLevel = 'drop';
   assert.equal(diffPaths(load('valid.json'), child).length, 2);
 });
+
+// ---- A2 consumed: remember kinds bound from litectx WRITE_KINDS (F5 drift guard) ----
+// The F5 lesson made live: every kind the validator passes for `remember` must be
+// accepted by litectx remember() at RUNTIME, and `doc` must stay gated out on our
+// side while `code` stays rejected on theirs. If either vocabulary moves alone,
+// one of these fails — the drift red-flags here instead of post-green in on-green.
+
+test('every validator-legal remember kind is accepted by litectx remember() (A2 harmony)', async (t) => {
+  const { WRITE_KINDS, LiteCtx } = await import('litectx');
+  const { mkdtempSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const legal = WRITE_KINDS.filter((k) => k !== 'doc');
+  assert.ok(legal.length >= 2, 'v1 must keep at least fact|episode');
+  const lc = new LiteCtx({ root: mkdtempSync(join(tmpdir(), 'a2-')) });
+  for (const kind of legal) {
+    const cfg = load('valid.json');
+    cfg.hooks['on-green'] = [{ op: 'remember', kind }];
+    assert.deepEqual(validateConfig(cfg).reds, [], `validator must accept kind "${kind}"`);
+    await lc.remember(`a2-${kind}`, 'harmony probe', { kind }); // must not throw
+  }
+  await assert.rejects(lc.remember('a2-code', 'x', { kind: 'code' }), /kind must be/,
+    'litectx must still reject code at write time');
+});
+
+test('doc stays gated out of v1 remember even though litectx accepts it', () => {
+  const cfg = load('valid.json');
+  cfg.hooks['on-green'] = [{ op: 'remember', kind: 'doc' }];
+  const r = validateConfig(cfg);
+  assert.equal(r.ok, false);
+  assert.equal(r.reds[0].code, 'verb-params');
+});

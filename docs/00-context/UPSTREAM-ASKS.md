@@ -5,8 +5,15 @@ upstream, consume the fixed version, continue. One entry per ask; status tracked
 
 ## A2 — litectx: export the write-side kind vocabulary (`WRITE_KINDS`)
 
-**Status:** OPEN (asked 2026-07-09; user fixing now). Blocks nothing — adaptlearn hardcodes the
-subset correctly today; this removes silent-drift risk.
+**Status:** ✅ CONSUMED (2026-07-09, same day) — delivered exactly as asked: `WRITE_KINDS`
+exported (`litectx/src/index.js:91`) with `remember()` validating against the constant itself
+(single source of truth, `:799`), plus `types/index.d.ts`. Verified through the symlinked file
+dep: import returns exactly `["fact","episode","doc"]`; `kind:"code"` still throws with the
+existing error shape. Consumed in `src/validate.js`: `REMEMBER_KINDS = WRITE_KINDS.filter(k =>
+k !== 'doc')` (v1 keeps the doc/upload axis gated out) — drift risk gone. Two harmony tests
+added on our side (56/56): every validator-legal kind must be accepted by litectx `remember()`
+at runtime (the F5 lesson, live), and `doc` stays a `verb-params` red here despite being legal
+upstream.
 **Finding:** FINDINGS.md F5. **Repo:** `litectx` (`src/index.js`).
 
 ### The gap (grounded)

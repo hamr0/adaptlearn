@@ -9,6 +9,18 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 - M4: agent authorship (parity gate)
 
+## [0.7.1] — 2026-07-09
+
+### Changed
+- **A2 consumed** (same day): `REMEMBER_KINDS` now bound from litectx's new `WRITE_KINDS`
+  export instead of hardcoded (F5 drift risk gone; v1 still gates `doc` out). Two harmony
+  tests (56/56): every validator-legal remember kind must be accepted by litectx `remember()`
+  at runtime, and `doc` stays a verb-params red here despite being legal upstream.
+- FINDINGS F7: recorded the 2×2 reading of the two live runs — verdict stable within-config
+  (MAX green 2/2, MIN cap-halt 2/2) while iterations-to-green varied 1→4 *within* MAX, so at
+  n=1 the verdict axis (not iterations) is the load-bearing discriminator; MIN's whack-a-mole
+  gap trail shows the harness converting iterations into verdict under a fixed cap.
+
 ## [0.7.0] — 2026-07-09
 
 ### Added
