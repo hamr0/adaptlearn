@@ -248,3 +248,18 @@ test('M5: revisor never consulted without a stall', async () => {
   assert.equal(outcome, 'green');
   assert.equal(calls, 0);
 });
+
+test('M5/PRD §7b.3: revisor spend is metered by the RUN\'s gate — an expensive revision halts the run early', async () => {
+  const { proposeRevision } = await import('../src/revise.js');
+  const cfg = config();
+  cfg.gate.budgetUsd = 0.05;
+  // revisor's own LLM call costs 0.2 — over the run's budget on its own
+  const expensive = { generate: async () => ({ text: JSON.stringify(config()), toolCalls: [], usage: { inputTokens: 5, outputTokens: 5 }, costUsd: 0.2, model: null }) };
+  const revisor = (args) => proposeRevision({ ...args, provider: expensive });
+  const { outcome, events } = await run('m5-metered', cfg, { script: [{ text: BAD_SUM, costUsd: 0.001 }], capRuns: 4, revisor });
+  assert.equal(outcome, 'escalated');
+  const esc = events.find((e) => e.type === 'escalation');
+  assert.equal(esc.category, 'cap-halt');
+  assert.equal(esc.spend.runs, 3, 'halted at iteration 3 — BEFORE the run cap of 4: the gate saw the revisor\'s tokens');
+  assert.ok(events.some((e) => e.type === 'stall-detected'), 'the revision did fire before the halt');
+});

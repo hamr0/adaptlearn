@@ -38,3 +38,14 @@ test('prompt carries config + stall evidence but never a close', async () => {
   assert.ok(seen.includes('not ok 1 - adds'), 'stall evidence shown');
   assert.ok(seen.includes('"gate", "escalation", and "loop.maxIterations" are FIXED'), 'immutables stated');
 });
+
+test('gate handlers ride along: onLlmResult sees the revisor call (PRD §7b.3 metering seam)', async () => {
+  const recorded = [];
+  const r = await proposeRevision({
+    ...args,
+    provider: stub(VALID),
+    onLlmResult: (res) => recorded.push(res),
+  });
+  assert.equal(r.candidate.schema, 'v1');
+  assert.equal(recorded.length, 1, 'the revisor call must be visible to the gate recorder');
+});

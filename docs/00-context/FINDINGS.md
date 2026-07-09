@@ -260,5 +260,12 @@ resource it surfaces, never through the act of revising. Same mechanism shape as
 iteration budget is snapshotted at run start — rejecting beats silently half-applying.
 
 **Honest bounds:** n=3/3/2 on one task family; one revision per run (multi-revision thrash is
-untested, deliberately out of v1); the revisor call is not yet metered by the run's own gate
-(shell-visible spend, reported on the spine — wiring it through the gate is M6-relevant work).
+untested, deliberately out of v1).
+
+**Bound closed (2026-07-09, PRD v1.3 §7b.3):** the revisor is now metered by the run's OWN gate
+— `proposeRevision` accepts the gate-wired `policy`/`onLlmResult` and the interpreter threads
+its own through, so revisor tokens hit the same budget axis as the worker (regression: an
+expensive revision halts the run at iteration 3, before the run cap of 4 — the halt is only
+possible if the gate saw the revisor's spend). Authorship happens before the run's gate exists,
+so the SHELL counts `authorConfig`'s returned `costUsd` into cost-to-green — an M6 accounting
+requirement, now in the PRD.

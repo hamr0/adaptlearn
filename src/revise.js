@@ -23,10 +23,13 @@ const stripFences = (t) => t.trim().replace(/^```[a-z]*\n?/i, '').replace(/\n?``
  * @param {string[]} opts.gaps consecutive failure outputs (most recent last)
  * @param {object} opts.provider a bareagent provider — SHELL-owned, sealed per F8
  * @param {number} [opts.shellCapUsd=2]
+ * @param {object} [opts.policy] gate-wired policy from the RUN's own gate (PRD §7b.3: revisor
+ *        spend is metered by the same budget axis as the worker — no free tokens mid-run)
+ * @param {Function} [opts.onLlmResult] gate-wired usage recorder, same gate as policy
  * @returns {Promise<{candidate: object|null, parseError: string|null, costUsd: number, raw: string}>}
  */
-export async function proposeRevision({ config, gaps, provider, shellCapUsd = 2 }) {
-  const loop = new Loop({ provider, system: 'You emit exactly one JSON document and nothing else.' });
+export async function proposeRevision({ config, gaps, provider, shellCapUsd = 2, policy, onLlmResult }) {
+  const loop = new Loop({ provider, system: 'You emit exactly one JSON document and nothing else.', policy, onLlmResult });
   const prompt = `${renderCatalog({ shellCapUsd })}
 
 Your harness is MID-RUN and STALLED: ${gaps.length} consecutive attempts failed the hidden

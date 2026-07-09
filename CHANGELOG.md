@@ -9,6 +9,23 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 - M6: inheritance + selection (the claim; rules-vs-verbatim sub-experiment)
 
+## [0.9.1] — 2026-07-09
+
+### Changed
+- **PRD v1.3 (explicit post-M5 amendment; claim/falsifier/shape/budget untouched):** doctrine
+  earned by F5–F11 written in — sealed middle-side bindings (§2, from F8); mid-run arbiter
+  immutability + interpreter-owned acceptance (§2, from M5); validator-mirrors-enforcement
+  with harmony tests (§2, from F5+F9); verdict as the only claim-bearing categorical axis at
+  small n (§5, from F7's 2×2); §7b registered M6 priors (memory-surfacing is the live axis;
+  ~1/3 nonzero no-inheritance baseline; all middle-side spend counts; novelty-preferring
+  one-knob mutation picker as mechanism-not-objective; known worker noise); §3.8 v2-registry
+  pointer (`peek` trigger earned via F6); §7 budget actuals (~$8.5 through M5 → ~$41 for M6).
+- **Revisor spend now metered by the run's own gate** (PRD §7b.3): `proposeRevision` accepts
+  gate-wired `policy`/`onLlmResult`; the interpreter threads its own through and maps a
+  mid-revision budget halt to cap-halt. Regression: an expensive revision halts the run
+  BEFORE the iteration cap (77/77). Authorship stays shell-accounted (its gate doesn't exist
+  yet at authoring time) — counted into cost-to-green per §7b.3.
+
 ## [0.9.0] — 2026-07-09
 
 ### Added

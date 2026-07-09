@@ -130,7 +130,16 @@ export async function interpret(configRaw, { task, target, close, workdir, capRu
     if (revisor && !revised && gaps.length >= STALL_REDS) {
       emit('stall-detected', { iteration, consecutiveReds: gaps.length });
       revised = true; // one revision per run, spent even if rejected
-      const rv = await revisor({ config, gaps: [...gaps] });
+      let rv;
+      try {
+        // the run's own gate handlers ride along: revisor spend hits the same
+        // budget axis as the worker (PRD §7b.3); a budget halt mid-revision is
+        // a cap story, not a revision bug
+        rv = await revisor({ config, gaps: [...gaps], policy, onLlmResult });
+      } catch (e) {
+        if (e instanceof HaltError) e.category = 'cap-halt';
+        throw e;
+      }
       const red = acceptRevision(rv.candidate);
       if (red) {
         emit('revision-red', { iteration, ...red, detail: rv.parseError ?? undefined, costUsd: rv.costUsd ?? 0 });

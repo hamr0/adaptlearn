@@ -5,6 +5,12 @@
 > constrained config (schema v1); task domain = relayfact's (single JS function, oracle+GOLD /
 > repo mode); inheritance = rules-vs-verbatim sub-experiment (§6 M6); budget = $2 cap per run,
 > ~$50 for the ladder (M2–M6); repo public from day one.
+>
+> **v1.3 (2026-07-09, explicit post-M5 amendment):** doctrine earned by findings F5–F11 written
+> in — sealed middle-side bindings (§2), mid-run arbiter immutability + interpreter-owned
+> acceptance (§2), validator-mirrors-enforcement (§2), verdict as the only claim-bearing
+> categorical axis (§5), registered M6 priors (§7), v2-registry pointer (§3.8). No change to
+> claim, falsifier, shape, or budget.
 
 **adaptlearn** is an experiment: can an agent's *harness* — not its plan, not its code — be an
 emergent, adapting artifact? It consumes the bare suite (`bareagent`, `litectx`, `bareguard`) and
@@ -62,6 +68,18 @@ Three layers, dumbest outermost:
 The agent authors its harness. It **never authors its arbiter** — close, gate, cap, and
 escalation stand outside the emergent part, permanently.
 
+**Sealed bindings (v1.3, from F8):** every middle-side LLM call — worker, author, revisor —
+runs SEALED: empty sandbox cwd, all tools disallowed. A CLI-bound provider is a full agent
+unless sealed; unsealed it writes outside the gate, ingests ambient repo context, and can chase
+paths leaked in gap text toward the close — **an unsealed binding is a gate bypass, not a
+provider choice.**
+
+**Arbiter immutability extends mid-run (v1.3, from M5):** revision touches free axes only.
+Gate, escalation, and the iteration budget are snapshotted at run start; the **interpreter**
+re-validates every candidate and enforces immutability itself — a proposer can never vouch for
+its own output. A change that cannot fully apply mid-run is rejected loudly (its own red),
+never silently part-applied.
+
 **What improves, and where (the two timescales):**
 
 - **Within a run: Ralph stops at first green.** No gold-plating past the close — tuning a
@@ -93,6 +111,16 @@ config validation is itself a deterministic predicate that can fail (an invalid 
 not a crash). Required fields are the flock's local rules; the free axes — loop shape, ops
 ordering, memory policy, decomposition — are where emergence lives.
 
+**The validator mirrors ENFORCEMENT, not documentation (v1.3, from F5 + F9 — the same failure
+twice):** reds-before-tokens is only real if the validator's accepted set equals the
+runtime-enforceable set. Every vocabulary the validator accepts is bound to the enforcing
+layer's actual contract (not its docs, not a hardcoded copy) and drift-guarded by a harmony
+test that exercises the runtime side. Both known breaches — `remember` kinds wider than the
+function's contract, writeScope globs the gate can't express — validated green and then died
+at runtime; the second was found by the authoring agent's third-ever config. Expect agent
+authorship to keep probing this seam; each find tightens the contract M6's mutation loop
+depends on.
+
 ---
 
 ## §3 What it is NOT
@@ -116,7 +144,10 @@ ordering, memory policy, decomposition — are where emergence lives.
 7. **Not a UI project.** Spine + CLI listener. No web before the loop closes.
 8. **Not freeform code-mode (yet).** Schema v1 is the harness language. If the schema proves too
    rigid to express a winning harness, that is a **finding** and the trigger for a code-mode v2
-   — not a silent widening.
+   — not a silent widening. *(v1.3)* The living v2 registry is the schema design doc's named
+   exclusions + FINDINGS: `peek` (trigger already earned — F6: `stash` is write-only decoration
+   in v1), `assemble`/`summaryWindow` (if context assembly proves limiting), worker-persona-as-
+   knob (only by finding). Re-admission is by finding, never by widening.
 
 ---
 
@@ -143,6 +174,11 @@ ordering, memory policy, decomposition — are where emergence lives.
   escalation count + decision-readiness; **fit-to-pass attempts caught by the shell** (expected
   >0 in an adaptive setting — count them, don't hide them); harness diversity over time
   (convergence to a niche vs collapse to one config).
+- **Verdict is the only claim-bearing categorical axis at small n (v1.3, from F7's 2×2):**
+  within-config iterations-to-green varied 1→4 across identical runs — as large as any
+  between-config gap. Verdict differences are categorical; iteration and cost differences RANK
+  among greens, they never carry a claim. The M6 learning curve is read on green-rate first;
+  cost curves are supporting evidence only.
 
 ### §5b Reading a red (attribution doctrine)
 
@@ -192,9 +228,30 @@ meet its exit **stops the ladder** — that stop is a result, not a failure to r
 
 - **Budget (settled):** $2 hard cap per run (bareguard-enforced); ~$50 total for M2–M6.
   relayfact lesson: cost is ~10× noisy run-to-run and model-noisy — budget by cap, never by
-  point estimate. M6 sizes its cohort to the remaining budget after M2–M5 actuals.
+  point estimate. M6 sizes its cohort to the remaining budget after M2–M5 actuals
+  (~$8.5 spent through M5 → ~$41 for the cohort).
 - **Inheritance representation (settled as sub-experiment):** rules-vs-verbatim, two gated arms
   in M6 (§6).
-- **Open work item — schema v1 shape:** the ops vocabulary and how much freedom each op
-  carries. Needs its own design pass before M1; the M3 contrast check is the acceptance test
-  for whatever we draft.
+- ~~Open work item — schema v1 shape~~ **settled 2026-07-08**: `docs/plans/2026-07-08-schema-v1-design.md`;
+  the M3 contrast check passed as its acceptance test.
+
+### §7b Registered M6 priors (v1.3 — written down so cohort results are read, not discovered)
+
+1. **Memory-surfacing is the demonstrated live axis** (F7 falsifier; F11): with the store
+   removed, shape/slot mechanics rescued nothing, and 5/5 stall revisions reached for recall.
+   Expect shape mutations near-neutral on this task family; if a learning curve exists it
+   likely rides the store. A prior, not a constraint — a shape-driven curve would be a finding.
+2. **The no-inheritance baseline is not zero:** gap-fed self-recovery ran ~1/3 (M5 control,
+   consistent with F7's convergence trajectory). Fixed-pipe and ungated arms are read against
+   that, or noise gets called learning.
+3. **All middle-side spend counts:** the revisor is metered by the run's own gate (same budget
+   axis as the worker); authorship happens before the run's gate exists, so the shell counts
+   its cost into cost-to-green. A ranking that lets authoring or revising tokens ride free is
+   corrupt.
+4. **Mutation picker is novelty-preferring (mechanism, not objective):** among legal one-knob
+   mutations, prefer the least-recently-explored axis — a dumb rule against population collapse.
+   Diversity remains an observer metric on the ledger; it is NEVER a fitness term (anything
+   optimizable in-loop gets optimized against, §2).
+5. **Known worker noise:** a recurring template-literal-adjacent syntax fumble inflates
+   iterations in both arms equally (F7). Worker-ceiling class; watch it — it only matters if it
+   starts threatening the green-rate read.
