@@ -7,9 +7,29 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-- M2: interpreter (first live tokens; hand-authored config → green close on one easy task)
+- M3: contrast check (MAX vs MIN opposed configs must differ measurably — the kill-switch)
+
+## [0.6.0] — 2026-07-09
 
 ### Added
+- **M2 graduated:** `src/interpret.js` — the only code that reads a config. Composes all three
+  libs (litectx store + hooks, bareguard Gate with config writeScope/budget, tool-free
+  bareagent Loop on a shell-owned provider); reds before tokens; loop.shape genuinely wired
+  (plan = decompose call + implement call); config maxIterations/budgetUsd tighten the shell's
+  caps, never exceed them; failure-map categories on the spine (config-red / cap-halt /
+  gate-red / interpreter-red). `src/ralph.js` is now async and relays the thrower's category
+  (dumb passthrough — Ralph never interprets).
+- `poc/probe-02-interpreter.mjs` — the validating POC, run LIVE on local claude: real green in
+  3 iterations (prose → syntax error → green, gap feedback working), config-red at zero
+  tokens, and a 2-cent budget provably halting a $0.13 run as cap-halt (A1's costUsd feeding
+  bareguard's USD axis).
+- `tests/interpret.test.js` — 8 integration tests over a scripted stub provider (the
+  provider is the legitimate seam: it's shell-owned by design); everything else real.
+- `bareguard` file-dependency — all three libs now consumed.
+- FINDINGS F3 (`onLlmResult` is a Loop constructor option; on `run()` silently ignored — budget
+  goes blind) and F4 (schema globs vs bareguard prefix-containment writeScope; trailing `/**`
+  mapped, mid-path wildcards inexpressible).
+
 - `bare-agent` file-dependency; **A1 consumed** — clipipe `parse: 'claude-json'` verified live
   (mapped text/usage/model/costUsd; loud ProviderError on malformed output). FINDINGS F2
   resolved; M2 local runs will cap on real USD, not counts.

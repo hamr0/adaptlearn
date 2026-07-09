@@ -28,6 +28,28 @@ fails closed on unpriced cost — `bareguard/src/gate.js:573`). **Fix belongs up
 bareagent** (parse CLI JSON usage); until then, counts-capping is the honest workaround, logged
 here per no-papering-over. (Extends relayfact F5, which established the no-tools limit.)
 
+## F3 — `onLlmResult` is a Loop constructor option; on `run()` it is silently ignored (trap, works as documented)
+
+probe-02 first passed `onLlmResult` to `loop.run(msgs, tools, opts)` — no error, no warning, and
+the budget axis went completely blind: 4 iterations at ~$0.13 each sailed past a $0.02 cap, every
+write allowed by `rule:"default"`. The adapter's own JSDoc example is explicit
+(`bareagent/src/bareguard-adapter.js:103`): `new Loop({ provider, policy, onLlmResult })`.
+**Verdict: works as documented, but the failure mode is silent and catastrophic for the budget
+claim** — encoded as a comment in `src/interpret.js` and regression-covered by the cap-halt
+interpreter test (a stub provider's costUsd must trip the gate). Possible upstream nicety:
+`loop.run()` could warn on an unknown `onLlmResult` option. Not filed as an ask yet — the
+constructor path is correct and sufficient.
+
+## F4 — schema writeScope is glob-shaped; bareguard `fs.writeScope` is prefix-containment
+
+`bareguard/src/primitives/fs.js` `within()` does directory-prefix matching (and `glob.js`
+supports `*` only, for other primitives). A config entry `src/**` passed through verbatim is
+treated as a literal directory named `src/**` — everything denied (fail-closed, correctly).
+The interpreter maps the schema's trailing `/**`|`/*` to the directory prefix
+(`src/interpret.js`). **Mid-path wildcards (`src/*/gen`) are not expressible at the enforcement
+layer** — if a harness ever needs one, that's a schema/enforcement vocabulary gap to take
+upstream, not a mapping to fudge locally.
+
 **Resolved (2026-07-08, same day):** fixed upstream as UPSTREAM-ASKS A1 — `CLIPipeProvider`
 `parse: 'claude-json'` maps `result`/`usage`/`total_cost_usd` onto `GenerateResult` (loud
 `ProviderError` on malformed/`is_error`), and the Loop now prefers a finite provider `costUsd`

@@ -13,9 +13,9 @@ import { ralph } from '../src/ralph.js';
 const noop = () => {};
 const dir = mkdtempSync(join(tmpdir(), 'ralph-test-'));
 
-function run(name, close, capRuns = 3, middle = noop) {
+async function run(name, close, capRuns = 3, middle = noop) {
   const file = join(dir, `${name}.jsonl`);
-  const outcome = ralph({ middle, close, capRuns, emit: makeSpine(file) });
+  const outcome = await ralph({ middle, close, capRuns, emit: makeSpine(file) });
   const events = readFileSync(file, 'utf8').trimEnd().split('\n').map((l) => JSON.parse(l));
   return { outcome, events };
 }
@@ -24,8 +24,8 @@ const RED = ['node', '-e', 'console.error("gap: artifact missing"); process.exit
 const GREEN = ['node', '-e', 'process.exit(0)'];
 const BROKEN = [join(dir, 'no-such-close')];
 
-test('noop middle: red every iteration, cap-halt own category, decision-ready escalation', () => {
-  const { outcome, events } = run('noop-red', RED);
+test('noop middle: red every iteration, cap-halt own category, decision-ready escalation', async () => {
+  const { outcome, events } = await run('noop-red', RED);
   assert.equal(outcome, 'escalated');
   assert.deepEqual(
     events.filter((e) => e.type === 'close-verdict').map((e) => e.verdict),
@@ -42,8 +42,8 @@ test('noop middle: red every iteration, cap-halt own category, decision-ready es
   assert.equal(events.at(-1).outcome, 'escalated');
 });
 
-test('passing close: green at first iteration, stop-at-first-green, no escalation', () => {
-  const { outcome, events } = run('green', GREEN);
+test('passing close: green at first iteration, stop-at-first-green, no escalation', async () => {
+  const { outcome, events } = await run('green', GREEN);
   assert.equal(outcome, 'green');
   assert.deepEqual(
     events.map((e) => e.type),
@@ -52,8 +52,8 @@ test('passing close: green at first iteration, stop-at-first-green, no escalatio
   assert.equal(events.at(-1).outcome, 'green');
 });
 
-test('broken close: failed verdict escalates immediately, never retried', () => {
-  const { outcome, events } = run('broken', BROKEN);
+test('broken close: failed verdict escalates immediately, never retried', async () => {
+  const { outcome, events } = await run('broken', BROKEN);
   assert.equal(outcome, 'escalated');
   assert.equal(events.filter((e) => e.type === 'iteration-start').length, 1);
   const esc = events.find((e) => e.type === 'escalation');
@@ -61,23 +61,23 @@ test('broken close: failed verdict escalates immediately, never retried', () => 
   assert.ok(esc.decisionReady);
 });
 
-test('gap feeds back to the middle on the next iteration', () => {
+test('gap feeds back to the middle on the next iteration', async () => {
   const gaps = [];
-  run('gap-feedback', RED, 2, (_i, gap) => gaps.push(gap));
+  await run('gap-feedback', RED, 2, (_i, gap) => gaps.push(gap));
   assert.equal(gaps[0], undefined);
   assert.match(gaps[1], /artifact missing/);
 });
 
-test('a middle that fixes the world by iteration 2 closes green under the same cap', () => {
+test('a middle that fixes the world by iteration 2 closes green under the same cap', async () => {
   const flag = join(dir, 'fixed-marker');
   const close = ['node', '-e', `require('node:fs').existsSync(${JSON.stringify(flag)}) ? process.exit(0) : process.exit(1)`];
   const middle = (i) => { if (i === 2) writeFileSync(flag, 'green'); };
-  const { outcome, events } = run('recovers', close, 3, middle);
+  const { outcome, events } = await run('recovers', close, 3, middle);
   assert.equal(outcome, 'green');
   assert.equal(events.at(-1).iterations, 2);
 });
 
-test('a real node --test close reds under the test runner (NODE_TEST_CONTEXT strip is load-bearing)', () => {
+test('a real node --test close reds under the test runner (NODE_TEST_CONTEXT strip is load-bearing)', async () => {
   // Confound check: this test only proves the strip if the hazard is present here.
   // Verified 2026-07-08: with NODE_TEST_CONTEXT set, a failing `node --test` exits 0 — a fake green.
   assert.ok(process.env.NODE_TEST_CONTEXT, 'runner must set NODE_TEST_CONTEXT or this test is vacuous');
@@ -87,13 +87,13 @@ test('a real node --test close reds under the test runner (NODE_TEST_CONTEXT str
     const assert = require('node:assert');
     test('close red', () => { assert.equal(1, 2); });
   `);
-  const { outcome, events } = run('real-close-red', ['node', '--test', failing], 1);
+  const { outcome, events } = await run('real-close-red', ['node', '--test', failing], 1);
   assert.equal(outcome, 'escalated', 'a failing real close must red, never fake-green');
   assert.equal(events.find((e) => e.type === 'close-verdict').verdict, 'needs_revision');
 });
 
-test('spine: seq monotonic from 1, ts stamped last on every event', () => {
-  const { events } = run('spine-shape', RED, 2);
+test('spine: seq monotonic from 1, ts stamped last on every event', async () => {
+  const { events } = await run('spine-shape', RED, 2);
   events.forEach((e, i) => {
     assert.equal(e.seq, i + 1);
     assert.equal(Object.keys(e).at(-1), 'ts');

@@ -26,20 +26,47 @@ export function runClose(close) {
  * its own category, never merged with "wrong". A broken close escalates immediately —
  * a broken arbiter must not masquerade as a bad harness (§5b).
  *
+ * A middle that throws is read through the failure map (design §Failure map): a throw
+ * carrying `category: 'cap-halt'` (the USD gate tripping inside the middle) escalates as
+ * cap-halt — its own category, never merged with wrong; any other throw escalates as
+ * interpreter-red — a broken interpreter must not masquerade as a bad harness.
+ *
  * @param {object} opts
- * @param {(iteration: number, gap?: string) => void} opts.middle the object of study; never sees close/cap
+ * @param {(iteration: number, gap?: string) => void|Promise<void>} opts.middle the object of study; never sees close/cap
  * @param {string[]} opts.close argv whose exit code is truth
  * @param {number} opts.capRuns budget: max middle runs
  * @param {(type: string, data?: object) => object} opts.emit a spine emitter
- * @returns {'green'|'escalated'}
+ * @returns {Promise<'green'|'escalated'>}
  */
-export function ralph({ middle, close, capRuns, emit }) {
+export async function ralph({ middle, close, capRuns, emit }) {
   emit('run-start', { capRuns, close: close.join(' ') });
   const verdicts = [];
   let gap;
   for (let iteration = 1; iteration <= capRuns; iteration++) {
     emit('iteration-start', { iteration });
-    middle(iteration, gap);
+    try {
+      await middle(iteration, gap);
+    } catch (e) {
+      // dumb passthrough: the thrower names its category (cap-halt | gate-red | …);
+      // an unnamed throw is an interpreter-red. Ralph never interprets, only relays.
+      const category = e && typeof e.category === 'string' ? e.category : 'interpreter-red';
+      if (category === 'cap-halt') emit('cap-halt', { category, meaning: 'not under cap — not "can\'t"', detail: String(e.message || e) });
+      const DECISIONS = {
+        'cap-halt': [`Budget gate tripped mid-run (${e && e.message}). Continue with a higher cap, change approach, or stop?`,
+          ['raise the cap and rerun', 'change the middle/harness', 'abandon the task']],
+        'gate-red': ['The gate denied an action mid-run — the harness asked for something outside its scope.',
+          ['widen the write scope deliberately', 'change the middle/harness', 'abandon the task']],
+      };
+      const [decision, options] = DECISIONS[category]
+        ?? ['The middle itself broke — no harness verdict is trustworthy until it is fixed.', ['fix the interpreter', 'abandon the task']];
+      emit('escalation', {
+        category, decisionReady: true, verdicts,
+        spend: { runs: iteration, capRuns },
+        decision, options, detail: String(e.message || e),
+      });
+      emit('run-end', { outcome: 'escalated', iterations: iteration });
+      return 'escalated';
+    }
     emit('middle-done', { iteration });
     const v = runClose(close);
     verdicts.push(v.verdict);
