@@ -170,3 +170,81 @@ test('interpreter crash mid-run → interpreter-red, never masquerading as bad h
   assert.equal(outcome, 'escalated');
   assert.equal(events.find((e) => e.type === 'escalation').category, 'interpreter-red');
 });
+
+// ---- M5: mid-run revision (stall → revisor → interpreter-owned acceptance) ----
+// The revisor is a stub seam here, same doctrine as the provider. What CI protects:
+// stall detection fires once and only under a real stall; the INTERPRETER accepts
+// or rejects the candidate (a revisor cannot vouch for its own output); rejected
+// revisions degrade loudly and the run continues on the old config; an accepted
+// revision observably changes behavior mid-run.
+
+const stalling = () => ({ script: [{ text: BAD_SUM }], capRuns: 3 }); // reds forever under cap 3
+
+test('M5: accepted free-axis revision changes behavior mid-run (shape swap observable)', async () => {
+  const candidate = config();
+  candidate.loop.shape = 'plan';
+  let calls = 0;
+  const revisor = async () => { calls += 1; return { candidate, costUsd: 0.005 }; };
+  // BAD, BAD → stall; iteration 3 under 'plan' consumes a plan call then an implement call
+  const { outcome, events } = await run('m5-accept', config(), {
+    script: [{ text: BAD_SUM }, { text: BAD_SUM }, { text: '1. just write it' }, { text: GOOD_SUM }],
+    capRuns: 3, revisor,
+  });
+  assert.equal(calls, 1, 'revisor consulted exactly once');
+  assert.ok(events.some((e) => e.type === 'stall-detected' && e.iteration === 3));
+  const acc = events.find((e) => e.type === 'revision-accepted');
+  assert.deepEqual(acc.changedPaths, ['loop.shape']);
+  assert.ok(events.some((e) => e.type === 'worker-plan' && e.iteration === 3), 'revised shape actually ran');
+  assert.ok(!events.some((e) => e.type === 'worker-plan' && e.iteration < 3), 'shape swap did not rewrite history');
+  assert.equal(outcome, 'green');
+});
+
+test('M5: arbiter-touch candidate is rejected by the INTERPRETER; run continues on old config', async () => {
+  const candidate = config();
+  candidate.gate.budgetUsd = 0.01; // tries to author the arbiter mid-run
+  const revisor = async () => ({ candidate, costUsd: 0.005 }); // revisor "vouches" — must not matter
+  const { outcome, events } = await run('m5-arbiter', config(), { ...stalling(), revisor });
+  assert.equal(events.filter((e) => e.type === 'revision-red' && e.code === 'arbiter-touch').length, 1);
+  assert.ok(!events.some((e) => e.type === 'revision-accepted'));
+  assert.equal(outcome, 'escalated', 'continued on the old config to the cap');
+  assert.equal(events.find((e) => e.type === 'escalation').category, 'cap-halt');
+});
+
+test('M5: loop.maxIterations is snapshotted — touching it is a cap-touch red, not a silent no-op', async () => {
+  const candidate = config();
+  candidate.loop.maxIterations = 8;
+  const revisor = async () => ({ candidate });
+  const { events } = await run('m5-cap-touch', config(), { ...stalling(), revisor });
+  assert.equal(events.find((e) => e.type === 'revision-red').code, 'cap-touch');
+});
+
+test('M5: invalid candidate → validation revision-red with the named reds', async () => {
+  const candidate = config();
+  candidate.hooks['before-attempt'] = [{ op: 'remember', kind: 'fact' }]; // verb-placement red
+  const revisor = async () => ({ candidate });
+  const { events } = await run('m5-invalid', config(), { ...stalling(), revisor });
+  const red = events.find((e) => e.type === 'revision-red');
+  assert.equal(red.code, 'validation');
+  assert.equal(red.reds[0].code, 'verb-placement');
+});
+
+test('M5: unparseable revision → parse-error revision-red, never a crash', async () => {
+  const revisor = async () => ({ candidate: null, parseError: 'Unexpected token I' });
+  const { outcome, events } = await run('m5-parse', config(), { ...stalling(), revisor });
+  assert.equal(events.find((e) => e.type === 'revision-red').code, 'parse-error');
+  assert.equal(outcome, 'escalated');
+});
+
+test('M5: no revisor → no stall machinery at all (control-arm semantics)', async () => {
+  const { events } = await run('m5-no-revisor', config(), stalling());
+  assert.ok(!events.some((e) => e.type === 'stall-detected'));
+  assert.ok(!events.some((e) => e.type === 'revision-red' || e.type === 'revision-accepted'));
+});
+
+test('M5: revisor never consulted without a stall', async () => {
+  let calls = 0;
+  const revisor = async () => { calls += 1; return { candidate: config() }; };
+  const { outcome } = await run('m5-green-fast', config(), { script: [{ text: GOOD_SUM }], revisor });
+  assert.equal(outcome, 'green');
+  assert.equal(calls, 0);
+});

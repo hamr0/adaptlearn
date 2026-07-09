@@ -14,8 +14,11 @@ import { writeFileSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { Gate } from 'bareguard';
 import { LiteCtx, compress } from 'litectx';
-import { validateConfig } from './validate.js';
+import { validateConfig, diffPaths } from './validate.js';
 import { ralph } from './ralph.js';
+
+// consecutive close reds that count as a stall (M5); one revision per run
+export const STALL_REDS = 2;
 
 const require = createRequire(import.meta.url);
 const { Loop, wireGate, HaltError } = require('bare-agent');
@@ -36,9 +39,14 @@ const stripFences = (t) => t.trim().replace(/^```[a-z]*\n?/i, '').replace(/\n?``
  * @param {(type: string, data?: object) => object} opts.emit spine emitter
  * @param {object} opts.provider a bareagent provider — SHELL-owned binding (design decision 6)
  * @param {number} [opts.shellCapUsd=2] the shell's USD cap; config budgetUsd is clamped by validation
+ * @param {(o: {config: object, gaps: string[]}) => Promise<{candidate: object|null, parseError?: string|null, costUsd?: number}>} [opts.revisor]
+ *        optional M5 seam (src/revise.js or a test stub). Fires ONCE per run after STALL_REDS
+ *        consecutive close reds. The interpreter — never the revisor — owns acceptance: the
+ *        candidate must validate, and gate/escalation/loop.maxIterations must be unchanged
+ *        (arbiter-touch / cap-touch revision-reds otherwise; the run continues on the old config).
  * @returns {Promise<'green'|'escalated'|'config-red'>}
  */
-export async function interpret(configRaw, { task, target, close, workdir, capRuns, emit, provider, shellCapUsd = 2 }) {
+export async function interpret(configRaw, { task, target, close, workdir, capRuns, emit, provider, shellCapUsd = 2, revisor }) {
   const v = validateConfig(configRaw, { shellCapUsd });
   emit('config-validate', { ok: v.ok, reds: v.reds });
   if (!v.ok) {
@@ -46,7 +54,7 @@ export async function interpret(configRaw, { task, target, close, workdir, capRu
     emit('run-end', { outcome: 'config-red', iterations: 0 });
     return 'config-red';
   }
-  const config = typeof configRaw === 'string' ? JSON.parse(configRaw) : configRaw;
+  let config = typeof configRaw === 'string' ? JSON.parse(configRaw) : configRaw;
 
   const lc = new LiteCtx({ root: workdir });
   const gate = new Gate({
@@ -99,7 +107,38 @@ export async function interpret(configRaw, { task, target, close, workdir, capRu
     }
   }
 
+  // M5: interpreter-owned acceptance — a revisor cannot vouch for its own output.
+  // The gate is already constructed and the iteration budget already snapshotted,
+  // so gate/escalation (arbiter) and loop.maxIterations (cap) must be byte-identical;
+  // anything else that validates is a legal free-axis revision.
+  const acceptRevision = (candidate) => {
+    if (!candidate) return { code: 'parse-error' };
+    const cv = validateConfig(candidate, { shellCapUsd });
+    if (!cv.ok) return { code: 'validation', reds: cv.reds };
+    if (JSON.stringify(candidate.gate) !== JSON.stringify(config.gate)
+        || JSON.stringify(candidate.escalation) !== JSON.stringify(config.escalation)) {
+      return { code: 'arbiter-touch' };
+    }
+    if (candidate.loop?.maxIterations !== config.loop.maxIterations) return { code: 'cap-touch' };
+    return null;
+  };
+
+  const gaps = [];
+  let revised = false;
   const middle = async (iteration, gap) => {
+    if (gap) gaps.push(gap);
+    if (revisor && !revised && gaps.length >= STALL_REDS) {
+      emit('stall-detected', { iteration, consecutiveReds: gaps.length });
+      revised = true; // one revision per run, spent even if rejected
+      const rv = await revisor({ config, gaps: [...gaps] });
+      const red = acceptRevision(rv.candidate);
+      if (red) {
+        emit('revision-red', { iteration, ...red, detail: rv.parseError ?? undefined, costUsd: rv.costUsd ?? 0 });
+      } else {
+        emit('revision-accepted', { iteration, changedPaths: diffPaths(config, rv.candidate), costUsd: rv.costUsd ?? 0 });
+        config = rv.candidate;
+      }
+    }
     if (gap) await runOps('after-red', { iteration, gap, context: {} });
     const context = {};
     await runOps('before-attempt', { iteration, context });

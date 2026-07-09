@@ -7,7 +7,25 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-- M5: mid-run revision (recovery rate > no-revision control on stall-prone tasks)
+- M6: inheritance + selection (the claim; rules-vs-verbatim sub-experiment)
+
+## [0.9.0] — 2026-07-09
+
+### Added
+- **M5 graduated:** mid-run revision. `src/revise.js` (`proposeRevision` — one sealed shot,
+  parse-only, config + catalog + stall evidence in, candidate out) + `src/interpret.js` gains
+  an optional `revisor` seam: fires ONCE after `STALL_REDS` (2) consecutive close reds; the
+  **interpreter owns acceptance** (re-validate; gate/escalation immutable → `arbiter-touch`;
+  `loop.maxIterations` snapshotted → `cap-touch`; rejected candidates degrade loudly to
+  `revision-red` and the run continues on the old config); accepted revisions swap the live
+  config (`revision-accepted` + `changedPaths` on the spine).
+- **M5 exit met** (probe-05): recovery **revision 3/3 vs control 1/3**, every green at the
+  first post-revision attempt; empty-store falsifier 0/2 (revision works through the resource
+  it surfaces, not the act of revising); token-free machinery negatives (arbiter-touch,
+  garbage, no-stall) held before any live spend. ~$2.9. FINDINGS F11.
+- `tests/interpret.test.js` +7 M5 cases (observable mid-run shape swap, lying-revisor
+  rejection, cap-touch, validation red, parse red, control-arm semantics, no-stall silence);
+  `tests/revise.test.js` (4 tests, parse-only contract + prompt-content guard). 75/75.
 
 ## [0.8.0] — 2026-07-09
 

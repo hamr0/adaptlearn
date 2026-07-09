@@ -13,9 +13,9 @@ question this experiment stands on. Like relayfact, adaptlearn either **graduate
 archived** — the bar is the point.
 
 The governing spec: [docs/01-product/adaptlearn-prd.md](docs/01-product/adaptlearn-prd.md)
-(v1, locked). Status: **M3 passed** — shell+spine (M0), schema+validator (M1), interpreter
-(M2), and the contrast kill-switch (M3: opposed hand-configs differ categorically — verdict,
-green@1 vs cap-halt@4 — so the schema's variables are provably wired in) are done. Next: M4,
-agent authorship behind a parity gate.
+(v1, locked). Status: **M5 passed** — M0 shell+spine, M1 schema+validator, M2 interpreter, M3
+contrast (kill-switch did not fire; memory-surfacing proven causal by intervention), M4 agent
+authorship (parity met; found validator gap F9), M5 mid-run revision (recovery 3/3 vs control
+1/3, falsifier 0/2). Next: M6 — inheritance + selection, the claim itself.
 
 Apache-2.0.

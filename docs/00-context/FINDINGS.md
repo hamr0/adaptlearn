@@ -231,3 +231,34 @@ facts are: valid first-shot authorship is reliable, authored configs FUNCTION en
 authorship exploration surfaces real system gaps (F9) — the exact behavior M5/M6 build on.
 Round-1's NO PARITY and its diagnosis stand recorded in F9; it was a probe defect + validator
 gap, not an authorship ceiling.
+
+## F11 — M5 mid-run revision: PASSED — recovery 3/3 vs control 1/3, falsifier 0/2
+
+Live (2026-07-09, `poc/probe-05-revision.mjs`): stall-prone condition = the F7 dur.mjs info-gap
+task under a BLIND config (slots empty, store seeded but unused — the realistic "retention
+exists, harness ignores it" state), cap 4, stall = 2 consecutive close reds, ONE revision per
+run. Machinery negatives ran token-free BEFORE any live spend and all held: an arbiter-touching
+revision → `arbiter-touch` revision-red with the run continuing on the OLD config; garbage →
+`parse-error` revision-red, no crash, no silent accept; no stall → revisor provably never
+consulted.
+
+| arm | n | recovery |
+|---|---|---|
+| revision (seeded store) | 3 | **3/3 green — each at iteration 3, the first post-revision attempt** |
+| no-revision control (seeded store) | 3 | 1/3 (an honest gap-fed self-recovery — consistent with F7's MIN convergence) |
+| revision, EMPTY store (falsifier) | 2 | 0/2 |
+
+**Reading:** exit met (3/3 > 1/3). Every accepted revision — 5/5 including the empty-store arms
+— added a `before-attempt` recall: the agent diagnosed the correct axis from stall evidence
+alone (reds steer revision — §5b's asymmetry, working). The falsifier keeps the claim honest:
+identical revision behavior with no store recovered 0/2 — mid-run revision works through the
+resource it surfaces, never through the act of revising. Same mechanism shape as F7's control.
+
+**Graduated with two acceptance rules the POC surfaced:** the INTERPRETER owns acceptance
+(re-validates and checks immutability itself — a revisor cannot vouch for its own output), and
+`loop.maxIterations` joins gate/escalation as immutable mid-run (`cap-touch` red) because the
+iteration budget is snapshotted at run start — rejecting beats silently half-applying.
+
+**Honest bounds:** n=3/3/2 on one task family; one revision per run (multi-revision thrash is
+untested, deliberately out of v1); the revisor call is not yet metered by the run's own gate
+(shell-visible spend, reported on the spine — wiring it through the gate is M6-relevant work).
