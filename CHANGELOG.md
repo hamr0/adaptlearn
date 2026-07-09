@@ -9,6 +9,18 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 - M4: agent authorship (parity gate)
 
+## [0.7.2] — 2026-07-09
+
+### Added
+- **F7 falsifier run** (`poc/probe-03b-unseeded-control.mjs`): MAX config vs an EMPTY store,
+  n=2, first-attempt convention compliance as the noise-robust metric. Unseeded MAX cap-halted
+  4/4 in both runs with the exact MIN first-attempt signature (2 note-convention misses). Clean
+  partition across all six live runs: recall-surfaced-seeds → green 2/2; nothing surfaced
+  (empty store OR empty slots) → cap-halt 4/4. The recall→context channel is confirmed causal
+  **by intervention**, and honestly narrowed: shape/slot mechanics alone rescued nothing —
+  the demonstrably wired variable is memory-surfacing; expect shape mutations near-neutral in
+  M6 on this task family. FINDINGS F7 updated.
+
 ## [0.7.1] — 2026-07-09
 
 ### Changed

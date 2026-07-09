@@ -130,6 +130,23 @@ iterations into verdict: whack-a-mole — it fixed the two note-carried conventi
 the cap halted it: cap-halt as "not under cap", never "can't", with the harness deciding how many
 iterations the same cap must buy.
 
+**Falsifier run (`poc/probe-03b-unseeded-control.mjs`, same day):** the causal reading was put
+under intervention — MAX config, EMPTY store, everything else identical, n=2, primary metric
+first-attempt convention compliance (robust to the iteration noise above). Result: unseeded MAX
+**escalated cap-halt 4/4 in both runs**, first attempts missing 2 note-carried conventions each —
+the exact MIN signature. Across all six live runs the partition is clean: recall surfaced the
+seeds → green (2/2, first-attempt misses 0–1); recall surfaced nothing — whether because the
+store was empty (unseeded MAX) or the slots were (seeded MIN) → cap-halt (4/4, misses 2 every
+time). Two consequences:
+1. **Confirmed by intervention:** the recall→context channel is causal, not spine forensics.
+   This is also direct evidence-of-use in the PRD §4 retention sense.
+2. **Honest narrowing:** with the store empty, MAX's remaining machinery (refine shape, slot
+   mechanics) rescued nothing — unseeded MAX ≈ MIN on every measure. The schema variable
+   *demonstrably* wired in is memory-surfacing specifically; loop shape showed no detectable
+   effect at this n. M3's exit is unaffected (a wired variable exists), but M6 selection should
+   expect the memory axes to carry the signal and shape mutations to be near-neutral on this
+   task family until shown otherwise.
+
 **Honest bounds:** n=1 task, one run per arm per condition — what M3 needed and no more. The demonstrated
 variable is the *joint* MAX−MIN axis (slots + recall + shape together); per-knob attribution is
 M6's one-knob-mutation job, not M3's. Also note MIN's `recall.k:1`/`drop` were never *executed*
