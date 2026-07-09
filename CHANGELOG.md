@@ -7,7 +7,33 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-- M3: contrast check (MAX vs MIN opposed configs must differ measurably — the kill-switch)
+- M4: agent authorship (parity gate)
+
+## [0.7.0] — 2026-07-09
+
+### Added
+- **M3 passed — the kill-switch did not fire.** Live contrast run (`poc/probe-03-contrast.mjs`,
+  local claude): the design doc's MAX/MIN pair (opposed on exactly 8 JSON paths, machine-checked;
+  gate/escalation identical) on the same task/close/shell/pre-seeded store produced a
+  **categorical difference on verdict** — MAX green @ 1 iteration (~$0.11, recall surfaced all 3
+  seeded notes), MIN escalated as cap-halt @ 4/4 (~$0.99, close red throughout); **reproduced
+  under the F8-sealed worker binding** (MAX green @ 4 ~$0.32 vs MIN cap-halt 4/4 ~$0.45). §5b:
+  same task + worker + shell, different harness → harness implicated; the schema variable is
+  wired in. FINDINGS F7 (tables, causal-channel evidence, honest bounds: n=1 task, joint axis).
+- `tests/fixtures/contrast-{max,min}.json` + `tests/contrast.test.js` (4 tests, 54/54): the pair
+  stays schema-legal, opposition stays exactly the designed 8 axes, arbiter-adjacent sections
+  stay identical, MAX populates every slot / MIN none. The live result is evidence, not CI.
+- FINDINGS F6: litectx `stash` is never recallable (works as intended upstream — "a dumb keyed
+  blob"; `peek` is its only read-half and a named v2 exclusion), so v1's `stash` verb is
+  write-only decoration — it can never influence worker context. Within-run memory axes are
+  inert on a fresh store; contrast probes must pre-seed identically (simulated run-N retention).
+  This is the finding that would re-admit `peek` in v2.
+- FINDINGS F8: `claude -p` is the full CLI with tools — the worker wrote files in cwd **outside
+  bareguard's gate** and loaded the repo's CLAUDE.md as context; gap text leaks the suite's
+  path (fit-to-pass surface). Shipped result unaffected (verified, incl. a sealed re-run);
+  binding now sealed shell-side: `cwd` pinned to an empty per-run sandbox +
+  `--disallowedTools` on every tool. Doctrine for M4+: an unsealed CLI binding is a gate
+  bypass, not a provider choice.
 
 ## [0.6.1] — 2026-07-09
 

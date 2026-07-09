@@ -69,3 +69,84 @@ over `estimateCost`, so the CLI feeds bareguard's USD axis directly. Consumed vi
 `bare-agent@file:../bareagent`, verified live (both paths). Note for pricing: the CLI reports
 real equivalent-API cost even on subscription (~$0.05–0.32 observed), and `model` can carry a
 `[1m]` suffix. Counts-capping workaround dies at M2.
+
+## F6 — litectx stash is never recallable, so v1's `stash` verb cannot influence worker context (works as intended; schema vocabulary gap)
+
+Found designing the M3 probe: litectx is explicit that a stash is outside ranked retrieval —
+"recall owns ranked retrieval over memory; a stash is a dumb keyed blob, so `peek`" is its only
+read-half (`litectx/src/index.js:994-1019`; separate `stash` table, `src/store.js:226`). Upstream
+this is **works as intended**. The consequence lands in schema v1: the `after-red → stash` op
+parks the gap, but no v1 verb ever reads it back — `recall` can't see it and `peek` is a named
+v2 exclusion. So in v1, `stash` is **write-only decoration**: it can never change what the worker
+sees, within a run or across runs. Two implications, both design-level, nothing to fudge locally:
+
+1. **Within-run, the memory axes (`recall.k`, `compressLevel`) are inert on a fresh store** —
+   there is nothing to recall until something has been `remember`ed, and `remember` is on-green
+   only. A contrast probe must pre-seed the store (identically per arm — simulating run-N
+   retention, exactly the axis the schema claims to wire) or it measures loop-shape alone.
+2. This is the concrete finding that would re-admit `peek` in v2 (design doc names it as an
+   exclusion): if a harness is ever to *use* its parked gaps, the read-half must enter the verb
+   set. Not filed upstream — the gap is in our vocabulary subset, not in litectx.
+
+## F7 — M3 contrast check: PASSED — categorical difference on verdict (the variable is wired in)
+
+Live run 2026-07-09 (`poc/probe-03-contrast.mjs`, local claude via clipipe): the design doc's
+MAX/MIN pair (opposed on exactly 8 JSON paths, machine-checked; gate/escalation identical), same
+task, same GOLD close, same shell caps (capRuns 4, $2), same identically pre-seeded store (two
+house-convention prose notes + one decoy; the close tests conventions the task statement
+understates — case-insensitive units, bare-number-means-ms, RangeError/TypeError rules).
+
+| arm | outcome | iterations | recall hits | ~cost |
+|---|---|---|---|---|
+| MAX | **green** | 1 | 3 | $0.11 |
+| MIN | **escalated** (cap-halt 4/4, close red throughout) | 4 | 0 | $0.99 |
+
+**§5b reading:** same task + same worker + same shell, different harness → green vs escalated ⇒
+harness implicated, on the strongest (verdict) axis; M3's exit is "≥1 task", met. MIN's terminal
+is honestly cap-halt ("not under cap"), and the contrast licenses the bad-harness reading. The
+causal channel is visible in MIN's iteration 3: valid code that passed the generic tests and
+failed *exactly* the understated house conventions the seeded notes carried — the notes, not
+luck, explain MAX@1. MIN's other reds (prose-wrapped artifact ×2, quoting bug) are worker
+instability, shared by both arms, not a confound. No interpreter-red anywhere: the plan path
+(decompose + implement per iteration) ran clean all 4 iterations.
+
+**Sealed reproduction (same day):** after F8 sealed the worker binding (tools disallowed, cwd an
+empty sandbox, no CLAUDE.md contamination), the probe re-ran end-to-end: MAX **green @ 4**
+(~$0.32; iter 1 real code missing part of the house contract, iters 2–3 syntax fumbles, iter 4
+green; recall surfaced the seeds every iteration) vs MIN **escalated** cap-halt 4/4 (~$0.45).
+Categorical difference on verdict reproduced under a strictly cleaner worker. Note the recurring
+worker failure mode across all runs and both arms: template-literal-adjacent syntax errors in
+emitted files — shared noise, no contrast confound, but it inflates iterations-to-green; worth
+a dedicated look if it persists into M4.
+
+**Honest bounds:** n=1 task, one run per arm per condition — what M3 needed and no more. The demonstrated
+variable is the *joint* MAX−MIN axis (slots + recall + shape together); per-knob attribution is
+M6's one-knob-mutation job, not M3's. Also note MIN's `recall.k:1`/`drop` were never *executed*
+(its slots are empty — opposition holds at the config-document level), so this result says
+nothing about k or compressLevel individually. Machinery regression-guarded token-free in
+`tests/contrast.test.js` (arms stay legal, opposition stays exactly the 8 axes, arbiter sections
+stay identical); the live result itself is not a CI test.
+
+## F8 — the "tool-free worker" was tool-free by assumption only: `claude -p` has tools and writes outside the gate
+
+Caught by `git status` after the M3 run: stray `dur.mjs` and `sum.mjs` in the **repo root** —
+written by the worker CLI itself. `claude -p` is the full Claude Code CLI: it has tools, runs in
+the spawning process's cwd, and loads that cwd's CLAUDE.md as context. Three holes in one
+binding: (1) worker file writes land **outside bareguard's writeScope entirely** — the gate only
+sees the interpreter's write of the *returned text*; (2) from iteration 2 the gap text carries
+the suite's `file://` path, so a tool-having worker could read the close's tests and
+**fit-to-pass** — the exact fake-green §5b calls the only real failure; (3) the repo's CLAUDE.md
+contaminates the worker's context (doctrine leakage + token waste).
+
+**Why the shipped M3 result survives:** the close only ever reads the gated tmp artifact (strays
+were never read); the seeded house conventions are not in CLAUDE.md; MAX's green was iteration 1
+— before any gap text existed to leak a path; MIN, which did see gap paths, stayed red (no fake
+green occurred). Verified by a sealed re-run (same categorical outcome — see F7/CHANGELOG).
+
+**Fix (shell-owned, design decision 6 — not a config field, not an upstream gap):**
+`CLIPipeProvider` already supports `cwd`; the binding now pins `cwd` to an empty per-run sandbox
+dir and passes `--disallowedTools Write,Edit,NotebookEdit,Bash,WebFetch,WebSearch,Task,Glob,Grep,Read,TodoWrite`
+— verified live: the CLI accepts the flag, writes nothing, and (nicely) refused an embedded
+write-a-file bait outright. The worker is now tool-free in fact. Doctrine for M4+: any shell
+runner that binds a CLI provider MUST seal it this way; an unsealed `claude -p` binding is a
+gate bypass, not a provider choice.

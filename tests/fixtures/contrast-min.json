@@ -1,0 +1,12 @@
+{
+  "schema": "v1",
+  "loop": { "shape": "plan" },
+  "memory": {
+    "store": "litectx",
+    "recall": { "k": 1 },
+    "compressLevel": "drop"
+  },
+  "hooks": {},
+  "gate": { "budgetUsd": 2, "writeScope": ["src/**"] },
+  "escalation": { "mode": "decision-ready" }
+}
