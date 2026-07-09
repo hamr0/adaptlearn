@@ -47,7 +47,7 @@ import { renderCatalog } from '../src/author.js';
 import { TASKS } from './m6-tasks.mjs';
 
 const require = createRequire(import.meta.url);
-const { Loop } = require('bare-agent');
+const { Loop, HaltError } = require('bare-agent');
 const { CLIPipeProvider } = require('bare-agent/providers');
 
 const GENERATIONS = 8;
@@ -136,6 +136,18 @@ const sealed = () => new CLIPipeProvider({
   parse: 'claude-json', cwd: CLI_HOME, timeout: 180_000,
 });
 
+// hang watchdog: a sealed call whose promise never settles (observed live —
+// g3-ungated-L1 revisor call, CLI child gone, 180s clipipe timeout never fired)
+// defeats try/catch; a race converts the hang into a throw that guarded() can
+// escalate. The leaked promise is abandoned — acceptable in a throwaway.
+const withTimeout = (promise, ms, label) => Promise.race([
+  promise,
+  new Promise((_, reject) => {
+    const t = setTimeout(() => reject(new Error(`watchdog: ${label} unsettled after ${ms / 60000}min`)), ms);
+    t.unref();
+  }),
+]);
+
 // F13 gap 1: a provider throw is a §5b broken-middle — escalate to the operator,
 // never crash, never mint a row while the middle is down.
 async function guarded(label, fn) {
@@ -170,11 +182,19 @@ async function runOnce(ctx) {
     for (const [id, text, kind] of t.seeds) await lc.remember(id, text, { kind });
 
     const spineFile = join(workdir, 'spine.jsonl');
-    const outcome = await guarded(`run ${key(ctx)}`, () => interpret(config, {
+    // 30min covers the worst legit run (3 iterations x plan's 2 calls x 180s + a revision)
+    const outcome = await guarded(`run ${key(ctx)}`, () => withTimeout(interpret(config, {
       task: t.task, target: join(workdir, 'src', `${t.id}.mjs`), close: ['node', '--test', suite],
       workdir, capRuns: CAP_RUNS, emit: makeSpine(spineFile), provider: sealed(), shellCapUsd: 2,
-      revisor: (o) => proposeRevision({ ...o, provider: sealed(), shellCapUsd: 2 }),
-    }));
+      // a hung/failed revisor becomes a revision-red (run continues on the old
+      // config), never an interpreter-red the harness didn't earn — but a gate
+      // HaltError still propagates as the cap-halt it is (F11 / §7b.3)
+      revisor: (o) => withTimeout(proposeRevision({ ...o, provider: sealed(), shellCapUsd: 2 }), 5 * 60_000, `revisor ${key(ctx)}`)
+        .catch((e) => {
+          if (e instanceof HaltError) throw e;
+          return { candidate: null, parseError: String(e.message ?? e), costUsd: 0 };
+        }),
+    }), 30 * 60_000, `run ${key(ctx)}`));
 
     const events = readFileSync(spineFile, 'utf8').trimEnd().split('\n').map((l) => JSON.parse(l));
     const end = events.findLast((e) => e.type === 'run-end');
@@ -205,6 +225,11 @@ async function author(ctx) {
   const { arm, lineage, gen, rules, example, nudgeAxis } = ctx;
   const cached = cache.get(key(ctx));
   const saved = join(work, 'configs', `${key(ctx)}.json`);
+  if (cached?.verdict === 'config-red') {
+    // replay the config-red as-is: re-authoring live could come out valid and
+    // fork this lineage's history away from the ledger (hash aborts downstream)
+    return { config: null, valid: false, reds: [{ code: 'replay-config-red' }], costUsd: cached.costUsd };
+  }
   if (cached && existsSync(saved)) {
     // replay: cost 0 here — the row's full cost returns through runOnce's replay
     return { config: JSON.parse(readFileSync(saved, 'utf8')), valid: true, reds: [], costUsd: 0 };
@@ -219,9 +244,9 @@ async function author(ctx) {
   parts.push(`The coding task your harness will run:\n${t.task}`);
 
   // F13 gap 2: an authoring outage is contained — guarded prompt, never a crash
-  const r = await guarded(`author ${key(ctx)}`, async () => {
+  const r = await guarded(`author ${key(ctx)}`, () => {
     const loop = new Loop({ provider: sealed(), system: 'You emit exactly one JSON document and nothing else.' });
-    return loop.run([{ role: 'user', content: parts.join('\n\n') }]);
+    return withTimeout(loop.run([{ role: 'user', content: parts.join('\n\n') }]), 5 * 60_000, `author ${key(ctx)}`);
   });
   let config = null;
   let reds;
@@ -238,7 +263,10 @@ async function author(ctx) {
 async function extract(ctx) {
   const saved = join(work, 'rules', `${key(ctx)}.json`);
   if (cache.get(key(ctx)) && existsSync(saved)) return { rules: JSON.parse(readFileSync(saved, 'utf8')), costUsd: 0 };
-  const r = await guarded(`extract ${key(ctx)}`, () => extractRules({ config: ctx.config, priorRules: ctx.priorRules, provider: sealed() }));
+  const r = await guarded(`extract ${key(ctx)}`, () => withTimeout(
+    extractRules({ config: ctx.config, priorRules: ctx.priorRules, provider: sealed() }),
+    5 * 60_000, `extract ${key(ctx)}`,
+  ));
   if (!r.valid) {
     console.log(`  [${key(ctx)}] extractor RED ${JSON.stringify(r.reds)} — lineage keeps its prior rules`);
     return { rules: ctx.priorRules ?? [], costUsd: r.costUsd };
