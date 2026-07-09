@@ -269,3 +269,35 @@ expensive revision halts the run at iteration 3, before the run cap of 4 — the
 possible if the gate saw the revisor's spend). Authorship happens before the run's gate exists,
 so the SHELL counts `authorConfig`'s returned `costUsd` into cost-to-green — an M6 accounting
 requirement, now in the PRD.
+
+## F12 — probe-06 inheritance contrast: PASSED — the rules channel steers authorship, both directions
+
+Live (2026-07-09, `poc/probe-06-inheritance-contrast.mjs`): the M6 kill-switch (M3 doctrine one
+level up — if seeded and unseeded authors are indistinguishable, the inheritance variable is not
+wired in). One real green run (hand config, `unique` task) → sealed extractor distilled 5 TRUE
+rules → 3 repeats × 3 authorship arms on a DIFFERENT instance (`slugify`), scored by code over 5
+axes registered before spend (shape, maxIterations, recall.k, compressLevel, kinds). Machinery
+negatives (scoring extremes, verbatim rules block, rule-length bounds) asserted token-free first
+— and earned their keep: the first run died on a machinery assert (JSON-escaped quotes broke the
+verbatim check) at $0 spent.
+
+| arm | n valid | mean score toward own prescription | control toward same |
+|---|---|---|---|
+| TRUE-rules-seeded | 3/3 | **4.00 / 5** | 2.00 |
+| INVERTED-rules-seeded (falsifier) | 3/3 | **5.00 / 5** | 0.00 |
+
+**Reading:** PASS in both directions — extracted rules out-pull the control toward the config
+they came from, and deliberately FALSE rules steer authors to a 5/5 opposite config the control
+never touches (0.00). The channel carries CONTENT, not just tokens: the M6 gated-rules arm's
+one live assumption holds, and the cohort may spend. 9/9 authored configs valid (M4's
+first-shot validity holds under seeding). Spend ~$0.51 authoring+extract + one green run.
+
+**Sharp edge to carry into the cohort read:** the falsifier steering at 5/5 means inheritance
+transmits WHATEVER the extractor writes — wrong rules propagate as efficiently as right ones.
+The gate (green-filtered extraction) is the only thing standing between the rules arm and
+confidently inherited nonsense; that is exactly the load-bearing-gate claim M6 measures, now
+with a mechanism-level reason to expect the ungated contrast to be real.
+
+**Honest bounds:** easy task family (extractor material was an M2-class green, not a stall
+recovery); steering measured on authored CONFIGS, not on downstream green-rate — the cohort
+measures that; n=3 per arm.
