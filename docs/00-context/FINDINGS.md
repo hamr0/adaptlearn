@@ -341,3 +341,14 @@ self-recovery. valid.json stays the fixed arm unchanged (it predates this trick 
 not crafted; it happens to carry both kinds, making arm A a strong floor, read as context for
 C-vs-B, which alone decides the gate claim). Guard: if attempt 2 opens at an all-red generation,
 the tripwire fires at gen 0 and the operator halts cheaply — worker-ceiling, not difficulty won.
+
+**F13 addendum (2026-07-09, attempt 2 live):** a third launcher gap surfaced mid-cohort — the
+revisor's sealed CLI call at g3-ungated-L1 never settled (CLI child exited, clipipe's own 180s
+timeout never fired), hanging the run ~2h with no row minted. A promise that never settles
+defeats the guarded try/catch entirely. Launcher-side fix: `withTimeout` races every sealed call
+(5min author/extract/revisor, 30min whole-run); a hung revisor degrades to revision-red (the run
+continues on its old config — never an unearned interpreter-red), gate HaltErrors still
+propagate as cap-halt. **Upstream suspicion (file with F2's clipipe notes): CLIPipeProvider can
+leave its promise unsettled after child exit on some path — timeout option did not fire.**
+Evidence: /tmp/m6-cohort-7xErzP/g3-ungated-L1/spine.jsonl (last event stall-detected 16:10Z,
+process idle ~2h, no claude child).
