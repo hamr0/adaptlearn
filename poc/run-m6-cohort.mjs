@@ -18,6 +18,13 @@
 // gap-fed self-recovery. valid.json stays the fixed arm unchanged (predates
 // the trick; a strong floor, read as context — C-vs-B decides the gate claim).
 //
+// Attempt-3 condition (F14 door b, pre-registered in F15 / PRD §7c, §4b-declared):
+// the close is OPAQUE — m6-opaque-close.mjs reports pass/fail counts only, never
+// test names or assertion text, so the gap channel can no longer teach the
+// conventions the store carries. Everything else is attempt-2 verbatim.
+// Registered prediction: no-episode configs stay red; the verdict axis regains
+// dynamic range; gated-vs-ungated gets its first uncontaminated read.
+//
 // F13 outage rules (§5b: broken middle → escalate, never mint rows):
 // - a provider throw during authoring/extraction is contained and PROMPTS
 //   (retry / record / halt) instead of crashing the process;
@@ -56,6 +63,9 @@ const BUDGET_USD = 38;
 const CAP_RUNS = 3; // F13 attempt-2: tightened from the F7 base of 4
 const SEED = JSON.parse(readFileSync(new URL('../tests/fixtures/valid.json', import.meta.url), 'utf8'));
 const ENV_NOTE = 'Environment note: this run\'s store is pre-seeded with a few short project notes; some are relevant to the task family, some are not.';
+// attempt-3: the one condition change — the close argv the interpreter hands Ralph
+const OPAQUE_CLOSE = new URL('./m6-opaque-close.mjs', import.meta.url).pathname;
+const closeArgv = (suite) => ['node', OPAQUE_CLOSE, suite];
 
 const hash = (config) => createHash('sha256').update(JSON.stringify(config)).digest('hex').slice(0, 12);
 const stripFences = (t) => t.trim().replace(/^```[a-z]*\n?/i, '').replace(/\n?```\s*$/, '');
@@ -75,12 +85,19 @@ if (process.argv.includes('--check')) {
     writeFileSync(target, t.reference);
     const env = { ...process.env };
     delete env.NODE_TEST_CONTEXT;
-    const green = spawnSync('node', ['--test', suite], { env, encoding: 'utf8', timeout: 60_000 });
+    const [cmd, ...cargs] = closeArgv(suite);
+    const green = spawnSync(cmd, cargs, { env, encoding: 'utf8', timeout: 120_000 });
     assert.equal(green.status, 0, `${t.id}: reference must green its own suite\n${green.stdout}${green.stderr}`);
 
     writeFileSync(target, 'export {};\n');
-    const red = spawnSync('node', ['--test', suite], { env, encoding: 'utf8', timeout: 60_000 });
+    const red = spawnSync(cmd, cargs, { env, encoding: 'utf8', timeout: 120_000 });
     assert.notEqual(red.status, 0, `${t.id}: an empty artifact must red — a close that cannot fail proves nothing`);
+
+    // attempt-3: the close must be OPAQUE — counts only, nothing the gap channel can teach from.
+    // The whole red-path output (what Ralph feeds back as gap) must be the single counts line.
+    const gapText = (red.stderr || red.stdout || '').trim();
+    assert.match(gapText, /^close: \d+ of \d+ tests failing$/,
+      `${t.id}: opaque close leaked beyond counts:\n${gapText}`);
 
     for (const kw of ['RangeError', 'TypeError'].filter((k) => t.suite.includes(k))) {
       assert.ok(!t.task.includes(kw), `${t.id}: task statement leaks the ${kw} contract`);
@@ -184,7 +201,7 @@ async function runOnce(ctx) {
     const spineFile = join(workdir, 'spine.jsonl');
     // 30min covers the worst legit run (3 iterations x plan's 2 calls x 180s + a revision)
     const outcome = await guarded(`run ${key(ctx)}`, () => withTimeout(interpret(config, {
-      task: t.task, target: join(workdir, 'src', `${t.id}.mjs`), close: ['node', '--test', suite],
+      task: t.task, target: join(workdir, 'src', `${t.id}.mjs`), close: closeArgv(suite),
       workdir, capRuns: CAP_RUNS, emit: makeSpine(spineFile), provider: sealed(), shellCapUsd: 2,
       // a hung/failed revisor becomes a revision-red (run continues on the old
       // config), never an interpreter-red the harness didn't earn — but a gate

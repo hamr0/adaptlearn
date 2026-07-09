@@ -308,3 +308,7 @@ meet its exit **stops the ladder** — that stop is a result, not a failure to r
   red, the verdict axis regains range, gated-vs-ungated gets its first uncontaminated read
   (~$12–18 of ~$20 remaining). If the gate still does not separate, archive with nothing left
   to blame. Whichever door is walked closes the ladder in an explicit v1.5 edit.
+- **Door (b) walked (2026-07-09, F15):** attempt 3 pre-registered in F15 — close-verbosity
+  condition declared per §4b (opaque close, counts only, `poc/m6-opaque-close.mjs`); everything
+  else attempt-2 verbatim; prediction carried from F14 unchanged. The ladder-closing v1.5 edit
+  follows its result either way.

@@ -393,3 +393,23 @@ OPAQUE close (counts only, no test names), prediction registered now: without ga
 no-episode configs stay red, the verdict axis regains dynamic range, and gated-vs-ungated gets
 its first uncontaminated read. ~$12–18 against ~$20 remaining. Symmetric outcome: if the gate
 still fails to separate with the leak closed, archive with nothing left to blame.
+
+## F15 — M6 attempt 3 PRE-REGISTRATION: door (b) walked, opaque-close condition declared (results pending)
+
+Decision (hamr, 2026-07-09): exhaust attempts before the verdict — door (b) of F14, one amended
+attempt 3. Registered HERE, before any spend.
+
+**Condition (§4b declaration — the close channel):** the close argv becomes
+`poc/m6-opaque-close.mjs <suite>` — it runs `node --test` internally and reports **pass/fail
+counts only** ("close: N of M tests failing"), plus a suite-did-not-run line when the runner
+itself dies; never test names, never assertion text. Exit code remains the verdict; Ralph,
+interpreter, schema, tasks, seeds, capRuns 3, arms, and budget stop are attempt-2 verbatim.
+`--check` now asserts opacity: the entire red-path gap text must match the counts line.
+
+**Registered prediction (carried from F14, unchanged):** without gap teaching, no-episode
+configs stay red; the verdict axis regains dynamic range; gated-vs-ungated gets its first
+uncontaminated read. Symmetric commitment: if the gate still does not separate with the leak
+closed, archive with nothing left to blame. Baseline priors are per-close-verbosity (F14);
+attempt-2 rates do NOT carry over as priors here.
+
+**Results:** PENDING — appended after the run, whatever they say.
