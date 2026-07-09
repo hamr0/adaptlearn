@@ -3,6 +3,48 @@
 PRD §3.5 doctrine: no papering over a lib gap — log the finding, specify the ask here, fix it
 upstream, consume the fixed version, continue. One entry per ask; status tracked in place.
 
+## A2 — litectx: export the write-side kind vocabulary (`WRITE_KINDS`)
+
+**Status:** OPEN (asked 2026-07-09; user fixing now). Blocks nothing — adaptlearn hardcodes the
+subset correctly today; this removes silent-drift risk.
+**Finding:** FINDINGS.md F5. **Repo:** `litectx` (`src/index.js`).
+
+### The gap (grounded)
+
+`remember()` (`src/index.js:787-790`) accepts only `fact | episode | doc` — narrower than the
+exported `KINDS` (`code|doc|fact|episode`, documented as the *recall* grouping vocabulary). The
+write-side set exists only inside `remember()`'s validation branch and its error string; there is
+no exported constant. Consumers that validate configs *before* calling (adaptlearn's schema v1
+validator) must hardcode `['fact','episode',…]` — if `remember()` ever widens/narrows, every
+copy drifts silently. Same class of gap as F1, smaller: the vocabulary exists, it just isn't
+bindable.
+
+### The ask (exact)
+
+Export from `src/index.js` (and `types/index.d.ts`):
+
+```js
+/** The kinds `remember()` accepts — the WRITE-side vocabulary (KINDS minus `code`,
+ *  which enters via `index()`). @type {readonly string[]} */
+export const WRITE_KINDS = ["fact", "episode", "doc"];
+```
+
+and have `remember()`'s own validation check against it (single source of truth — the constant,
+not a re-typed list). No behavior change; JSDoc + CHANGELOG line.
+
+### Acceptance (each must be able to fail)
+
+- `import { WRITE_KINDS } from 'litectx'` returns exactly `["fact","episode","doc"]`.
+- `remember()` rejects a kind outside `WRITE_KINDS` with the existing error shape (regression:
+  `kind:"code"` still throws).
+- A test asserting `remember()`'s accepted set === `WRITE_KINDS` (drift guard — fails if either
+  side changes alone).
+
+### adaptlearn consumes it by
+
+`src/validate.js` binding `REMEMBER_KINDS = WRITE_KINDS.filter(k => k !== 'doc')` (v1 gates the
+doc/upload axis out deliberately) instead of the hardcoded list; drift risk gone.
+
 ## A1 — bareagent `CLIPipeProvider`: parse structured CLI output (usage + cost)
 
 **Status:** ✅ CONSUMED (2026-07-08) — adaptlearn depends on `bare-agent@file:../bareagent` (the
