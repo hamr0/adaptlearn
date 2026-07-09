@@ -50,6 +50,18 @@ The interpreter maps the schema's trailing `/**`|`/*` to the directory prefix
 layer** — if a harness ever needs one, that's a schema/enforcement vocabulary gap to take
 upstream, not a mapping to fudge locally.
 
+## F5 — validator/runtime kind mismatch: litectx `remember()` is narrower than `KINDS`
+
+Found while closing the negative-scenario audit: the validator checked `remember.kind` against
+litectx's full `KINDS` (`code|doc|fact|episode`), but `litectx remember()` throws on anything
+outside `fact|episode|doc` (`src/index.js:789` — code enters via `index()`). A config with
+`remember.kind:"code"` validated green, then crashed at the worst moment — *after* a green
+close, in the on-green hook. Two-sided fix: validator narrowed to `fact|episode` (v1 also gates
+the doc/upload axis out), and on-green hook failures now degrade loudly instead of crashing —
+`retention-red` on the spine, green outcome stands, that green mints no inheritance.
+**Lesson: binding an upstream vocabulary (F1) still requires checking each verb's own contract —
+the export you bind can be wider than the function you call.**
+
 **Resolved (2026-07-08, same day):** fixed upstream as UPSTREAM-ASKS A1 — `CLIPipeProvider`
 `parse: 'claude-json'` maps `result`/`usage`/`total_cost_usd` onto `GenerateResult` (loud
 `ProviderError` on malformed/`is_error`), and the Loop now prefers a finite provider `costUsd`

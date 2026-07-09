@@ -126,6 +126,41 @@ test('config maxIterations tightens the shell cap, never exceeds it', async () =
   assert.equal(events.at(-1).iterations, 2, 'stopped at the config bound, under the shell cap');
 });
 
+test('on-green hook failure → retention-red on the spine, but the green STANDS', async () => {
+  const { workdir, target } = makeWork('retention-red');
+  // a close that verifies then deletes the artifact: green verdict, then on-green
+  // remember's readFileSync(target) genuinely throws — a real post-green retention failure
+  const close = ['node', '-e', `const fs=require('node:fs'); const t=${JSON.stringify(target)}; if(!fs.existsSync(t))process.exit(1); fs.unlinkSync(t); process.exit(0)`];
+  const file = join(workdir, 'run.jsonl');
+  const outcome = await interpret(config(), { task: TASK, target, close, workdir, capRuns: 3, emit: makeSpine(file), provider: stubProvider([{ text: GOOD_SUM }]) });
+  const events = readFileSync(file, 'utf8').trimEnd().split('\n').map((l) => JSON.parse(l));
+  assert.equal(outcome, 'green', 'a retention hiccup must not un-green a real green');
+  const red = events.find((e) => e.type === 'retention-red');
+  assert.ok(red, 'retention failure is loud on the spine, not swallowed');
+  assert.ok(!events.some((e) => e.type === 'hook-op' && e.op === 'remember'), 'this green minted no inheritance');
+});
+
+test('cap trips between the plan call and the implement call → still cap-halt', async () => {
+  const planned = config();
+  planned.loop.shape = 'plan';
+  planned.gate.budgetUsd = 0.02;
+  const { outcome, events, provider } = await run('plan-halt', planned, {
+    script: [{ text: '1. plan', costUsd: 0.05 }, { text: GOOD_SUM, costUsd: 0.05 }], capRuns: 4,
+  });
+  assert.equal(outcome, 'escalated');
+  assert.equal(events.find((e) => e.type === 'escalation').category, 'cap-halt');
+  assert.ok(provider.calls.length <= 2, `halted within the first plan+implement pair (calls: ${provider.calls.length})`);
+});
+
+test('remember kind "code" is a verb-params red (validator matches litectx runtime, F5)', async () => {
+  const bad = config();
+  bad.hooks['on-green'] = [{ op: 'remember', kind: 'code' }];
+  const { outcome, events, provider } = await run('remember-kind', bad);
+  assert.equal(outcome, 'config-red');
+  assert.equal(provider.calls.length, 0);
+  assert.equal(events.find((e) => e.type === 'config-red').code, 'verb-params');
+});
+
 test('interpreter crash mid-run → interpreter-red, never masquerading as bad harness', async () => {
   const provider = { async generate() { throw new Error('provider exploded'); } };
   const { workdir, target, close } = makeWork('interp-red');

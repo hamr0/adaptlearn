@@ -59,6 +59,14 @@ for (const [fixture, expect] of Object.entries(RED_CASES)) {
   });
 }
 
+test('garbage input types → parse-error red, never a throw', () => {
+  for (const garbage of [42, null, true, [], 'not json at all', undefined]) {
+    const r = validateConfig(garbage);
+    assert.equal(r.ok, false, `${JSON.stringify(garbage)} must red`);
+    assert.equal(r.reds[0].code, 'parse-error');
+  }
+});
+
 test('budget cap is the shell\'s to set: 5 USD passes under a 10 USD shell cap', () => {
   const r = validateConfig(load('red/budget-over-cap.json'), { shellCapUsd: 10 });
   assert.equal(r.ok, true);

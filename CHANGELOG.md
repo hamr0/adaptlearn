@@ -9,6 +9,16 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 - M3: contrast check (MAX vs MIN opposed configs must differ measurably — the kill-switch)
 
+## [0.6.1] — 2026-07-09
+
+### Fixed
+- Negative-scenario audit closure (4 new tests, 50/50): on-green hook failure now degrades
+  loudly (`retention-red` on the spine; the green stands — a retention hiccup must not corrupt
+  the M6 learning curve, but that green mints no inheritance); cap tripping between plan and
+  implement calls proven to read as cap-halt; validator garbage-type inputs (42/null/[]/true)
+  proven parse-error-not-throw; **F5** — `remember.kind` narrowed to `fact|episode` (litectx
+  `remember()` rejects `code`; the old check validated configs that crashed post-green).
+
 ## [0.6.0] — 2026-07-09
 
 ### Added

@@ -127,6 +127,15 @@ export async function interpret(configRaw, { task, target, close, workdir, capRu
   // the config may tighten the shell's iteration budget, never exceed it (mirrors budgetUsd)
   const effectiveCap = Math.min(capRuns, config.loop.maxIterations ?? capRuns);
   const outcome = await ralph({ middle, close, capRuns: effectiveCap, emit });
-  if (outcome === 'green') await runOps('on-green', {});
+  if (outcome === 'green') {
+    // The close already passed — a retention hiccup must not un-green a real green
+    // (it would corrupt the M6 learning curve). It degrades loudly: retention-red on
+    // the spine means this green mints NO inheritance, but the delivery stands.
+    try {
+      await runOps('on-green', {});
+    } catch (e) {
+      emit('retention-red', { category: 'retention-red', detail: String(e.message || e) });
+    }
+  }
   return outcome;
 }

@@ -17,11 +17,15 @@ const TOP_FIELDS = ['schema', 'loop', 'memory', 'hooks', 'gate', 'escalation'];
 const MAX_OPS_PER_SLOT = 2;
 
 // per-verb parameter contracts: name → check(value) (op field itself excluded)
+// remember's kinds are NARROWER than recall's: litectx remember() accepts only
+// fact|episode|doc (code enters via index()), and v1 gates the doc/upload axis out —
+// validating against full KINDS would pass configs that crash at runtime (FINDINGS F5).
+const REMEMBER_KINDS = ['fact', 'episode'];
 const VERB_PARAMS = {
   recall: { k: (v) => Number.isInteger(v) && v >= 1 && v <= 20, kinds: isKinds },
   compress: { level: (v) => COMPRESS_LEVELS.includes(v) },
   stash: {},
-  remember: { kind: (v) => KINDS.includes(v) },
+  remember: { kind: (v) => REMEMBER_KINDS.includes(v) },
 };
 
 function isKinds(v) {
