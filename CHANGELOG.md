@@ -7,7 +7,39 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-- M6: inheritance + selection (the claim; rules-vs-verbatim sub-experiment)
+M6 (inheritance + selection — the claim) is built and mid-experiment; the version bump
+deliberately waits for the verdict (PRD v1.5 will close the ladder either way).
+
+### Added
+- **M6 machinery (design → steps 1–5):** `src/mutate.js` (one-knob catalog + novelty-preferring
+  picker), `src/cohort.js` (4-arm × 2-lineage generation loop, injected middle, budget stop,
+  all-red HITL tripwire), `src/extract.js` (sealed rules extractor, reject-whole bounds),
+  `poc/m6-tasks.mjs` (8 info-gap instances with reference impls + token-free `--check`),
+  `poc/run-m6-cohort.mjs` (live launcher: outage escalation, watchdog on every sealed call,
+  hash-verified `--resume` replay — used in anger, 48 rows replayed free).
+- **Probe-06 PASSED (F12):** the inheritance channel is wired — rules steer authored configs
+  both directions (falsifier 5.00 vs 0.00); the verdict gate is the only filter on content.
+- **`poc/m6-opaque-close.mjs` (attempt 3, F15):** close reports pass/fail counts only; the
+  launcher's `closeArgv` swap is the sole condition change vs attempt 2; `--check` asserts
+  opacity of the red-path gap text.
+
+### Changed
+- **PRD v1.4 (claim/falsifier/budget untouched):** §4b instrument-channel doctrine — every
+  information path into the worker is part of the instrument; close verbosity is a declared
+  condition (earned twice: authoring channel F13, close channel F14). §7c results record:
+  attempt-1 ceiling (instrument invalid), attempt-2 NULL on the claim axis with the mechanism
+  numbers (episode-recall green@1 0.56 vs 0.00 in 38; gated-rules L1 ran discover → gate →
+  codify → transmit end-to-end at ~⅓ cost), superseded ~⅓ baseline prior (per-close-verbosity
+  from now on), the two pre-registered doors, and the dated door-(b) decision (F15).
+- **M6 launcher hardening (F13):** broken-middle outages escalate to the operator instead of
+  minting rows or crashing; $0 interpreter-red outage signature prompts before a row is
+  written; hung revisor degrades to revision-red while gate HaltError stays cap-halt.
+
+### Findings
+- F12 (channel wired), F13 (attempt-1 ceiling + outage classes + store-furniture amendment,
+  addendum: upstream clipipe unsettled-promise suspicion), F14 (attempt-2 null; informative
+  close is an unregistered teaching channel; full mechanism demonstrated in one lineage),
+  F15 (attempt-3 pre-registration: opaque-close condition + carried prediction, results pending).
 
 ## [0.9.1] — 2026-07-09
 
