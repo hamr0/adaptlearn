@@ -526,3 +526,18 @@ The archive stands. A successor product was designed in a validated interview th
 gated per step; both-ways scaffolding evolution; primitive menu with removal; job #1 =
 litectx auto-maintainer; new repo after SP-1). SP-1 (F16) results and the SP-2 provider-seam
 smoke land here when they conclude; product findings after that belong to the new repo's log.
+
+### SP-2 results — API worker seam PASSES (2026-07-10)
+
+`poc/sp2-api-smoke.mjs`, worker = `AnthropicProvider` (haiku) instead of the claude CLI, fixed
+episode-wired config, opaque close, capRuns 3. **Seam verdict: PASS on all axes** — worker runs
+on the API; per-call `costUsd` metered and gate-visible ($0.0081/3 calls; the suspected
+metering gap did NOT materialize — no upstream finding); cap-halt escalates as its own clean
+category; and the failure path (invalid key, from an earlier placeholder run) escalates
+decision-ready at $0 instead of crashing — §5b broken-middle behavior holds on a second
+provider type. The product's "your APIs" promise is de-risked; local LLMs deferred by decision.
+
+Two side notes: (1) spine `worker-result` events carry cost but not token usage — cosmetic
+here, but the successor product's spine should carry both. (2) haiku went 0/3 on task 0 WITH
+the conventions recalled — a second independent hint (after SP-1's early rows) that haiku sits
+below the P1 competence floor; SP-1's full readout decides.
