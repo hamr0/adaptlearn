@@ -91,3 +91,7 @@ security-critical code.
 
 **Lightweight over complex. Surgical changes only. Open-source only.** No secrets in the tree
 (env at runtime; only `.env.example` committed).
+
+<!-- MEMORY:START -->
+@.claude/remember/MEMORY.md
+<!-- MEMORY:END -->
