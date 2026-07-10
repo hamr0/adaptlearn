@@ -5,6 +5,34 @@ All notable changes to adaptlearn are documented here. Format follows
 [SemVer](https://semver.org/) (0.y.z pre-release: minor = a ladder module or spec milestone,
 patch = corrections). Versions before code exist are retroactive spec milestones.
 
+## [Unreleased]
+
+Post-archive continuation track — the experiment record stays closed; this section carries
+the successor-product groundwork living in this repo until the new repo is cut.
+
+### Added
+- **SP-1 successor probe (F16, pre-registered, running):** `--worker-model` launcher knob pins
+  the WORKER's model only (author/extract/revisor stay on the CLI default); `condition.json`
+  stamped per world, resume refuses condition mismatches. Tests the §7d boundary map with a
+  haiku worker: P1 competence floor / P2 mask lifts / P3 gate separates, with the symmetric
+  commitment (P1 ∧ ¬P3 ⇒ boundary map wrong as stated).
+- **SP-2 API smoke** (`poc/sp2-api-smoke.mjs`): sealed worker on AnthropicProvider instead of
+  the claude CLI — de-risks the product's "your APIs or local LLMs" promise and exercises the
+  bareagent provider seam under the gate (cost metering path). API-only per hamr; local LLMs
+  deferred.
+- **Successor product design record**
+  (`docs/plans/2026-07-10-agentic-automation-successor-design.md`): automate
+  repeated/long/verifiable jobs with agent-authored, verdict-gated, both-ways-evolving
+  scaffolding. Key decisions: three verdict classes (hard/soft/HITL green) gated PER STEP;
+  primitive menu with removal as first-class mutation; new repo after SP-1; job #1 =
+  auto-maintainer on litectx (review → fix → branch → PR → HITL merge). PRD carries a v1.5.1
+  continuation pointer; the archive verdict is not reopened.
+
+### Changed
+- **Consumed upstream bareagent clipipe fix** (settle-guaranteed `_spawn`, stdout-tail error
+  detail, loud onChunk) — both halves were adaptlearn field findings (F13/F15 addenda), fixed
+  in bareagent per consume-don't-paper, picked up automatically via the `file:` dependency.
+
 ## [0.10.0] — 2026-07-10 — ARCHIVE RELEASE
 
 **The ladder is closed: ARCHIVED** (PRD v1.5 §7d, F15). Attempt 3 ran under the declared

@@ -29,6 +29,15 @@
 > codify → transmit → stable first-try expression at ~10× lower cost) was demonstrated end to
 > end twice, in two close-verbosity conditions. The ladder is closed; no further attempts are
 > registered. Final spend: ~$46 of the ~$50 M2–M6 budget.
+>
+> **v1.5.1 (2026-07-10, continuation pointer — record unchanged):** the archive stands, and a
+> successor PRODUCT was designed on top of it (validated interview, hamr):
+> `docs/plans/2026-07-10-agentic-automation-successor-design.md` — automated agentic
+> automation for repeated/long/verifiable jobs, consuming this experiment's findings as its
+> scientific ground (M4 authorship parity is the product's core claim and it PASSED; §7d's
+> boundary map sets the payoff axes per worker tier). New repo after SP-1 (F16) concludes;
+> job #1 = auto-maintainer on litectx. This experiment's claim, falsifier, and verdict are
+> not reopened by any of it.
 
 **adaptlearn** is an experiment: can an agent's *harness* — not its plan, not its code — be an
 emergent, adapting artifact? It consumes the bare suite (`bareagent`, `litectx`, `bareguard`) and
