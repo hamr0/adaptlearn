@@ -1,0 +1,11 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-09T18:33:26.575Z"}
+{"type":"run-start","capRuns":3,"close":"node --test /tmp/m6-cohort-7xErzP/g7-gated-rules-L1/src/initials.test.mjs","seq":2,"ts":"2026-07-09T18:33:26.577Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-09T18:33:26.577Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":3,"iteration":1,"seq":4,"ts":"2026-07-09T18:33:26.579Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-09T18:33:26.586Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.06869399999999999,"tokens":1708,"seq":6,"ts":"2026-07-09T18:33:49.553Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-7xErzP/g7-gated-rules-L1/src/initials.mjs","seq":7,"ts":"2026-07-09T18:33:49.554Z"}
+{"type":"middle-done","iteration":1,"seq":8,"ts":"2026-07-09T18:33:49.554Z"}
+{"type":"close-verdict","iteration":1,"verdict":"satisfied","seq":9,"ts":"2026-07-09T18:33:49.946Z"}
+{"type":"run-end","outcome":"green","iterations":1,"seq":10,"ts":"2026-07-09T18:33:49.946Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":11,"ts":"2026-07-09T18:33:49.946Z"}

@@ -1,0 +1,7 @@
+[
+  "Use loop.shape=refine with maxIterations=6 for this task family; it passed within that iteration budget.",
+  "Constrain gate.writeScope to src/** — edits stayed within source and still passed judgement.",
+  "Keep gate.budgetUsd at 1; the run completed green under a $1 cap.",
+  "Recall k=4 over code/fact kinds with signature-level compression before each attempt was sufficient context to pass.",
+  "Hook flow that went green: recall+compress before-attempt, stash after-red, remember episode on-green — keep this cycle."
+]

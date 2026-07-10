@@ -1,0 +1,6 @@
+{
+  "workerModel": "claude-haiku-4-5-20251001",
+  "taskSet": "sp3",
+  "revision": "off",
+  "inherit": "authored"
+}

@@ -1,0 +1,7 @@
+[
+  "A refine loop with maxIterations=6 passed within a $1 budget; refine-shaped loops with modest iteration caps are viable for this task family.",
+  "Recalling k=6 memories across code/fact/episode kinds before each attempt, with verbatim compression, was part of a green run.",
+  "Stashing on red and remembering a fact on green did not prevent success; this stash/remember hook pairing is safe to keep.",
+  "Restricting writeScope to src/** was sufficient for this task family; the run went green without wider write access.",
+  "decision-ready escalation mode co-occurred with a passing run; no evidence it needed to escalate."
+]

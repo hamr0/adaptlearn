@@ -9,6 +9,12 @@ Reds are logged through the PRD §5b lens: name which of the five meanings the c
 (worker ceiling / bad harness / broken close / cap halt / schema can't express) — never a bare
 count.
 
+Evidence paths cited below as `/tmp/m6-cohort-*` were live at writing time; every world's
+load-bearing evidence (ledgers, results, conditions, configs, configs-final, rules, per-cell
+spines) is preserved in-repo under `docs/archive/evidence/` (see its README for the
+world→finding map), and the two analysis lenses are `poc/analyze-grid.mjs` (F18/V6) and
+`poc/analyze-contrast-bits.mjs` (V2) — both re-runnable against the archived copies.
+
 ## F1 — litectx already ships the ops vocabulary (works as intended)
 
 Schema v1's planned write · select · compress · isolate vocabulary already exists upstream:

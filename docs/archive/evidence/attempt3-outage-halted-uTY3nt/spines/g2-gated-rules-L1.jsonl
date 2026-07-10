@@ -1,0 +1,29 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-09T19:36:20.766Z"}
+{"type":"run-start","capRuns":3,"close":"node /home/hamr/PycharmProjects/adaptlearn/poc/m6-opaque-close.mjs /tmp/m6-cohort-uTY3nt/g2-gated-rules-L1/src/csvline.test.mjs","seq":2,"ts":"2026-07-09T19:36:20.768Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-09T19:36:20.768Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":1,"iteration":1,"seq":4,"ts":"2026-07-09T19:36:20.769Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-09T19:36:20.771Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.0488725,"tokens":847,"seq":6,"ts":"2026-07-09T19:36:37.528Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-uTY3nt/g2-gated-rules-L1/src/csvline.mjs","seq":7,"ts":"2026-07-09T19:36:37.529Z"}
+{"type":"middle-done","iteration":1,"seq":8,"ts":"2026-07-09T19:36:37.529Z"}
+{"type":"close-verdict","iteration":1,"verdict":"needs_revision","gap":"close: 1 of 1 tests failing\n","exitCode":1,"seq":9,"ts":"2026-07-09T19:36:37.903Z"}
+{"type":"iteration-start","iteration":2,"seq":10,"ts":"2026-07-09T19:36:37.903Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":2,"seq":11,"ts":"2026-07-09T19:36:37.903Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":1,"iteration":2,"seq":12,"ts":"2026-07-09T19:36:37.905Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":2,"seq":13,"ts":"2026-07-09T19:36:37.906Z"}
+{"type":"worker-result","iteration":2,"costUsd":0.1304995,"tokens":1240,"seq":14,"ts":"2026-07-09T19:36:57.767Z"}
+{"type":"artifact-written","iteration":2,"path":"/tmp/m6-cohort-uTY3nt/g2-gated-rules-L1/src/csvline.mjs","seq":15,"ts":"2026-07-09T19:36:57.767Z"}
+{"type":"middle-done","iteration":2,"seq":16,"ts":"2026-07-09T19:36:57.767Z"}
+{"type":"close-verdict","iteration":2,"verdict":"needs_revision","gap":"close: 2 of 7 tests failing\n","exitCode":1,"seq":17,"ts":"2026-07-09T19:36:58.175Z"}
+{"type":"iteration-start","iteration":3,"seq":18,"ts":"2026-07-09T19:36:58.175Z"}
+{"type":"stall-detected","iteration":3,"consecutiveReds":2,"seq":19,"ts":"2026-07-09T19:36:58.175Z"}
+{"type":"revision-accepted","iteration":3,"changedPaths":["hooks.before-attempt.0.k","hooks.before-attempt.0.kinds.3","hooks.before-attempt.1.level","memory.compressLevel","memory.recall.k","memory.recall.kinds.3"],"costUsd":0.0698235,"seq":20,"ts":"2026-07-09T19:37:14.070Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":3,"seq":21,"ts":"2026-07-09T19:37:14.070Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":3,"iteration":3,"seq":22,"ts":"2026-07-09T19:37:14.073Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"verbatim","iteration":3,"seq":23,"ts":"2026-07-09T19:37:14.073Z"}
+{"type":"worker-result","iteration":3,"costUsd":0.0720565,"tokens":1843,"seq":24,"ts":"2026-07-09T19:37:40.439Z"}
+{"type":"artifact-written","iteration":3,"path":"/tmp/m6-cohort-uTY3nt/g2-gated-rules-L1/src/csvline.mjs","seq":25,"ts":"2026-07-09T19:37:40.439Z"}
+{"type":"middle-done","iteration":3,"seq":26,"ts":"2026-07-09T19:37:40.439Z"}
+{"type":"close-verdict","iteration":3,"verdict":"satisfied","seq":27,"ts":"2026-07-09T19:37:40.844Z"}
+{"type":"run-end","outcome":"green","iterations":3,"seq":28,"ts":"2026-07-09T19:37:40.844Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":29,"ts":"2026-07-09T19:37:40.845Z"}

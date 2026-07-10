@@ -1,0 +1,27 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-10T17:20:21.621Z"}
+{"type":"run-start","capRuns":3,"close":"node /home/hamr/PycharmProjects/adaptlearn/poc/m6-opaque-close.mjs /tmp/m6-cohort-K9Ofzk/g3-ungated-L1/src/range.test.mjs","seq":2,"ts":"2026-07-10T17:20:21.622Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-10T17:20:21.622Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":1,"iteration":1,"seq":4,"ts":"2026-07-10T17:20:21.623Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-10T17:20:21.624Z"}
+{"type":"worker-plan","iteration":1,"costUsd":0.0044361,"seq":6,"ts":"2026-07-10T17:20:29.655Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.0126322,"tokens":938,"seq":7,"ts":"2026-07-10T17:20:40.149Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-K9Ofzk/g3-ungated-L1/src/range.mjs","seq":8,"ts":"2026-07-10T17:20:40.149Z"}
+{"type":"middle-done","iteration":1,"seq":9,"ts":"2026-07-10T17:20:40.149Z"}
+{"type":"close-verdict","iteration":1,"verdict":"needs_revision","gap":"close: 5 of 5 tests failing\n","exitCode":1,"seq":10,"ts":"2026-07-10T17:20:40.548Z"}
+{"type":"iteration-start","iteration":2,"seq":11,"ts":"2026-07-10T17:20:40.548Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":2,"seq":12,"ts":"2026-07-10T17:20:40.548Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":1,"iteration":2,"seq":13,"ts":"2026-07-10T17:20:40.549Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":2,"seq":14,"ts":"2026-07-10T17:20:40.551Z"}
+{"type":"worker-plan","iteration":2,"costUsd":0.0054781,"seq":15,"ts":"2026-07-10T17:20:51.065Z"}
+{"type":"worker-result","iteration":2,"costUsd":0.051468200000000006,"tokens":1994,"seq":16,"ts":"2026-07-10T17:21:23.108Z"}
+{"type":"artifact-written","iteration":2,"path":"/tmp/m6-cohort-K9Ofzk/g3-ungated-L1/src/range.mjs","seq":17,"ts":"2026-07-10T17:21:23.109Z"}
+{"type":"middle-done","iteration":2,"seq":18,"ts":"2026-07-10T17:21:23.109Z"}
+{"type":"close-verdict","iteration":2,"verdict":"needs_revision","gap":"close: 1 of 1 tests failing\n","exitCode":1,"seq":19,"ts":"2026-07-10T17:21:23.478Z"}
+{"type":"iteration-start","iteration":3,"seq":20,"ts":"2026-07-10T17:21:23.478Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":3,"seq":21,"ts":"2026-07-10T17:21:23.478Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":1,"iteration":3,"seq":22,"ts":"2026-07-10T17:21:23.479Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":3,"seq":23,"ts":"2026-07-10T17:21:23.481Z"}
+{"type":"worker-plan","iteration":3,"costUsd":0.0110142,"seq":24,"ts":"2026-07-10T17:21:31.752Z"}
+{"type":"escalation","category":"interpreter-red","decisionReady":true,"verdicts":["needs_revision","needs_revision"],"spend":{"runs":3,"capRuns":3},"decision":"The middle itself broke — no harness verdict is trustworthy until it is fixed.","options":["fix the interpreter","abandon the task"],"detail":"[CLIPipeProvider] process exited with code 1: (stderr empty) stdout: nput_tokens\":0,\"output_tokens\":0,\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":0,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"\",\"iterations\":[],\"speed\":\"standard\"},\"modelUsage\":{},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"uuid\":\"37880514-0506-4cca-843e-5e2ce952ca42\"}","seq":25,"ts":"2026-07-10T17:21:33.777Z"}
+{"type":"run-end","outcome":"escalated","iterations":3,"seq":26,"ts":"2026-07-10T17:21:33.778Z"}
+{"type":"config-final","config":{"schema":"v1","loop":{"shape":"plan","maxIterations":8},"memory":{"store":"litectx","recall":{"k":5,"kinds":["fact","code"]},"compressLevel":"signature"},"hooks":{"before-attempt":[{"op":"recall","k":4,"kinds":["fact","code"]},{"op":"compress","level":"signature"}],"after-red":[{"op":"stash"}],"on-green":[{"op":"remember","kind":"episode"}]},"gate":{"budgetUsd":1.5,"writeScope":["src/**"]},"escalation":{"mode":"decision-ready"}},"revised":false,"seq":27,"ts":"2026-07-10T17:21:33.778Z"}

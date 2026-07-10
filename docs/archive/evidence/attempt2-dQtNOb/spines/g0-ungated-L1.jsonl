@@ -1,0 +1,11 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-09T12:29:39.045Z"}
+{"type":"run-start","capRuns":4,"close":"node --test /tmp/m6-cohort-dQtNOb/g0-ungated-L1/src/dur.test.mjs","seq":2,"ts":"2026-07-09T12:29:39.046Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-09T12:29:39.046Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":3,"iteration":1,"seq":4,"ts":"2026-07-09T12:29:39.048Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-09T12:29:39.063Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.0552605,"tokens":1171,"seq":6,"ts":"2026-07-09T12:29:57.057Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-dQtNOb/g0-ungated-L1/src/dur.mjs","seq":7,"ts":"2026-07-09T12:29:57.058Z"}
+{"type":"middle-done","iteration":1,"seq":8,"ts":"2026-07-09T12:29:57.058Z"}
+{"type":"close-verdict","iteration":1,"verdict":"satisfied","seq":9,"ts":"2026-07-09T12:29:57.634Z"}
+{"type":"run-end","outcome":"green","iterations":1,"seq":10,"ts":"2026-07-09T12:29:57.634Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":11,"ts":"2026-07-09T12:29:57.635Z"}

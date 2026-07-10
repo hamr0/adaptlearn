@@ -1,0 +1,22 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-10T20:56:20.446Z"}
+{"type":"run-start","capRuns":3,"close":"node /home/hamr/PycharmProjects/adaptlearn/poc/m6-opaque-close.mjs /tmp/m6-cohort-K9Ofzk/g5-ungated-L1/src/money.test.mjs","seq":2,"ts":"2026-07-10T20:56:20.450Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-10T20:56:20.450Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":0,"iteration":1,"seq":4,"ts":"2026-07-10T20:56:20.453Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-10T20:56:20.453Z"}
+{"type":"worker-plan","iteration":1,"costUsd":0.0106592,"seq":6,"ts":"2026-07-10T20:56:31.368Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.0375582,"tokens":5960,"seq":7,"ts":"2026-07-10T20:57:23.783Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-K9Ofzk/g5-ungated-L1/src/money.mjs","seq":8,"ts":"2026-07-10T20:57:23.783Z"}
+{"type":"middle-done","iteration":1,"seq":9,"ts":"2026-07-10T20:57:23.783Z"}
+{"type":"close-verdict","iteration":1,"verdict":"needs_revision","gap":"close: 6 of 6 tests failing\n","exitCode":1,"seq":10,"ts":"2026-07-10T20:57:25.166Z"}
+{"type":"iteration-start","iteration":2,"seq":11,"ts":"2026-07-10T20:57:25.166Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":2,"seq":12,"ts":"2026-07-10T20:57:25.167Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":0,"iteration":2,"seq":13,"ts":"2026-07-10T20:57:25.168Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":2,"seq":14,"ts":"2026-07-10T20:57:25.168Z"}
+{"type":"worker-plan","iteration":2,"costUsd":0.003930599999999999,"seq":15,"ts":"2026-07-10T20:57:33.607Z"}
+{"type":"worker-result","iteration":2,"costUsd":0.1535788,"tokens":4731,"seq":16,"ts":"2026-07-10T20:58:34.202Z"}
+{"type":"artifact-written","iteration":2,"path":"/tmp/m6-cohort-K9Ofzk/g5-ungated-L1/src/money.mjs","seq":17,"ts":"2026-07-10T20:58:34.202Z"}
+{"type":"middle-done","iteration":2,"seq":18,"ts":"2026-07-10T20:58:34.202Z"}
+{"type":"close-verdict","iteration":2,"verdict":"satisfied","seq":19,"ts":"2026-07-10T20:58:34.605Z"}
+{"type":"run-end","outcome":"green","iterations":2,"seq":20,"ts":"2026-07-10T20:58:34.605Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":21,"ts":"2026-07-10T20:58:34.605Z"}
+{"type":"config-final","config":{"schema":"v1","loop":{"shape":"plan","maxIterations":8},"memory":{"store":"litectx","recall":{"k":5,"kinds":["fact","code","doc"]},"compressLevel":"drop"},"hooks":{"before-attempt":[{"op":"recall","k":4,"kinds":["fact","code"]},{"op":"compress","level":"signature"}],"after-red":[{"op":"stash"}],"on-green":[{"op":"remember","kind":"episode"}]},"gate":{"budgetUsd":1.5,"writeScope":["src/**"]},"escalation":{"mode":"decision-ready"}},"revised":false,"seq":22,"ts":"2026-07-10T20:58:34.605Z"}

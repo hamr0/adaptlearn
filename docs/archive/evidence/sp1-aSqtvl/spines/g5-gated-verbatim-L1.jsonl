@@ -1,0 +1,17 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-10T08:33:18.416Z"}
+{"type":"run-start","capRuns":3,"close":"node /home/hamr/PycharmProjects/adaptlearn/poc/m6-opaque-close.mjs /tmp/m6-cohort-aSqtvl/g5-gated-verbatim-L1/src/money.test.mjs","seq":2,"ts":"2026-07-10T08:33:18.417Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-10T08:33:18.417Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":0,"iteration":1,"seq":4,"ts":"2026-07-10T08:33:18.417Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-10T08:33:18.417Z"}
+{"type":"worker-plan","iteration":1,"costUsd":0.0040955,"seq":6,"ts":"2026-07-10T08:33:26.268Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.009343,"tokens":323,"seq":7,"ts":"2026-07-10T08:33:32.287Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-aSqtvl/g5-gated-verbatim-L1/src/money.mjs","seq":8,"ts":"2026-07-10T08:33:32.287Z"}
+{"type":"middle-done","iteration":1,"seq":9,"ts":"2026-07-10T08:33:32.287Z"}
+{"type":"close-verdict","iteration":1,"verdict":"needs_revision","gap":"close: 6 of 6 tests failing\n","exitCode":1,"seq":10,"ts":"2026-07-10T08:33:32.690Z"}
+{"type":"iteration-start","iteration":2,"seq":11,"ts":"2026-07-10T08:33:32.690Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":2,"seq":12,"ts":"2026-07-10T08:33:32.690Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":0,"iteration":2,"seq":13,"ts":"2026-07-10T08:33:32.691Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":2,"seq":14,"ts":"2026-07-10T08:33:32.691Z"}
+{"type":"worker-plan","iteration":2,"costUsd":0.010829,"seq":15,"ts":"2026-07-10T08:33:41.032Z"}
+{"type":"escalation","category":"interpreter-red","decisionReady":true,"verdicts":["needs_revision"],"spend":{"runs":2,"capRuns":3},"decision":"The middle itself broke — no harness verdict is trustworthy until it is fixed.","options":["fix the interpreter","abandon the task"],"detail":"[CLIPipeProvider] timed out after 180000ms","seq":16,"ts":"2026-07-10T08:36:41.042Z"}
+{"type":"run-end","outcome":"escalated","iterations":2,"seq":17,"ts":"2026-07-10T08:36:41.043Z"}

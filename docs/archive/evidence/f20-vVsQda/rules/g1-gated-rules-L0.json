@@ -1,0 +1,7 @@
+[
+  "refine loop with maxIterations=6 was sufficient to reach green within a $1.5 budget on this task family.",
+  "Recalling k=8 memories across code/fact/episode kinds before each attempt, with verbatim compression, preceded passing runs (2x).",
+  "Stashing after red and remembering an episode on green is a viable memory hygiene pattern here.",
+  "Restricting writeScope to src/** did not block successful fixes for this task family.",
+  "decision-ready escalation mode co-occurred with passes; no escalation issues observed."
+]

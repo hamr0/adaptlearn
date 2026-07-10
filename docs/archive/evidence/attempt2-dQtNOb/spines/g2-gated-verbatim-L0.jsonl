@@ -1,0 +1,11 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-09T12:39:02.563Z"}
+{"type":"run-start","capRuns":4,"close":"node --test /tmp/m6-cohort-dQtNOb/g2-gated-verbatim-L0/src/csvline.test.mjs","seq":2,"ts":"2026-07-09T12:39:02.565Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-09T12:39:02.565Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":3,"iteration":1,"seq":4,"ts":"2026-07-09T12:39:02.567Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-09T12:39:02.576Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.07611749999999999,"tokens":2006,"seq":6,"ts":"2026-07-09T12:39:34.930Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-dQtNOb/g2-gated-verbatim-L0/src/csvline.mjs","seq":7,"ts":"2026-07-09T12:39:34.931Z"}
+{"type":"middle-done","iteration":1,"seq":8,"ts":"2026-07-09T12:39:34.931Z"}
+{"type":"close-verdict","iteration":1,"verdict":"satisfied","seq":9,"ts":"2026-07-09T12:39:35.611Z"}
+{"type":"run-end","outcome":"green","iterations":1,"seq":10,"ts":"2026-07-09T12:39:35.611Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":11,"ts":"2026-07-09T12:39:35.612Z"}

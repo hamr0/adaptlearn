@@ -1,0 +1,7 @@
+[
+  "Loop shape 'refine' with maxIterations 5 was sufficient for this task family; keep the iteration cap low rather than open-ended.",
+  "Gate writes to src/** and cap budget around $0.5 USD — this scope produced a green run without wider write access.",
+  "Before each attempt, recall k=4 memories of kinds code/fact/doc and compress to signature level to keep context tight.",
+  "After a red result, stash context; on green, remember the run as an episode to seed future recall.",
+  "Use litectx as the memory store and keep escalation in decision-ready mode."
+]

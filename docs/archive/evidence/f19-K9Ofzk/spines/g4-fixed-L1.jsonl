@@ -1,0 +1,18 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-10T20:36:37.478Z"}
+{"type":"run-start","capRuns":3,"close":"node /home/hamr/PycharmProjects/adaptlearn/poc/m6-opaque-close.mjs /tmp/m6-cohort-K9Ofzk/g4-fixed-L1/src/ver.test.mjs","seq":2,"ts":"2026-07-10T20:36:37.480Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-10T20:36:37.480Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":3,"iteration":1,"seq":4,"ts":"2026-07-10T20:36:37.482Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.0503804,"tokens":9710,"seq":5,"ts":"2026-07-10T20:38:06.037Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-K9Ofzk/g4-fixed-L1/src/ver.mjs","seq":6,"ts":"2026-07-10T20:38:06.037Z"}
+{"type":"middle-done","iteration":1,"seq":7,"ts":"2026-07-10T20:38:06.037Z"}
+{"type":"close-verdict","iteration":1,"verdict":"needs_revision","gap":"close: 1 of 7 tests failing\n","exitCode":1,"seq":8,"ts":"2026-07-10T20:38:06.587Z"}
+{"type":"iteration-start","iteration":2,"seq":9,"ts":"2026-07-10T20:38:06.587Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":2,"seq":10,"ts":"2026-07-10T20:38:06.587Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":3,"iteration":2,"seq":11,"ts":"2026-07-10T20:38:06.589Z"}
+{"type":"worker-result","iteration":2,"costUsd":0.0440552,"tokens":7205,"seq":12,"ts":"2026-07-10T20:39:10.169Z"}
+{"type":"artifact-written","iteration":2,"path":"/tmp/m6-cohort-K9Ofzk/g4-fixed-L1/src/ver.mjs","seq":13,"ts":"2026-07-10T20:39:10.169Z"}
+{"type":"middle-done","iteration":2,"seq":14,"ts":"2026-07-10T20:39:10.170Z"}
+{"type":"close-verdict","iteration":2,"verdict":"satisfied","seq":15,"ts":"2026-07-10T20:39:10.725Z"}
+{"type":"run-end","outcome":"green","iterations":2,"seq":16,"ts":"2026-07-10T20:39:10.725Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":17,"ts":"2026-07-10T20:39:10.726Z"}
+{"type":"config-final","config":{"schema":"v1","loop":{"shape":"refine","maxIterations":4},"memory":{"store":"litectx","recall":{"k":5,"kinds":["fact","episode"]},"compressLevel":"signature"},"hooks":{"before-attempt":[{"op":"recall","k":8}],"after-red":[{"op":"stash"}],"on-green":[{"op":"remember","kind":"fact"}]},"gate":{"budgetUsd":2,"writeScope":["src/**"]},"escalation":{"mode":"decision-ready"}},"revised":false,"seq":18,"ts":"2026-07-10T20:39:10.726Z"}

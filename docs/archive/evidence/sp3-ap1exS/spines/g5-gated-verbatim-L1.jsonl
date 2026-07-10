@@ -1,0 +1,21 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-10T12:28:40.852Z"}
+{"type":"run-start","capRuns":3,"close":"node /home/hamr/PycharmProjects/adaptlearn/poc/m6-opaque-close.mjs /tmp/m6-cohort-ap1exS/g5-gated-verbatim-L1/src/money.test.mjs","seq":2,"ts":"2026-07-10T12:28:40.852Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-10T12:28:40.852Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":0,"iteration":1,"seq":4,"ts":"2026-07-10T12:28:40.853Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-10T12:28:40.853Z"}
+{"type":"worker-plan","iteration":1,"costUsd":0.0037111,"seq":6,"ts":"2026-07-10T12:28:47.414Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.011264799999999998,"tokens":593,"seq":7,"ts":"2026-07-10T12:28:55.830Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-ap1exS/g5-gated-verbatim-L1/src/money.mjs","seq":8,"ts":"2026-07-10T12:28:55.831Z"}
+{"type":"middle-done","iteration":1,"seq":9,"ts":"2026-07-10T12:28:55.831Z"}
+{"type":"close-verdict","iteration":1,"verdict":"needs_revision","gap":"close: 6 of 6 tests failing\n","exitCode":1,"seq":10,"ts":"2026-07-10T12:28:56.228Z"}
+{"type":"iteration-start","iteration":2,"seq":11,"ts":"2026-07-10T12:28:56.228Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":2,"seq":12,"ts":"2026-07-10T12:28:56.228Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":0,"iteration":2,"seq":13,"ts":"2026-07-10T12:28:56.228Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":2,"seq":14,"ts":"2026-07-10T12:28:56.228Z"}
+{"type":"worker-plan","iteration":2,"costUsd":0.0052661999999999995,"seq":15,"ts":"2026-07-10T12:29:06.631Z"}
+{"type":"worker-result","iteration":2,"costUsd":0.2015508,"tokens":7379,"seq":16,"ts":"2026-07-10T12:31:40.903Z"}
+{"type":"artifact-written","iteration":2,"path":"/tmp/m6-cohort-ap1exS/g5-gated-verbatim-L1/src/money.mjs","seq":17,"ts":"2026-07-10T12:31:40.904Z"}
+{"type":"middle-done","iteration":2,"seq":18,"ts":"2026-07-10T12:31:40.904Z"}
+{"type":"close-verdict","iteration":2,"verdict":"satisfied","seq":19,"ts":"2026-07-10T12:31:41.305Z"}
+{"type":"run-end","outcome":"green","iterations":2,"seq":20,"ts":"2026-07-10T12:31:41.305Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":21,"ts":"2026-07-10T12:31:41.306Z"}

@@ -1,0 +1,17 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-09T12:50:56.607Z"}
+{"type":"run-start","capRuns":4,"close":"node --test /tmp/m6-cohort-dQtNOb/g5-fixed-L1/src/money.test.mjs","seq":2,"ts":"2026-07-09T12:50:56.608Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-09T12:50:56.608Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":2,"iteration":1,"seq":4,"ts":"2026-07-09T12:50:56.609Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.0644235,"tokens":1467,"seq":5,"ts":"2026-07-09T12:51:23.725Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-dQtNOb/g5-fixed-L1/src/money.mjs","seq":6,"ts":"2026-07-09T12:51:23.725Z"}
+{"type":"middle-done","iteration":1,"seq":7,"ts":"2026-07-09T12:51:23.725Z"}
+{"type":"close-verdict","iteration":1,"verdict":"needs_revision","gap":"TAP version 13\n# file:///tmp/m6-cohort-dQtNOb/g5-fixed-L1/src/money.mjs:1\n# ---\n# SyntaxError: Invalid left-hand side expression in prefix operation\n#     at compileSourceTextModule (node:internal/modules/esm/utils:346:16)\n#     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:107:18)\n#     at \\#translate (node:internal/modules/esm/loader:546:20)\n#     at afterLoad (node:internal/modules/esm/loader:596:29)\n#     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:601:12)\n#     at \\#createModuleJob (node:internal/modules/esm/loader:624:36)\n#     at \\#getJobFromResolveResult (node:internal/modules/esm/loader:343:34)\n#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:311:41)\n# Node.js v22.22.2\n# Subtest: /tmp/m6-cohort-dQtNOb/g5-fixed-L1/src/money.test.mjs\nnot ok 1 - /tmp/m6-cohort-dQtNOb/g5-fixed-L1/src/money.test.mjs\n  ---\n  duration_ms: 200.958963\n  type: 'test'\n  location: '/tmp/m6-cohort-dQtNOb/g5-fixed-L1/src/money.test.mjs:1:1'\n  failureType: 'testCodeFailure'\n  exitCode: 1\n  signal: ~\n  error: 'test failed'\n  code: 'ERR_TEST_FAILURE'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 216.862421\n","exitCode":1,"seq":8,"ts":"2026-07-09T12:51:24.089Z"}
+{"type":"iteration-start","iteration":2,"seq":9,"ts":"2026-07-09T12:51:24.089Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":2,"seq":10,"ts":"2026-07-09T12:51:24.089Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":2,"iteration":2,"seq":11,"ts":"2026-07-09T12:51:24.091Z"}
+{"type":"worker-result","iteration":2,"costUsd":0.0725985,"tokens":1349,"seq":12,"ts":"2026-07-09T12:51:43.942Z"}
+{"type":"artifact-written","iteration":2,"path":"/tmp/m6-cohort-dQtNOb/g5-fixed-L1/src/money.mjs","seq":13,"ts":"2026-07-09T12:51:43.943Z"}
+{"type":"middle-done","iteration":2,"seq":14,"ts":"2026-07-09T12:51:43.943Z"}
+{"type":"close-verdict","iteration":2,"verdict":"satisfied","seq":15,"ts":"2026-07-09T12:51:44.282Z"}
+{"type":"run-end","outcome":"green","iterations":2,"seq":16,"ts":"2026-07-09T12:51:44.283Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":17,"ts":"2026-07-09T12:51:44.283Z"}

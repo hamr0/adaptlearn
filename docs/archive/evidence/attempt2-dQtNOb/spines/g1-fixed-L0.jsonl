@@ -1,0 +1,10 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-09T12:32:09.783Z"}
+{"type":"run-start","capRuns":4,"close":"node --test /tmp/m6-cohort-dQtNOb/g1-fixed-L0/src/bytes.test.mjs","seq":2,"ts":"2026-07-09T12:32:09.787Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-09T12:32:09.787Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":2,"iteration":1,"seq":4,"ts":"2026-07-09T12:32:09.790Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.0380535,"tokens":304,"seq":5,"ts":"2026-07-09T12:32:19.686Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-dQtNOb/g1-fixed-L0/src/bytes.mjs","seq":6,"ts":"2026-07-09T12:32:19.687Z"}
+{"type":"middle-done","iteration":1,"seq":7,"ts":"2026-07-09T12:32:19.687Z"}
+{"type":"close-verdict","iteration":1,"verdict":"satisfied","seq":8,"ts":"2026-07-09T12:32:20.245Z"}
+{"type":"run-end","outcome":"green","iterations":1,"seq":9,"ts":"2026-07-09T12:32:20.245Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":10,"ts":"2026-07-09T12:32:20.246Z"}

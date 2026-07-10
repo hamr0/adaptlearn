@@ -1,0 +1,7 @@
+[
+  "Refine loop (maxIterations 3-5) with before-attempt recall + signature compression reaches green; recall k 5-8 passed, and code/fact kinds alone suffice (doc kind optional).",
+  "Stashing on after-red and remembering a fact on-green remains a viable recovery/memory pattern for this task family.",
+  "Restricting writeScope to src/** with a $0.50 budget gate was again sufficient for a passing run.",
+  "decision-ready escalation mode continues to work without a stricter escalation policy.",
+  "litectx memory store with compressLevel:signature is compatible with passing outcomes for this task family."
+]

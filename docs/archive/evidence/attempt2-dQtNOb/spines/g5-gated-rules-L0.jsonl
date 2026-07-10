@@ -1,0 +1,11 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-09T12:54:23.045Z"}
+{"type":"run-start","capRuns":4,"close":"node --test /tmp/m6-cohort-dQtNOb/g5-gated-rules-L0/src/money.test.mjs","seq":2,"ts":"2026-07-09T12:54:23.047Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-09T12:54:23.047Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":2,"iteration":1,"seq":4,"ts":"2026-07-09T12:54:23.049Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-09T12:54:23.054Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.05687350000000001,"tokens":1237,"seq":6,"ts":"2026-07-09T12:54:42.047Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-dQtNOb/g5-gated-rules-L0/src/money.mjs","seq":7,"ts":"2026-07-09T12:54:42.048Z"}
+{"type":"middle-done","iteration":1,"seq":8,"ts":"2026-07-09T12:54:42.048Z"}
+{"type":"close-verdict","iteration":1,"verdict":"satisfied","seq":9,"ts":"2026-07-09T12:54:42.383Z"}
+{"type":"run-end","outcome":"green","iterations":1,"seq":10,"ts":"2026-07-09T12:54:42.383Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":11,"ts":"2026-07-09T12:54:42.384Z"}

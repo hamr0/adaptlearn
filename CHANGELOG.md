@@ -7,7 +7,22 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-(nothing — the record is closed; anything after 0.11.0 belongs to the successor's repo)
+(nothing — the record is closed; anything after 0.11.1 belongs to the successor's repo)
+
+## [0.11.1] — 2026-07-10 — evidence preserved in-repo
+
+### Added
+- **`docs/archive/evidence/`** — every cohort world's load-bearing evidence copied out of
+  `/tmp` before it could vanish: ledgers, cohort-results, condition stamps, configs
+  (as-authored), configs-final (as-executed), extracted rules, and all per-cell spines, for
+  attempt 2 (`dQtNOb`), attempt 3 + its outage-halted first world (`7xErzP`, `uTY3nt`),
+  SP-1 (`aSqtvl`), SP-3 (`ap1exS`), F19 (`K9Ofzk`), F20 (`vVsQda`), plus one aborted start.
+  README there maps world → findings. Attempt-3 console log archived alongside.
+- **`poc/analyze-grid.mjs`** and **`poc/analyze-contrast-bits.mjs`** — the F18 acquisition
+  lens (V6 mechanism classes) and the V2 attribution-bit counter, parameterized to run
+  against live worlds or the archived copies; both verified to reproduce the filed numbers
+  from the archive.
+- FINDINGS header note pointing `/tmp` evidence citations at the in-repo archive.
 
 ## [0.11.0] — 2026-07-10 — VINDICATION RELEASE (post-archive probes complete)
 

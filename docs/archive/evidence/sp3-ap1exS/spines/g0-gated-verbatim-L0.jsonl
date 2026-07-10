@@ -1,0 +1,30 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-10T10:50:33.363Z"}
+{"type":"run-start","capRuns":3,"close":"node /home/hamr/PycharmProjects/adaptlearn/poc/m6-opaque-close.mjs /tmp/m6-cohort-ap1exS/g0-gated-verbatim-L0/src/dur.test.mjs","seq":2,"ts":"2026-07-10T10:50:33.365Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-10T10:50:33.365Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":1,"iteration":1,"seq":4,"ts":"2026-07-10T10:50:33.367Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-10T10:50:33.369Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.006322200000000001,"tokens":901,"seq":6,"ts":"2026-07-10T10:50:44.062Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-ap1exS/g0-gated-verbatim-L0/src/dur.mjs","seq":7,"ts":"2026-07-10T10:50:44.063Z"}
+{"type":"middle-done","iteration":1,"seq":8,"ts":"2026-07-10T10:50:44.063Z"}
+{"type":"close-verdict","iteration":1,"verdict":"needs_revision","gap":"close: 4 of 5 tests failing\n","exitCode":1,"seq":9,"ts":"2026-07-10T10:50:44.469Z"}
+{"type":"iteration-start","iteration":2,"seq":10,"ts":"2026-07-10T10:50:44.469Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":2,"seq":11,"ts":"2026-07-10T10:50:44.469Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":1,"iteration":2,"seq":12,"ts":"2026-07-10T10:50:44.470Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":2,"seq":13,"ts":"2026-07-10T10:50:44.471Z"}
+{"type":"worker-result","iteration":2,"costUsd":0.030845199999999996,"tokens":5800,"seq":14,"ts":"2026-07-10T10:51:36.274Z"}
+{"type":"artifact-written","iteration":2,"path":"/tmp/m6-cohort-ap1exS/g0-gated-verbatim-L0/src/dur.mjs","seq":15,"ts":"2026-07-10T10:51:36.274Z"}
+{"type":"middle-done","iteration":2,"seq":16,"ts":"2026-07-10T10:51:36.274Z"}
+{"type":"close-verdict","iteration":2,"verdict":"needs_revision","gap":"close: 4 of 5 tests failing\n","exitCode":1,"seq":17,"ts":"2026-07-10T10:51:36.698Z"}
+{"type":"iteration-start","iteration":3,"seq":18,"ts":"2026-07-10T10:51:36.698Z"}
+{"type":"stall-detected","iteration":3,"consecutiveReds":2,"seq":19,"ts":"2026-07-10T10:51:36.698Z"}
+{"type":"revision-accepted","iteration":3,"changedPaths":["hooks.before-attempt.0.k","hooks.before-attempt.0.kinds.2","hooks.before-attempt.1.level","loop.shape","memory.compressLevel","memory.recall.k","memory.recall.kinds.2"],"costUsd":0.059954999999999994,"seq":20,"ts":"2026-07-10T10:52:02.191Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":3,"seq":21,"ts":"2026-07-10T10:52:02.192Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":3,"iteration":3,"seq":22,"ts":"2026-07-10T10:52:02.194Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"verbatim","iteration":3,"seq":23,"ts":"2026-07-10T10:52:02.194Z"}
+{"type":"worker-plan","iteration":3,"costUsd":0.0051056999999999995,"seq":24,"ts":"2026-07-10T10:52:11.507Z"}
+{"type":"worker-result","iteration":3,"costUsd":0.0490858,"tokens":8138,"seq":25,"ts":"2026-07-10T10:53:23.431Z"}
+{"type":"artifact-written","iteration":3,"path":"/tmp/m6-cohort-ap1exS/g0-gated-verbatim-L0/src/dur.mjs","seq":26,"ts":"2026-07-10T10:53:23.431Z"}
+{"type":"middle-done","iteration":3,"seq":27,"ts":"2026-07-10T10:53:23.431Z"}
+{"type":"close-verdict","iteration":3,"verdict":"satisfied","seq":28,"ts":"2026-07-10T10:53:24.132Z"}
+{"type":"run-end","outcome":"green","iterations":3,"seq":29,"ts":"2026-07-10T10:53:24.133Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":30,"ts":"2026-07-10T10:53:24.134Z"}

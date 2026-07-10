@@ -1,0 +1,10 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-09T12:58:05.014Z"}
+{"type":"run-start","capRuns":4,"close":"node --test /tmp/m6-cohort-dQtNOb/g6-gated-verbatim-L0/src/hexcolor.test.mjs","seq":2,"ts":"2026-07-09T12:58:05.016Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-09T12:58:05.016Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":3,"iteration":1,"seq":4,"ts":"2026-07-09T12:58:05.017Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.038221,"tokens":490,"seq":5,"ts":"2026-07-09T12:58:13.034Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-dQtNOb/g6-gated-verbatim-L0/src/hexcolor.mjs","seq":6,"ts":"2026-07-09T12:58:13.035Z"}
+{"type":"middle-done","iteration":1,"seq":7,"ts":"2026-07-09T12:58:13.035Z"}
+{"type":"close-verdict","iteration":1,"verdict":"satisfied","seq":8,"ts":"2026-07-09T12:58:13.354Z"}
+{"type":"run-end","outcome":"green","iterations":1,"seq":9,"ts":"2026-07-09T12:58:13.354Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":10,"ts":"2026-07-09T12:58:13.354Z"}

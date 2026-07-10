@@ -1,0 +1,7 @@
+[
+  "Use loop.shape=refine with maxIterations=6 for this task family; it passed comfortably within that iteration budget.",
+  "Constrain gate.writeScope to src/** and keep gate.budgetUsd at 1; edits stayed in source and the run went green under the $1 cap.",
+  "Before each attempt, recall k=4 over code/fact kinds with signature-level compression — sufficient context to pass.",
+  "Keep the green hook cycle: recall+compress before-attempt, stash after-red, remember episode on-green.",
+  "Run escalation.mode=decision-ready; the run passed while surfacing escalations in that mode."
+]

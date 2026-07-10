@@ -1,0 +1,7 @@
+[
+  "Use loop.shape=plan with maxIterations=3; this budget has repeatedly converged to green for this task family.",
+  "Before each attempt, recall k=4 memories of kinds [code, fact, episode] (no 'doc') and compress at 'verbatim' level; this k=4/verbatim combo keeps passing.",
+  "On green, remember a 'fact' memory to reinforce the successful approach for future runs.",
+  "On red, stash progress via the after-red hook (with 'signature'-level compression) rather than discarding it before the next iteration.",
+  "Keep gate.budgetUsd at 0.5 and writeScope restricted to src/**; escalate in decision-ready mode."
+]

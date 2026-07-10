@@ -1,0 +1,7 @@
+[
+  "Use loop.shape=refine with maxIterations=5; this converged to a passing state within that budget.",
+  "Before each attempt, recall k=5 memories of kinds [code, fact] and compress at 'signature' level before proceeding.",
+  "On green, remember a 'fact' memory to reinforce the successful approach for future runs.",
+  "On red, stash progress via after-red hook rather than discarding it, before the next refine iteration.",
+  "Keep gate.budgetUsd around 0.5 and restrict writeScope to src/** for this task family; escalate in decision-ready mode."
+]

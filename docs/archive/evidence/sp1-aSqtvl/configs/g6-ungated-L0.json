@@ -1,0 +1,41 @@
+{
+  "schema": "v1",
+  "loop": {
+    "shape": "plan",
+    "maxIterations": 8
+  },
+  "memory": {
+    "store": "litectx",
+    "recall": {
+      "k": 5,
+      "kinds": [
+        "code",
+        "doc"
+      ]
+    },
+    "compressLevel": "drop"
+  },
+  "hooks": {
+    "before-attempt": [],
+    "after-red": [
+      {
+        "op": "stash"
+      }
+    ],
+    "on-green": [
+      {
+        "op": "remember",
+        "kind": "episode"
+      }
+    ]
+  },
+  "gate": {
+    "budgetUsd": 0.5,
+    "writeScope": [
+      "src/**"
+    ]
+  },
+  "escalation": {
+    "mode": "decision-ready"
+  }
+}

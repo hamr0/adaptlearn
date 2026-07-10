@@ -1,0 +1,7 @@
+[
+  "refine loop with a small iteration ceiling (maxIterations 5) passed for this task family; keep the refine shape and tight ceiling.",
+  "before-attempt recall was narrow k=4 (not 5) over kinds code/doc/fact plus signature-level compress; keep recall at k~4 and compress to signatures.",
+  "stash-on-red then remember(episode)-on-green worked; preserve this failure-stash, success-remember memory cycle.",
+  "tight budget (~$0.50) with writeScope confined to src/** sufficed; keep writes scoped to src/** and the budget lean.",
+  "decision-ready escalation accompanied a passing run; retain decision-ready escalation for this lineage."
+]

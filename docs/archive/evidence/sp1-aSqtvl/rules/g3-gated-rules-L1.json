@@ -1,0 +1,7 @@
+[
+  "refine loop with maxIterations 4 is sufficient for this task family; cap iterations there before escalating.",
+  "Use litectx recall k=4 over kinds [code,fact,doc] with signature-level compression on before-attempt.",
+  "Stash working context on after-red and remember an episode on-green to carry learning across attempts.",
+  "Keep the budget gate at ~$0.5 USD and restrict writeScope to src/**.",
+  "Run escalation in decision-ready mode."
+]

@@ -1,0 +1,10 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-10T11:44:43.749Z"}
+{"type":"run-start","capRuns":3,"close":"node /home/hamr/PycharmProjects/adaptlearn/poc/m6-opaque-close.mjs /tmp/m6-cohort-ap1exS/g3-fixed-L0/src/range.test.mjs","seq":2,"ts":"2026-07-10T11:44:43.751Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-10T11:44:43.751Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":3,"iteration":1,"seq":4,"ts":"2026-07-10T11:44:43.755Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.040473800000000004,"tokens":6406,"seq":5,"ts":"2026-07-10T11:45:41.052Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-ap1exS/g3-fixed-L0/src/range.mjs","seq":6,"ts":"2026-07-10T11:45:41.053Z"}
+{"type":"middle-done","iteration":1,"seq":7,"ts":"2026-07-10T11:45:41.053Z"}
+{"type":"close-verdict","iteration":1,"verdict":"satisfied","seq":8,"ts":"2026-07-10T11:45:41.477Z"}
+{"type":"run-end","outcome":"green","iterations":1,"seq":9,"ts":"2026-07-10T11:45:41.477Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":10,"ts":"2026-07-10T11:45:41.478Z"}

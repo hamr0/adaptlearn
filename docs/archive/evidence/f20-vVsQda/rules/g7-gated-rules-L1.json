@@ -1,0 +1,7 @@
+[
+  "plan/6, refine/6, and refine/8 loop shapes have all gone green; neither loop shape nor iteration count is the deciding factor for this task family.",
+  "litectx memory passes with recall k of 8 or 12; kinds can be all four (code+doc+fact+episode) or just episode+fact; both verbatim and signature compressLevel work, so both knobs are flexible.",
+  "before-attempt recall (k=8, episode+fact) followed by a compress hook is a repeatedly viable pre-attempt sequence; both verbatim and signature compress levels have passed.",
+  "Stashing on after-red (optionally followed by a signature compress) and remembering an episode on-green remains compatible with passing runs.",
+  "A 1.5 USD budget with writeScope limited to src/** and decision-ready escalation was again enough to complete the task."
+]

@@ -1,0 +1,7 @@
+[
+  "Refine loop (maxIterations:5) with recall k=5 over code/doc/fact + signature-level compression before each attempt reached green.",
+  "Stashing on after-red and remembering a fact on-green is a viable recovery/memory pattern for this task family.",
+  "Restricting writeScope to src/** with a $0.50 budget gate was sufficient for a passing run.",
+  "decision-ready escalation mode worked without needing a stricter escalation policy.",
+  "litectx memory store with compressLevel:signature is compatible with a passing outcome for this task family."
+]

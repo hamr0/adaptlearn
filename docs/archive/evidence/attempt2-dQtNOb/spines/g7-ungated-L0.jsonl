@@ -1,0 +1,6 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-09T13:00:14.770Z"}
+{"type":"run-start","capRuns":4,"close":"node --test /tmp/m6-cohort-dQtNOb/g7-ungated-L0/src/initials.test.mjs","seq":2,"ts":"2026-07-09T13:00:14.772Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-09T13:00:14.772Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":3,"iteration":1,"seq":4,"ts":"2026-07-09T13:00:14.774Z"}
+{"type":"escalation","category":"interpreter-red","decisionReady":true,"verdicts":[],"spend":{"runs":1,"capRuns":4},"decision":"The middle itself broke — no harness verdict is trustworthy until it is fixed.","options":["fix the interpreter","abandon the task"],"detail":"[CLIPipeProvider] process exited with code 1: ","seq":5,"ts":"2026-07-09T13:00:17.528Z"}
+{"type":"run-end","outcome":"escalated","iterations":1,"seq":6,"ts":"2026-07-09T13:00:17.528Z"}

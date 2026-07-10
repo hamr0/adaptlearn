@@ -1,0 +1,7 @@
+[
+  "refine loop within a $1.5 budget reached green on this task family; passes seen with maxIterations 6 and 8, so 6-8 is a safe range.",
+  "Pre-attempt recall with verbatim compression precedes passes; k=5 and k=8 both green, and kind sets code/fact/episode and code/doc/fact/episode both passed, so kinds and k are flexible.",
+  "Stashing after red and remembering an episode on green is a viable memory hygiene pattern here (repeated passes).",
+  "Restricting writeScope to src/** did not block successful fixes for this task family (repeated passes).",
+  "decision-ready escalation mode co-occurred with passes; no escalation issues observed."
+]

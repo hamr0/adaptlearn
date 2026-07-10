@@ -1,0 +1,19 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-09T12:34:21.280Z"}
+{"type":"run-start","capRuns":4,"close":"node --test /tmp/m6-cohort-dQtNOb/g1-gated-rules-L0/src/bytes.test.mjs","seq":2,"ts":"2026-07-09T12:34:21.281Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-09T12:34:21.281Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":2,"iteration":1,"seq":4,"ts":"2026-07-09T12:34:21.283Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-09T12:34:21.287Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.0462755,"tokens":813,"seq":6,"ts":"2026-07-09T12:34:36.669Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-dQtNOb/g1-gated-rules-L0/src/bytes.mjs","seq":7,"ts":"2026-07-09T12:34:36.670Z"}
+{"type":"middle-done","iteration":1,"seq":8,"ts":"2026-07-09T12:34:36.670Z"}
+{"type":"close-verdict","iteration":1,"verdict":"needs_revision","gap":"TAP version 13\n# file:///tmp/m6-cohort-dQtNOb/g1-gated-rules-L0/src/bytes.mjs:1\n# formatBytes.mjs isn't quite — the requested file is `bytes.mjs`. Here are its complete contents:\n#                 ^^^\n# SyntaxError: Unexpected identifier 'isn'\n#     at compileSourceTextModule (node:internal/modules/esm/utils:346:16)\n#     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:107:18)\n#     at \\#translate (node:internal/modules/esm/loader:546:20)\n#     at afterLoad (node:internal/modules/esm/loader:596:29)\n#     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:601:12)\n#     at \\#createModuleJob (node:internal/modules/esm/loader:624:36)\n#     at \\#getJobFromResolveResult (node:internal/modules/esm/loader:343:34)\n#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:311:41)\n# Node.js v22.22.2\n# Subtest: /tmp/m6-cohort-dQtNOb/g1-gated-rules-L0/src/bytes.test.mjs\nnot ok 1 - /tmp/m6-cohort-dQtNOb/g1-gated-rules-L0/src/bytes.test.mjs\n  ---\n  duration_ms: 459.806018\n  type: 'test'\n  location: '/tmp/m6-cohort-dQtNOb/g1-gated-rules-L0/src/bytes.test.mjs:1:1'\n  failureType: 'testCodeFailure'\n  exitCode: 1\n  signal: ~\n  error: 'test failed'\n  code: 'ERR_TEST_FAILURE'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 508.568524\n","exitCode":1,"seq":9,"ts":"2026-07-09T12:34:37.533Z"}
+{"type":"iteration-start","iteration":2,"seq":10,"ts":"2026-07-09T12:34:37.533Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":2,"seq":11,"ts":"2026-07-09T12:34:37.533Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":2,"iteration":2,"seq":12,"ts":"2026-07-09T12:34:37.537Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":2,"seq":13,"ts":"2026-07-09T12:34:37.546Z"}
+{"type":"worker-result","iteration":2,"costUsd":0.0459585,"tokens":331,"seq":14,"ts":"2026-07-09T12:34:48.609Z"}
+{"type":"artifact-written","iteration":2,"path":"/tmp/m6-cohort-dQtNOb/g1-gated-rules-L0/src/bytes.mjs","seq":15,"ts":"2026-07-09T12:34:48.610Z"}
+{"type":"middle-done","iteration":2,"seq":16,"ts":"2026-07-09T12:34:48.610Z"}
+{"type":"close-verdict","iteration":2,"verdict":"satisfied","seq":17,"ts":"2026-07-09T12:34:49.489Z"}
+{"type":"run-end","outcome":"green","iterations":2,"seq":18,"ts":"2026-07-09T12:34:49.489Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":19,"ts":"2026-07-09T12:34:49.491Z"}

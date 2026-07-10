@@ -1,0 +1,12 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-09T12:53:37.930Z"}
+{"type":"run-start","capRuns":4,"close":"node --test /tmp/m6-cohort-dQtNOb/g5-gated-verbatim-L1/src/money.test.mjs","seq":2,"ts":"2026-07-09T12:53:37.931Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-09T12:53:37.931Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":2,"iteration":1,"seq":4,"ts":"2026-07-09T12:53:37.932Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-09T12:53:37.936Z"}
+{"type":"worker-plan","iteration":1,"costUsd":0.040267000000000004,"seq":6,"ts":"2026-07-09T12:53:49.284Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.0596685,"tokens":1049,"seq":7,"ts":"2026-07-09T12:54:09.592Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-dQtNOb/g5-gated-verbatim-L1/src/money.mjs","seq":8,"ts":"2026-07-09T12:54:09.592Z"}
+{"type":"middle-done","iteration":1,"seq":9,"ts":"2026-07-09T12:54:09.592Z"}
+{"type":"close-verdict","iteration":1,"verdict":"satisfied","seq":10,"ts":"2026-07-09T12:54:09.928Z"}
+{"type":"run-end","outcome":"green","iterations":1,"seq":11,"ts":"2026-07-09T12:54:09.928Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":12,"ts":"2026-07-09T12:54:09.928Z"}

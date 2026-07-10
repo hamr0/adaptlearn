@@ -1,0 +1,7 @@
+[
+  "refine loop with maxIterations 5 reached green for this task family; keep the cap at 5 until a run evidences exhausting all 5 iterations without passing",
+  "before-attempt recall of k=4 across code/doc/fact kinds plus signature-level compression supported a passing run; retain this recall and compression shape",
+  "budgetUsd 0.5 completed a passing run; do not raise the budget without evidence of a run exhausting it",
+  "writeScope restricted to src/** was sufficient; keep writes scoped to src/** unless a task evidences needing broader paths",
+  "after-red stash then on-green remember(episode) is a viable memory cycle; keep stashing failures and recording green episodes"
+]

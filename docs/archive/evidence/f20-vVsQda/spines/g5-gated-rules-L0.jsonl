@@ -1,0 +1,12 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-10T20:44:20.735Z"}
+{"type":"run-start","capRuns":3,"close":"node /home/hamr/PycharmProjects/adaptlearn/poc/m6-opaque-close.mjs /tmp/m6-cohort-vVsQda/g5-gated-rules-L0/src/money.test.mjs","seq":2,"ts":"2026-07-10T20:44:20.736Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-10T20:44:20.736Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":2,"iteration":1,"seq":4,"ts":"2026-07-10T20:44:20.738Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"verbatim","iteration":1,"seq":5,"ts":"2026-07-10T20:44:20.738Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.0101242,"tokens":1660,"seq":6,"ts":"2026-07-10T20:44:36.954Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-vVsQda/g5-gated-rules-L0/src/money.mjs","seq":7,"ts":"2026-07-10T20:44:36.955Z"}
+{"type":"middle-done","iteration":1,"seq":8,"ts":"2026-07-10T20:44:36.955Z"}
+{"type":"close-verdict","iteration":1,"verdict":"satisfied","seq":9,"ts":"2026-07-10T20:44:37.805Z"}
+{"type":"run-end","outcome":"green","iterations":1,"seq":10,"ts":"2026-07-10T20:44:37.805Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":11,"ts":"2026-07-10T20:44:37.806Z"}
+{"type":"config-final","config":{"schema":"v1","loop":{"shape":"refine","maxIterations":8},"memory":{"store":"litectx","recall":{"k":5,"kinds":["code","doc","fact","episode"]},"compressLevel":"verbatim"},"hooks":{"before-attempt":[{"op":"recall","k":5,"kinds":["code","doc","fact","episode"]},{"op":"compress","level":"verbatim"}],"after-red":[{"op":"stash"}],"on-green":[{"op":"remember","kind":"episode"}]},"gate":{"budgetUsd":1.5,"writeScope":["src/**"]},"escalation":{"mode":"decision-ready"}},"revised":false,"seq":12,"ts":"2026-07-10T20:44:37.806Z"}

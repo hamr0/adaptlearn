@@ -1,0 +1,32 @@
+{"type":"config-validate","ok":true,"reds":[],"seq":1,"ts":"2026-07-10T16:45:10.702Z"}
+{"type":"run-start","capRuns":3,"close":"node /home/hamr/PycharmProjects/adaptlearn/poc/m6-opaque-close.mjs /tmp/m6-cohort-vVsQda/g0-ungated-L1/src/dur.test.mjs","seq":2,"ts":"2026-07-10T16:45:10.705Z"}
+{"type":"iteration-start","iteration":1,"seq":3,"ts":"2026-07-10T16:45:10.705Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":1,"iteration":1,"seq":4,"ts":"2026-07-10T16:45:10.709Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":1,"seq":5,"ts":"2026-07-10T16:45:10.713Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.006442200000000001,"tokens":925,"seq":6,"ts":"2026-07-10T16:45:22.655Z"}
+{"type":"artifact-written","iteration":1,"path":"/tmp/m6-cohort-vVsQda/g0-ungated-L1/src/dur.mjs","seq":7,"ts":"2026-07-10T16:45:22.656Z"}
+{"type":"middle-done","iteration":1,"seq":8,"ts":"2026-07-10T16:45:22.657Z"}
+{"type":"close-verdict","iteration":1,"verdict":"needs_revision","gap":"close: 4 of 5 tests failing\n","exitCode":1,"seq":9,"ts":"2026-07-10T16:45:23.939Z"}
+{"type":"iteration-start","iteration":2,"seq":10,"ts":"2026-07-10T16:45:23.940Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":2,"seq":11,"ts":"2026-07-10T16:45:23.940Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":1,"iteration":2,"seq":12,"ts":"2026-07-10T16:45:23.942Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"signature","iteration":2,"seq":13,"ts":"2026-07-10T16:45:23.944Z"}
+{"type":"worker-result","iteration":2,"costUsd":0.0164942,"tokens":2935,"seq":14,"ts":"2026-07-10T16:45:51.745Z"}
+{"type":"artifact-written","iteration":2,"path":"/tmp/m6-cohort-vVsQda/g0-ungated-L1/src/dur.mjs","seq":15,"ts":"2026-07-10T16:45:51.746Z"}
+{"type":"middle-done","iteration":2,"seq":16,"ts":"2026-07-10T16:45:51.746Z"}
+{"type":"close-verdict","iteration":2,"verdict":"needs_revision","gap":"close: 4 of 5 tests failing\n","exitCode":1,"seq":17,"ts":"2026-07-10T16:45:52.743Z"}
+{"type":"iteration-start","iteration":3,"seq":18,"ts":"2026-07-10T16:45:52.743Z"}
+{"type":"stall-detected","iteration":3,"consecutiveReds":2,"seq":19,"ts":"2026-07-10T16:45:52.743Z"}
+{"type":"revision-accepted","iteration":3,"changedPaths":["hooks.before-attempt.0.k","hooks.before-attempt.0.kinds.2","hooks.before-attempt.1.level","hooks.on-green.1","loop.shape","memory.compressLevel","memory.recall.k","memory.recall.kinds.2"],"costUsd":0.130872,"seq":20,"ts":"2026-07-10T16:46:12.825Z"}
+{"type":"hook-op","slot":"after-red","op":"stash","iteration":3,"seq":21,"ts":"2026-07-10T16:46:12.826Z"}
+{"type":"hook-op","slot":"before-attempt","op":"recall","hits":3,"iteration":3,"seq":22,"ts":"2026-07-10T16:46:12.830Z"}
+{"type":"hook-op","slot":"before-attempt","op":"compress","level":"verbatim","iteration":3,"seq":23,"ts":"2026-07-10T16:46:12.830Z"}
+{"type":"worker-plan","iteration":3,"costUsd":0.012969999999999999,"seq":24,"ts":"2026-07-10T16:46:26.666Z"}
+{"type":"worker-result","iteration":3,"costUsd":0.042073,"tokens":6745,"seq":25,"ts":"2026-07-10T16:47:29.160Z"}
+{"type":"artifact-written","iteration":3,"path":"/tmp/m6-cohort-vVsQda/g0-ungated-L1/src/dur.mjs","seq":26,"ts":"2026-07-10T16:47:29.160Z"}
+{"type":"middle-done","iteration":3,"seq":27,"ts":"2026-07-10T16:47:29.160Z"}
+{"type":"close-verdict","iteration":3,"verdict":"satisfied","seq":28,"ts":"2026-07-10T16:47:30.068Z"}
+{"type":"run-end","outcome":"green","iterations":3,"seq":29,"ts":"2026-07-10T16:47:30.068Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":30,"ts":"2026-07-10T16:47:30.069Z"}
+{"type":"hook-op","slot":"on-green","op":"remember","seq":31,"ts":"2026-07-10T16:47:30.070Z"}
+{"type":"config-final","config":{"schema":"v1","loop":{"shape":"plan","maxIterations":5},"memory":{"store":"litectx","recall":{"k":8,"kinds":["code","fact","episode"]},"compressLevel":"verbatim"},"hooks":{"before-attempt":[{"op":"recall","k":8,"kinds":["code","fact","episode"]},{"op":"compress","level":"verbatim"}],"after-red":[{"op":"stash"}],"on-green":[{"op":"remember","kind":"episode"},{"op":"remember","kind":"fact"}]},"gate":{"budgetUsd":1.5,"writeScope":["src/**"]},"escalation":{"mode":"decision-ready"}},"revised":true,"seq":32,"ts":"2026-07-10T16:47:30.070Z"}

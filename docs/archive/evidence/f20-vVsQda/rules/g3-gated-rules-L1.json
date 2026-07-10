@@ -1,0 +1,7 @@
+[
+  "plan/6, refine/6, and refine/8 loop shapes have all gone green; neither loop shape nor iteration count is the deciding factor for this task family.",
+  "litectx memory with verbatim compression keeps passing; recall k of 8 or 12 (kinds up to code+fact+episode) both work, and verbatim compressLevel did not blow the budget.",
+  "before-attempt recall (k=8, episode+fact) followed by verbatim compress is a repeatedly viable pre-attempt hook sequence here.",
+  "Stashing on after-red and remembering an episode on-green is compatible with passing runs.",
+  "A 1.5 USD budget with writeScope limited to src/** and decision-ready escalation was again enough to complete the task."
+]

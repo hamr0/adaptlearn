@@ -1,0 +1,7 @@
+[
+  "A budget of $0.75 with a bounded 6-iteration refine loop was sufficient for this task family — keep the per-run cap tight and iterations bounded rather than open-ended.",
+  "Constrain writeScope to src/** ; the passing run needed no writes outside application source.",
+  "Run before-attempt recall (k=5 over code/doc/fact) plus signature-level compression — retrieved context at signature granularity was enough to pass.",
+  "Stash on after-red and remember an episode on-green — capturing failed attempts and successful outcomes supported convergence within the iteration budget.",
+  "Use decision-ready escalation so blocked runs surface a concrete choice rather than halting or guessing."
+]

@@ -1,0 +1,7 @@
+[
+  "A refine loop with maxIterations=6 was sufficient to reach green within a $1.50 budget on this task family.",
+  "Recalling k=6 memories across code, fact, and episode kinds before each attempt, then compressing at signature level, is compatible with passing.",
+  "Stashing context after red attempts and remembering an episode on green preserved useful state without blocking success.",
+  "Restricting writeScope to src/** did not prevent completion; the task family's edits fit within src/**.",
+  "litectx as memory store with signature-level compression worked for this run; no evidence higher fidelity was needed."
+]
