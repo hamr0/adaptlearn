@@ -185,5 +185,9 @@ export async function interpret(configRaw, { task, target, close, workdir, capRu
       emit('retention-red', { category: 'retention-red', detail: String(e.message || e) });
     }
   }
+  // F18: the run-as-executed record. A mid-run revision (M5) changes `config`;
+  // without this event the revised config dies with the run and every
+  // inheritance channel reads only the config-as-authored.
+  emit('config-final', { config, revised });
   return outcome;
 }

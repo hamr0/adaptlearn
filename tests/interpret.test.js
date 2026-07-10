@@ -123,7 +123,16 @@ test('config maxIterations tightens the shell cap, never exceeds it', async () =
   short.loop.maxIterations = 2;
   const { outcome, events } = await run('tighten', short, { script: [{ text: BAD_SUM }], capRuns: 5 });
   assert.equal(outcome, 'escalated');
-  assert.equal(events.at(-1).iterations, 2, 'stopped at the config bound, under the shell cap');
+  assert.equal(events.findLast((e) => e.type === 'run-end').iterations, 2, 'stopped at the config bound, under the shell cap');
+});
+
+test('config-final on the spine carries the run-as-executed config (F18)', async () => {
+  const c = config();
+  const { events } = await run('config-final', c, { script: [{ text: GOOD_SUM }] });
+  const fin = events.findLast((e) => e.type === 'config-final');
+  assert.ok(fin, 'config-final emitted');
+  assert.equal(fin.revised, false);
+  assert.deepEqual(fin.config, c, 'no revision → executed config === authored config');
 });
 
 test('on-green hook failure → retention-red on the spine, but the green STANDS', async () => {

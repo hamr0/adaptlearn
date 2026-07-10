@@ -240,3 +240,34 @@ test('cap-halt verdicts stay their own category in the ledger', async () => {
   const r = await runCohort(base(s, { generations: 1, tasks: TASKS8.slice(0, 1), lineages: 1 }));
   assert.equal(r.ledger.find((x) => x.arm === 'fixed').verdict, 'cap-halt');
 });
+
+test("inherit='executed' passes the run-as-executed config into the lineage (F18)", async () => {
+  // the run "revises" itself: finalConfig differs from the authored config by
+  // an added recall kind — under executed inheritance the NEXT gen's mutation
+  // parent must be the final config; under authored (default) it must not be
+  const revised = seed();
+  revised.memory.recall.kinds = [...revised.memory.recall.kinds, 'code'];
+  for (const [mode, expectInherited] of [['executed', true], ['authored', false]]) {
+    const s = stubs({ outcome: () => ({ verdict: 'green', iterations: 3, costUsd: 0.1, finalConfig: revised }) });
+    await runCohort(base(s, { inherit: mode, generations: 2, tasks: TASKS8.slice(0, 2), lineages: 1 }));
+    const g1Ungated = s.calls.runOnce.find((c) => c.arm === 'ungated' && c.gen === 1);
+    const parentHadCode = g1Ungated.config.memory.recall.kinds.includes('code')
+      || JSON.stringify(g1Ungated.config).includes('"code"');
+    assert.equal(parentHadCode, expectInherited, `inherit=${mode}: g1 ungated parent ${expectInherited ? 'must' : 'must not'} carry the run-time acquisition`);
+    // gated-rules extraction must also see the executed config in executed mode
+    const ex = s.calls.extract.find((c) => c.arm === 'gated-rules' && c.gen === 0);
+    assert.equal(ex.config.memory.recall.kinds.includes('code'), mode === 'executed');
+  }
+});
+
+test("inherit='executed' without a finalConfig falls back to the authored config", async () => {
+  const s = stubs({ outcome: () => ({ verdict: 'green', iterations: 1, costUsd: 0.1 }) });
+  const r = await runCohort(base(s, { inherit: 'executed', generations: 2, tasks: TASKS8.slice(0, 2), lineages: 1 }));
+  assert.equal(r.truncated, false);
+  assert.ok(r.ledger.every((row) => !('executedHash' in row) || row.executedHash === undefined || typeof row.executedHash === 'string'));
+});
+
+test('unknown inherit mode is a programmer error', async () => {
+  const s = stubs();
+  await assert.rejects(() => runCohort(base(s, { inherit: 'both' })), /inherit/);
+});

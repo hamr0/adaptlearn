@@ -11,6 +11,18 @@ Post-archive continuation track — the experiment record stays closed; this sec
 the successor-product groundwork living in this repo until the new repo is cut.
 
 ### Added
+- **F19 attempt-4 + F20 successor-POC pre-registrations, with machinery:** `--no-revision`
+  launcher flag (F19: revision off → cross-run search is the only discovery path; the §1
+  gated-vs-ungated claim finally gets a valid instrument) and `--inherit executed` (F20:
+  run-as-executed inheritance — new `config-final` spine event in interpret, `inherit` option
+  in runCohort, per-cell configs-final/ persistence for resume). Declared instrument fix: the
+  `memory.recall.kinds` mutation axis is now grow-first (shrink-first made a missing kind
+  unreachable from any multi-kind parent — F13's mirror, V5 pre-flight applied). Both
+  conditions stamped in condition.json; resume refuses mismatches. Tests 122/122.
+- **F18 addendum (zero tokens):** attempt-2 world re-read under the acquisition lens — all 52
+  greens blind (close-teaching), confirming F14 as a real, distinct masker. V2 retro-count:
+  the episode-knob contrast bit was ledger-visible in 16/16 generations of SP-1 + SP-3 with
+  perfect green@1 separation — the credit gap is extractor-visibility, never missing signal.
 - **SP-3 results + retroactive re-read (F17 results, F18, PRD v1.5.4):** SP-3 complete
   ($12.93). Q1 held (fixed 16/16 green@1, $0.030); Q2 failed as written; the pre-registered
   V1 leak search identified the real masker — **in-run acquisition via M5 revision + seeded

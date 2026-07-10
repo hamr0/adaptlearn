@@ -84,13 +84,19 @@ test('absent optional scalar is added at the first menu value (one knob)', () =>
   assert.deepEqual(diffPaths(parent, mutant), ['loop.maxIterations']);
 });
 
-test('kinds ping-pongs by one element: shrink from multi, grow from single', () => {
+test('kinds grows first (first missing in KINDS order), shrinks only when full', () => {
   const parent = valid(); // kinds ["fact","episode"]
-  assert.deepEqual(mutate(parent, 'memory.recall.kinds').memory.recall.kinds, ['fact']);
-  parent.memory.recall.kinds = ['fact'];
   const grown = mutate(parent, 'memory.recall.kinds').memory.recall.kinds;
-  assert.equal(grown.length, 2);
-  assert.equal(grown[0], 'fact'); // grows by append — never reorders (one knob)
+  assert.deepEqual(grown, ['fact', 'episode', 'code']); // append-only — never reorders (one knob)
+  parent.memory.recall.kinds = ['code', 'doc', 'fact', 'episode']; // full set
+  assert.deepEqual(mutate(parent, 'memory.recall.kinds').memory.recall.kinds, ['code', 'doc', 'fact']);
+});
+
+test('kinds reachability (F19): every kind — episode included — is reachable from a 3-kind parent', () => {
+  const parent = valid();
+  parent.memory.recall.kinds = ['code', 'doc', 'fact']; // the typical authored config
+  const grown = mutate(parent, 'memory.recall.kinds').memory.recall.kinds;
+  assert.ok(grown.includes('episode'), 'one mutation must reach the winning knob');
 });
 
 test('slot axes toggle: non-empty removes last op, empty adds the canonical op', () => {

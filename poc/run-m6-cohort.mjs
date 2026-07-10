@@ -58,6 +58,16 @@ const tsAt = process.argv.indexOf('--task-set');
 const TASK_SET = tsAt !== -1 ? process.argv[tsAt + 1] : 'm6';
 assert.ok(['m6', 'sp3'].includes(TASK_SET), `unknown task set: ${TASK_SET}`);
 const { TASKS } = await import(TASK_SET === 'sp3' ? './sp3-tasks.mjs' : './m6-tasks.mjs');
+// F19 (attempt 4): --no-revision removes M5 from every arm — cross-run search
+// (mutation / rules-seeded authorship) becomes the ONLY discovery path, so the
+// verdict axis can finally carry the gated-vs-ungated claim (F18: in-run
+// acquisition was the masker in every prior cohort).
+const NO_REVISION = process.argv.includes('--no-revision');
+// F20 (successor POC #1): --inherit executed passes the run-as-executed config
+// (post-revision) into the lineage; default 'authored' is the original semantics.
+const inhAt = process.argv.indexOf('--inherit');
+const INHERIT = inhAt !== -1 ? process.argv[inhAt + 1] : 'authored';
+assert.ok(['authored', 'executed'].includes(INHERIT), `unknown inherit mode: ${INHERIT}`);
 
 const require = createRequire(import.meta.url);
 const { Loop, HaltError } = require('bare-agent');
@@ -126,7 +136,7 @@ const resumeAt = process.argv.indexOf('--resume');
 const work = resumeAt !== -1 ? process.argv[resumeAt + 1] : mkdtempSync(join(tmpdir(), 'm6-cohort-'));
 assert.ok(work && existsSync(work), `world dir missing: ${work}`);
 const CLI_HOME = join(work, 'cli-home');
-for (const d of ['cli-home', 'configs', 'rules']) mkdirSync(join(work, d), { recursive: true });
+for (const d of ['cli-home', 'configs', 'configs-final', 'rules']) mkdirSync(join(work, d), { recursive: true });
 
 // merged prior ledgers, last row per (gen,arm,lineage) wins; outage rows never replay
 const cache = new Map();
@@ -163,10 +173,12 @@ if (existsSync(condFile)) {
   const prior = JSON.parse(readFileSync(condFile, 'utf8'));
   assert.equal(prior.workerModel ?? null, WORKER_MODEL, `condition mismatch: world ran workerModel=${prior.workerModel}, flag says ${WORKER_MODEL} — same-condition resume only`);
   assert.equal(prior.taskSet ?? 'm6', TASK_SET, `condition mismatch: world ran taskSet=${prior.taskSet ?? 'm6'}, flag says ${TASK_SET} — same-condition resume only`);
+  assert.equal(prior.revision ?? 'on', NO_REVISION ? 'off' : 'on', `condition mismatch: world ran revision=${prior.revision ?? 'on'} — same-condition resume only`);
+  assert.equal(prior.inherit ?? 'authored', INHERIT, `condition mismatch: world ran inherit=${prior.inherit ?? 'authored'} — same-condition resume only`);
 } else {
-  writeFileSync(condFile, JSON.stringify({ workerModel: WORKER_MODEL, taskSet: TASK_SET }, null, 2));
+  writeFileSync(condFile, JSON.stringify({ workerModel: WORKER_MODEL, taskSet: TASK_SET, revision: NO_REVISION ? 'off' : 'on', inherit: INHERIT }, null, 2));
 }
-if (WORKER_MODEL || TASK_SET !== 'm6') console.log(`condition: worker model ${WORKER_MODEL ?? 'CLI default'} (author/extract/revisor on CLI default), task set ${TASK_SET}\n`);
+if (WORKER_MODEL || TASK_SET !== 'm6' || NO_REVISION || INHERIT !== 'authored') console.log(`condition: worker model ${WORKER_MODEL ?? 'CLI default'} (author/extract/revisor on CLI default), task set ${TASK_SET}, revision ${NO_REVISION ? 'OFF' : 'on'}, inherit ${INHERIT}\n`);
 
 const sealed = (model = null) => new CLIPipeProvider({
   command: 'claude',
@@ -206,7 +218,12 @@ async function runOnce(ctx) {
   if (cached) {
     assert.equal(hash(config), cached.configHash, `resume drift at ${key(ctx)}: recomputed config differs from the ledger — same-condition resume only`);
     console.log(`  [${key(ctx)}] replay ${cached.verdict} @ ${cached.iterations} ($${cached.costUsd.toFixed(3)})`);
-    return { verdict: cached.verdict, iterations: cached.iterations, costUsd: cached.costUsd };
+    // executed-inheritance replay: the run-as-executed config was persisted at
+    // run time; without it a resumed lineage would silently fall back to the
+    // authored config and fork history
+    const finalSaved = join(work, 'configs-final', `${key(ctx)}.json`);
+    const finalConfig = existsSync(finalSaved) ? JSON.parse(readFileSync(finalSaved, 'utf8')) : null;
+    return { verdict: cached.verdict, iterations: cached.iterations, costUsd: cached.costUsd, finalConfig };
   }
   writeFileSync(join(work, 'configs', `${key(ctx)}.json`), JSON.stringify(config, null, 2));
   const t = TASKS[gen];
@@ -226,8 +243,10 @@ async function runOnce(ctx) {
       workdir, capRuns: CAP_RUNS, emit: makeSpine(spineFile), provider: sealed(WORKER_MODEL), shellCapUsd: 2,
       // a hung/failed revisor becomes a revision-red (run continues on the old
       // config), never an interpreter-red the harness didn't earn — but a gate
-      // HaltError still propagates as the cap-halt it is (F11 / §7b.3)
-      revisor: (o) => withTimeout(proposeRevision({ ...o, provider: sealed(), shellCapUsd: 2 }), 5 * 60_000, `revisor ${key(ctx)}`)
+      // HaltError still propagates as the cap-halt it is (F11 / §7b.3).
+      // F19: --no-revision omits the revisor entirely — no M5, no in-run
+      // acquisition; cross-run search is the only discovery path.
+      revisor: NO_REVISION ? null : (o) => withTimeout(proposeRevision({ ...o, provider: sealed(), shellCapUsd: 2 }), 5 * 60_000, `revisor ${key(ctx)}`)
         .catch((e) => {
           if (e instanceof HaltError) throw e;
           return { candidate: null, parseError: String(e.message ?? e), costUsd: 0 };
@@ -253,8 +272,11 @@ async function runOnce(ctx) {
       if (a === 'halt') throw new Error('operator halt on outage');
     }
     const revision = events.findLast((e) => e.type === 'revision-accepted');
+    // F18: persist the run-as-executed config so inherit=executed survives resume
+    const configFinal = events.findLast((e) => e.type === 'config-final')?.config ?? null;
+    if (configFinal) writeFileSync(join(work, 'configs-final', `${key(ctx)}.json`), JSON.stringify(configFinal, null, 2));
     console.log(`  [${key(ctx)}] ${verdict} @ ${end?.iterations ?? 0} (~$${costUsd.toFixed(3)})`);
-    return { verdict, iterations: end?.iterations ?? 0, costUsd: +costUsd.toFixed(4), revisionDiff: revision?.changedPaths };
+    return { verdict, iterations: end?.iterations ?? 0, costUsd: +costUsd.toFixed(4), revisionDiff: revision?.changedPaths, finalConfig: configFinal };
   }
 }
 
@@ -326,6 +348,7 @@ const result = await runCohort({
   tasks: TASKS.map((t) => ({ id: t.id, task: t.task })),
   seedConfig: SEED, generations: GENERATIONS, lineages: LINEAGES, budgetUsd: BUDGET_USD,
   runOnce, author, extractRules: extract, onEscalate, emit: cohortSpine,
+  inherit: INHERIT,
 });
 
 writeFileSync(join(work, 'cohort-result.json'), JSON.stringify(result, null, 2));

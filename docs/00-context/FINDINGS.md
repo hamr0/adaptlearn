@@ -755,3 +755,91 @@ lock demonstrated with zero credit loss on load-bearing terrain, and the success
 inheritance mechanism corrected before a line of it was written. No rerun (SP-3b) is
 registered: a revision-off cohort would manufacture verdict-axis separation we can already
 read mechanistically from the V6 class, at real token cost and no additional information.
+
+### F18 addendum — the remaining free re-reads: F14 confirmed distinct; the contrast bit was
+### in the ledger all along (2026-07-10, zero tokens)
+
+- **Attempt-2 world (`dQtNOb`, informative close) under the acquisition lens:** all 52 greens
+  are blind-greens — zero revision events, zero recall-hit jumps, and 0/62 configs
+  episode-wired at start. The workers greened from the close's teaching alone. **F14 stands as
+  a real and DISTINCT masker** (close-channel teaching), cleanly separated from F18's
+  acquisition masker by one lens: informative-close cohorts green without touching the store;
+  opaque-close cohorts green by acquiring it. (`uTY3nt`, the attempt-3 outage-halted world,
+  matches the acquisition pattern as expected.)
+- **V2 retro-validation PASSED — and sharpened the design law.** The contrast bit for the
+  episode-recall knob (bit = some with-knob run green@1 ∧ some without-knob run not-green@1,
+  same gen, ledger-computable) was present in **16/16 generations across SP-1 and SP-3**, with
+  perfect separation: with-knob green@1 in every generation, without-knob green@1 = 0 in both
+  worlds. The which-knob signal ALWAYS existed in the ledger — including SP-1 g0, where the
+  credit was lost anyway. The credit-attribution gap was never a missing-signal problem; it is
+  an extractor-visibility problem (the extractor reads its own run only, never the ledger).
+  V2's successor rule is confirmed implementable: bits are countable from the ledger alone.
+
+## F19 — ATTEMPT-4 PRE-REGISTRATION: the original claim on a valid instrument (revision OFF ×
+## idiosyncratic conventions, results pending)
+
+F18 established that in-run acquisition (M5 + seeded store) masked the verdict axis in every
+prior cohort. Attempt 4 removes it: **cross-run search becomes the only discovery path**, and
+the gated-vs-ungated claim (§1) gets its first read on an instrument where it can express.
+Registered before launch; go: hamr, 2026-07-10.
+
+**Condition (one knob vs SP-3):** `--no-revision` — the revisor is omitted from every arm
+(interpret runs M2-style; no stall revision). Everything else SP-3 verbatim: sp3 idiosyncratic
+tasks, haiku worker, opaque close, capRuns 3, 4 arms × 2 lineages × 8 gens, $38 stop, fresh
+world, condition-stamped (`revision: off`). **Declared instrument fix (filed, not silent):**
+the mutation catalog's `memory.recall.kinds` axis was shrink-first, making a missing kind
+unreachable from any multi-kind parent — the winning knob sat outside the catalog's reach,
+F13's mirror (V5's pre-flight, applied). Now grow-first (add first missing kind in KINDS
+order; still deterministic, still one knob): episode is one kinds-mutation away from the
+typical `[code,doc,fact]` authored config.
+
+**Registered predictions:**
+- **P1 (floor):** fixed stays ≥ 0.75 green, all @1 — revision was never load-bearing for the
+  episode-wired config (it never stalls).
+- **P2 (the F18 mechanism claim):** genuinely blind greens stay ≤ SP-3's residue (~0.03);
+  learning-arm greens occur ONLY in cells whose config carries episode recall at authorship
+  (via mutation or rules-seeded authorship). Blind cells cap-halt.
+- **P3 (the §1 claim, at last):** after a lineage's first episode-wired green, gated arms
+  retain it (post-discovery green rate ≥ 0.75) and ungated does not reliably (verdict-blind
+  inheritance keeps mutating regardless of outcome); late-half green-rate gap
+  (gated − ungated) ≥ +0.25.
+- **Symmetric commitments:** (a) ¬P1 → instrument invalid, no claim either way; (b) P1 ∧ ¬P2 →
+  another in-run path exists → V1 leak-search order before any conclusion; (c) P1 ∧ P2 ∧ ¬P3 →
+  **the gate is not load-bearing on a valid instrument — the original archive verdict is
+  CONFIRMED CLEAN; record it and never reopen**; (d) P1 ∧ P2 ∧ P3 → the archived claim was
+  masked, not false — the archive verdict stands (it was correct on its evidence), the record
+  gains the annotation, and the successor builds on gated inheritance with confidence.
+
+**Results:** PENDING.
+
+## F20 — SUCCESSOR POC #1 PRE-REGISTRATION: run-as-executed inheritance (inherit=executed,
+## results pending)
+
+The F18 design law — inherit the run-as-executed, never the run-as-authored — is untested
+inference until this runs. This is the successor product's M3-class kill-switch, run on
+adaptlearn machinery before the new repo is cut. Registered before launch; go: hamr,
+2026-07-10.
+
+**Condition (one knob vs SP-3):** `--inherit executed` — runOnce returns the config the run
+ENDED with (new `config-final` spine event; persisted per cell for resume); ungated and
+gated-verbatim inherit it, gated-rules extracts from it. Revision stays ON (the point: in-run
+learning must be able to enter the lineage). Everything else SP-3 verbatim; condition-stamped
+(`inherit: executed`).
+
+**Registered predictions:**
+- **P1 (transmission — the kill-switch):** after a lineage's first feedback-acquired green,
+  its next generation starts episode-wired; feedforward greens (V6 class) appear in ungated
+  and gated-verbatim by the cohort's second half. If ¬P1, run-as-executed inheritance does not
+  transmit and the successor's core mechanism needs redesign BEFORE the product is built.
+- **P2 (rank evidence only):** arms that lock trend toward fixed-arm cost-to-green (~$0.03 vs
+  ~$0.24 acquisition path).
+- **P3 (the gate's role, restated for executed inheritance):** ungated inherits from cap-halt
+  and red runs too — predicted drift/junk accumulation and occasional loss of the acquired
+  knob; gated-verbatim (green ∧ cheaper only) locks cleaner. Discriminator:
+  retention-after-first-acquisition rate, gated ≥ ungated.
+- **Symmetric commitments:** ¬P1 → successor mechanism redesign (hard stop on the product's
+  inheritance story); P1 ∧ ¬P3 → the gate adds nothing even under executed inheritance —
+  successor leans on HITL verdict classes and hard-green attribution instead of gate-based
+  selection.
+
+**Results:** PENDING.

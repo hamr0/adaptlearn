@@ -45,7 +45,11 @@ const nextNudge = (nudges) => {
  * @param {number} opts.lineages independent lineages per arm
  * @param {number} opts.budgetUsd cumulative stop-rule across ALL cohort spend
  * @param {(ctx: {config: object, task: object, arm: string, lineage: number, gen: number})
- *   => Promise<{verdict: 'green'|'red'|'cap-halt', iterations: number, costUsd: number}>} opts.runOnce
+ *   => Promise<{verdict: 'green'|'red'|'cap-halt', iterations: number, costUsd: number,
+ *   finalConfig?: object}>} opts.runOnce finalConfig = the run-as-executed config
+ *   (post-M5-revision); consumed only under inherit='executed'
+ * @param {'authored'|'executed'} [opts.inherit] which config enters the lineage:
+ *   the one the run started with (default, original M6) or the one it ended with (F18)
  * @param {(ctx: {task: object, arm: string, lineage: number, gen: number, rules?: string[],
  *   example?: object, nudgeAxis?: string})
  *   => Promise<{config: object|null, valid: boolean, reds: Array<object>, costUsd: number}>} opts.author
@@ -59,7 +63,11 @@ const nextNudge = (nudges) => {
 export async function runCohort({
   tasks, seedConfig, generations, lineages, budgetUsd,
   runOnce, author, extractRules, onEscalate, emit,
+  inherit = 'authored',
 }) {
+  if (!['authored', 'executed'].includes(inherit)) {
+    throw new Error(`inherit must be 'authored' or 'executed' (got ${inherit})`);
+  }
   if (!Array.isArray(tasks) || tasks.length !== generations) {
     throw new Error(`tasks must have exactly one instance per generation (got ${tasks?.length}, need ${generations})`);
   }
@@ -143,20 +151,29 @@ export async function runCohort({
         row.iterations = r.iterations;
         row.costUsd += r.costUsd;
 
+        // F18: inherit='executed' reads the run-as-executed — the config the run
+        // ENDED with (post-M5-revision, from runOnce's finalConfig) — so in-run
+        // learning can enter the lineage. 'authored' (default) is the original
+        // M6 semantics: the revised config dies with the run.
+        const heir = inherit === 'executed' ? (r.finalConfig ?? config) : config;
+        if (inherit === 'executed' && r.finalConfig && hash(r.finalConfig) !== row.configHash) {
+          row.executedHash = hash(r.finalConfig);
+        }
+
         if (arm === 'gated-rules' && r.verdict === 'green') {
-          const ex = await extractRules({ config, task, arm, lineage, gen, priorRules: s.rules });
+          const ex = await extractRules({ config: heir, task, arm, lineage, gen, priorRules: s.rules });
           row.costUsd += ex.costUsd;
           s.rules = ex.rules;
-          s.lastGreen = config;
+          s.lastGreen = heir;
         }
 
         // -- selection: code, not judgment --
         if (arm === 'ungated') {
-          s.parent = config; // verdict-blind, unconditional
-          s.parentHash = row.configHash;
+          s.parent = heir; // verdict-blind, unconditional
+          s.parentHash = row.executedHash ?? row.configHash;
         } else if (arm === 'gated-verbatim' && r.verdict === 'green') {
           if (s.lastGreen === null || row.costUsd < s.parentCost) {
-            s.lastGreen = config; // green ∧ strictly cheaper (or first green)
+            s.lastGreen = heir; // green ∧ strictly cheaper (or first green)
             s.parentCost = row.costUsd;
           }
         }

@@ -1,7 +1,8 @@
 // M6 mutation catalog — one knob at a time over schema v1's free axes (design
 // docs/plans/2026-07-09-m6-inheritance-selection-design.md). Deterministic, no
-// randomness: scalar axes cycle fixed menus; list-valued axes (kinds, slots)
-// ping-pong by a single add/remove-last so every transition is exactly one
+// randomness: scalar axes cycle fixed menus; kinds grows first (add first
+// missing, shrink only when full — F19 reachability), slots ping-pong by a
+// single add/remove-last; every transition is exactly one
 // diffPaths knob (array-index diffs count individually). Menus bind to
 // validator/litectx exports, never to copies (F5/F9: mirror enforcement).
 //
@@ -78,11 +79,14 @@ export function mutate(parent, axis) {
   }
 
   if (axis === 'memory.recall.kinds') {
+    // Grow-first (F18/F19): add the first missing kind in KINDS order; shrink
+    // only when full. The old shrink-first rule made a missing kind unreachable
+    // from any multi-kind parent — the winning knob sat outside the catalog's
+    // reach (F13's mirror). Still deterministic, still exactly one diffPaths knob.
     c.memory.recall = c.memory.recall ?? {};
     const kinds = c.memory.recall.kinds ?? [];
-    c.memory.recall.kinds = kinds.length > 1
-      ? kinds.slice(0, -1)
-      : [...kinds, ...KINDS.filter((k) => !kinds.includes(k)).slice(0, 1)];
+    const missing = KINDS.filter((k) => !kinds.includes(k));
+    c.memory.recall.kinds = missing.length > 0 ? [...kinds, missing[0]] : kinds.slice(0, -1);
     return c;
   }
 
