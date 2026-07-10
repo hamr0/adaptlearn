@@ -51,7 +51,13 @@ import { runCohort, ARMS } from '../src/cohort.js';
 import { extractRules } from '../src/extract.js';
 import { proposeRevision } from '../src/revise.js';
 import { renderCatalog } from '../src/author.js';
-import { TASKS } from './m6-tasks.mjs';
+// SP-3 (F17): --task-set sp3 swaps in the idiosyncratic-conventions instances
+// (guessability probe); default stays the registered m6 set. Stamped into the
+// world's condition.json; resume refuses a mismatch.
+const tsAt = process.argv.indexOf('--task-set');
+const TASK_SET = tsAt !== -1 ? process.argv[tsAt + 1] : 'm6';
+assert.ok(['m6', 'sp3'].includes(TASK_SET), `unknown task set: ${TASK_SET}`);
+const { TASKS } = await import(TASK_SET === 'sp3' ? './sp3-tasks.mjs' : './m6-tasks.mjs');
 
 const require = createRequire(import.meta.url);
 const { Loop, HaltError } = require('bare-agent');
@@ -156,10 +162,11 @@ const condFile = join(work, 'condition.json');
 if (existsSync(condFile)) {
   const prior = JSON.parse(readFileSync(condFile, 'utf8'));
   assert.equal(prior.workerModel ?? null, WORKER_MODEL, `condition mismatch: world ran workerModel=${prior.workerModel}, flag says ${WORKER_MODEL} — same-condition resume only`);
+  assert.equal(prior.taskSet ?? 'm6', TASK_SET, `condition mismatch: world ran taskSet=${prior.taskSet ?? 'm6'}, flag says ${TASK_SET} — same-condition resume only`);
 } else {
-  writeFileSync(condFile, JSON.stringify({ workerModel: WORKER_MODEL }, null, 2));
+  writeFileSync(condFile, JSON.stringify({ workerModel: WORKER_MODEL, taskSet: TASK_SET }, null, 2));
 }
-if (WORKER_MODEL) console.log(`condition: worker model pinned to ${WORKER_MODEL} (author/extract/revisor on CLI default)\n`);
+if (WORKER_MODEL || TASK_SET !== 'm6') console.log(`condition: worker model ${WORKER_MODEL ?? 'CLI default'} (author/extract/revisor on CLI default), task set ${TASK_SET}\n`);
 
 const sealed = (model = null) => new CLIPipeProvider({
   command: 'claude',

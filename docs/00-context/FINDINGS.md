@@ -609,3 +609,35 @@ cents"). Isolates guessability — the rewritten map predicts: blind recovery co
 tier, discovery becomes note-only, green@1 contrast becomes dramatic, and codification locks.
 If inheritance STILL doesn't lock with the credit signal present, the mechanism itself is in
 question — that would be the honest kill.
+
+## F17 — SP-3 PRE-REGISTRATION: the guessability probe (idiosyncratic conventions, results pending)
+
+Tests the F16 rewritten map directly: masking = regularities within iterative reach at the
+cap. SP-3 moves the regularities OUT of reach and predicts the mask lifts. Go: hamr, 2026-07-10.
+
+**Condition (one knob vs SP-1):** task set `poc/sp3-tasks.mjs` via `--task-set sp3` — the same
+eight function shapes, every house convention replaced with an IDIOSYNCRATIC rule (arbitrary
+tokens and prior-inversions: a 128ms tick unit, lowercase-only units, middle-dot byte format
+with "empty" zero, single-quote CSV with lowercased unquoted fields, descending ranges with
+valid reversed spans, major.minor-only version compare with ignored pre-release, Swiss
+apostrophe money with a trailing-DR negative, appended-zero color shorthand with required "#",
+dotted lowercase all-parts initials). Notes remain the ONLY path to these rules. Everything
+else SP-1 verbatim: haiku worker via CLI, opaque close, capRuns 3, 4 arms × 2 lineages × 8
+gens, $38 stop, fresh world, condition-stamped.
+
+**Registered predictions:**
+- **Q1 (floor):** the fixed arm (episode-wired) stays ≥ 0.75 green — the notes suffice to
+  implement the rules. Below that: tasks too hard even with notes → instrument invalid, STOP.
+- **Q2 (the map's core prediction):** no-episode configs collapse to ≤ 0.25 total green
+  (SP-1: 0.80) — blind iteration cannot reach arbitrary tokens.
+- **Q3 (discovery locks):** any lineage that wires episode-recall and greens RETAINS it in
+  every subsequent generation (the attempt-3 lock pattern) — with unguessable rules the green
+  is dramatic (@1 vs capped), so codification has signal. If discovery happens in the first
+  half, gated arms late beat ungated late by ≥ +0.25.
+- **Symmetric commitments:** (a) ¬Q1 → instrument invalid, no map claim either way; (b) Q1 ∧
+  ¬Q2 → the F16 rewrite is ALSO wrong — guessability was not the variable; file it and stop
+  probing, the product leans on hard-green attribution only; (c) Q1 ∧ Q2 ∧ discovery-happens ∧
+  ¬lock → the credit-attribution gap is deeper than F16's account (signal present, still no
+  lock) — the mechanism needs redesign before the product trusts inheritance.
+
+**Results:** PENDING.
