@@ -7,8 +7,27 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-Post-archive continuation track — the experiment record stays closed; this section carries
-the successor-product groundwork living in this repo until the new repo is cut.
+(nothing — the record is closed; anything after 0.11.0 belongs to the successor's repo)
+
+## [0.11.0] — 2026-07-10 — VINDICATION RELEASE (post-archive probes complete)
+
+Also in this release: README epilogue (the post-archive story, F16–F20); successor design
+doc final amendments (run-as-executed inheritance, gate stance, attribution, V3–V6);
+**successor seed PRD** at `docs/01-product/successor-product-prd-draft.md` — the starting
+document for the new repo (claim, design laws, verdict classes, job #1, N0–N6 ladder).
+
+**The archived claim was masked, not false.** The post-archive probe track (SP-1 → SP-3 →
+F18 re-read → F19/F20) identified the masker that saturated every M6 cohort — **in-run
+acquisition**: M5 mid-run revision reaching the seeded store gave every arm run-time access
+to the regularities, so the run-level verdict could never separate cross-run inheritance.
+F15's "worker prior" and F16's "guessability" were two misattributions of this one mechanism,
+produced by a config-as-authored analysis lens blind to revision. On the first valid
+instrument (F19: revision off × idiosyncratic conventions), **verdict-gated inheritance beat
+ungated categorically: late green 1.00 (both gated arms) vs 0.13** — commitment (d) fired.
+The archive verdict stands (correct on its evidence); this release annotates it. F20 passed
+the successor's kill-switch: run-as-executed inheritance transmitted in-run acquisitions to
+6/6 lineages across the exact generation boundary where F16 watched credit die, halving
+cohort cost. The record is closed twice over; the successor's core mechanism is de-risked.
 
 ### Added
 - **F19 + F20 results (PRD v1.5.5 — the claim expresses; the record closes twice over):**

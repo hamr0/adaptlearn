@@ -13,7 +13,7 @@
 <p align="center">
   <img src="https://img.shields.io/github/package-json/v/hamr0/adaptlearn?label=version&color=2a4f8c" alt="version (auto from package.json)">
   <img src="https://img.shields.io/badge/license-Apache%202.0-2a4f8c" alt="license: Apache 2.0">
-  <img src="https://img.shields.io/badge/status-ARCHIVED%20·%20boundary%20mapped-6a6a6a" alt="status">
+  <img src="https://img.shields.io/badge/status-ARCHIVED%20·%20claim%20vindicated%20post--archive-2a7a4f" alt="status">
 </p>
 
 **An experiment: can an agent's *harness* — not its plan, not its code — be an emergent artifact that improves across runs?**
@@ -93,13 +93,48 @@ cost: **weaker or cheaper workers, tighter budgets, and regularities a model can
 **The verdict: ARCHIVED** (2026-07-10, v0.10.0) — by the rule this experiment set for itself
 before it started. The bar was pass/fail separation under an honest instrument; three attempts
 exhausted every excuse; the gate didn't separate. The mechanism works, the claim is *bounded*
-rather than proven, and the boundary is the deliverable. A successor experiment in the
-unmasked regime (weak workers, tight caps) would be a new ladder, not a fourth attempt.
+rather than proven, and the boundary is the deliverable.
+
+## Epilogue — the post-archive probes vindicated the claim (v0.11.0)
+
+The archive verdict said "nothing left to blame." A same-day post-archive probe track
+(F16–F20, ~$45, the record never reopened) found there *was* something left to blame — and it
+was ours all along.
+
+**The real masker was in-run acquisition.** Every run carried a mid-run revisor (M5) and a
+note store seeded with the answers. Blind configs didn't guess the house rules and didn't
+need inherited memory: they failed twice, *rewrote their own config to recall the notes*, and
+passed on attempt three — inside every single run, in every cohort. The spine evidence is
+unambiguous (fail → fail → revise-to-recall → hits jump → pass), and re-reading the archived
+worlds with that lens showed "worker prior" (attempt 3) and "guessability" (SP-1) were two
+misattributions of this one mechanism. Ashby's two-loop diagnosis: the fast loop (within-run
+fixing) absorbed everything the slow loop (cross-run inheritance) was supposed to learn — so
+the scoreboard could never see the slow loop at all.
+
+**Attempt 4 (F19): revision off, unguessable conventions — the first valid instrument.** The
+result, pre-registered and categorical: **gated arms late 1.00 (both representations),
+ungated late 0.13.** Failures never enter a gated lineage; greens lock. Ungated dragged its
+failed config forward verdict-blind for eight generations and never escaped. **The archived
+claim was masked, not false** — verdict-gated inheritance beats ungated on the one scoreboard
+this project allowed, once its own machinery stops handing every arm the answer.
+
+**And the fix for the credit-loss problem (F20):** inherit the config a run *ended* with
+(post-revision) instead of the one it *started* with, and in-run learning survives into the
+lineage — 6/6 lineages transmitted across the exact boundary where it always died before, at
+roughly half the cohort cost. That mechanism — run-as-executed inheritance, verdict-gated,
+with ledger-counted contrast attribution — is the core of the successor product this repo's
+findings now seed.
+
+A footnote for the curious: the diagnosis was materially helped by 1948–1972 cybernetics
+(Ashby, Conant, Beer), mapped in
+[docs/00-context/CYBERNETICS.md](docs/00-context/CYBERNETICS.md) — including the
+pre-registered reading rule that stopped us from mis-concluding a second time.
 
 Full numbers, prediction scorecards, and the no-papering-over log:
-[docs/00-context/FINDINGS.md](docs/00-context/FINDINGS.md) (F1–F15). Governing spec:
-[docs/01-product/adaptlearn-prd.md](docs/01-product/adaptlearn-prd.md) (v1.5, closed —
-verdict and boundary map in §7d).
+[docs/00-context/FINDINGS.md](docs/00-context/FINDINGS.md) (F1–F20). Governing spec:
+[docs/01-product/adaptlearn-prd.md](docs/01-product/adaptlearn-prd.md) (v1.5.5, closed —
+archive verdict in §7d, vindication note at the top). Successor seed:
+[docs/01-product/successor-product-prd-draft.md](docs/01-product/successor-product-prd-draft.md).
 
 ---
 

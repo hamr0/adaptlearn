@@ -120,6 +120,55 @@ SP-1 completed after this doc was first written; two results amend the design di
    rewritten map plus this attribution fix; if inheritance still fails to lock WITH contrast
    present, the mechanism itself is in question.
 
+## Post-SP-3/F18/F19/F20 amendments (2026-07-10 evening — the probe track's final word)
+
+The full probe track concluded after the section above was written; four results amend the
+design, two of them corrections to amendments above:
+
+1. **The masker was in-run acquisition, not guessability (F18) — amendment 1 above is itself
+   superseded.** SP-3's spine evidence + retroactive re-reads of every archived world showed
+   the dominant mechanism in ALL cohorts: blind configs used mid-run revision (M5) to acquire
+   episode-recall from the seeded store inside the run. "Worker prior" (F15) and
+   "guessability" (F16) were misattributions from an analysis lens blind to revision. Genuine
+   blind guessing across all worlds: ~2–8%. Product consequences: (a) the payoff story
+   simplifies — memory/inheritance pays wherever the job's regularities are not in the
+   worker's prior, i.e. exactly the per-repo folklore job #1 targets; (b) any claim instrument
+   the product ever runs must meter or disable in-run revision (Ashby: the fast loop shadows
+   the slow loop).
+2. **Inherit the run-as-executed, never the run-as-authored (F18 design law; F20 KILL-SWITCH
+   PASSED).** Every adaptlearn inheritance channel read the config a run STARTED with; the
+   revised config died at run end — the structural root of the credit-attribution gap.
+   `inherit=executed` transmitted g0 in-run acquisitions to 6/6 lineages at g1 (the exact
+   boundary where F16 watched credit die) and halved cohort cost. This is now the product's
+   core inheritance mechanism, de-risked pre-repo.
+3. **The gate is load-bearing — proven at last (F19), with its role restated.** On the first
+   valid instrument (revision off × idiosyncratic conventions): gated late 1.00 vs ungated
+   late 0.13. The gate's two load-bearing semantics: failures never enter the lineage (failed
+   lineages re-draw authorship), greens lock. BUT under executed inheritance (F20) the gate
+   discriminator did not fire within 8 generations — ungated retained just as well. Product
+   stance: keep the verdict gate on lineage admission (it is cheap, and F19 shows the
+   authored-side risk is real), but the trust story leans on verdict classes + attribution,
+   and the gate's executed-side value (drift/fit-to-pass insurance) is a long-horizon claim
+   job #1 should measure, not assume.
+4. **Attribution is countable from the ledger (V2, validated retroactively).** Contrast bit =
+   some with-knob run green@1 ∧ some without-knob run not-green@1, same generation — present
+   16/16 generations in SP-1 + SP-3 with perfect separation, INCLUDING the generation where
+   credit was lost. The gap was extractor visibility, never missing signal. The product's
+   extractor reads the ledger (sibling standing), claims a knob only with ≥1 contrast bit,
+   and each inherited rule carries its minting evidence.
+5. **Also settled en route:** mutation-operator variety must be pre-flighted against the
+   config space (V5; the kinds axis was silently unable to reach the winning knob — F13's
+   mirror); lineage keys extend to any declared channel condition, not just worker path (V3;
+   SP-2's provider non-invariance generalized); HITL escalations travel a channel no emergent
+   component summarizes (V4). The cybernetics frame behind V1–V6:
+   `docs/00-context/CYBERNETICS.md`.
+
+**Pre-repo de-risking is COMPLETE.** Every mechanism the product depends on has now been
+demonstrated on a valid instrument: authorship parity (M4), revision recovery (M5), gated
+inheritance separating on verdict (F19), executed-inheritance transmission (F20), ledger
+attribution (V2). The seed PRD lives at `docs/01-product/successor-product-prd-draft.md`;
+the next commit that matters is in the new repo.
+
 ## Open questions (deliberately unresolved until the new repo's PRD)
 
 - Rules generalization: adaptlearn proved transmission within one task family; job #1 assumes
