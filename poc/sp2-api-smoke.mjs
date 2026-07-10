@@ -26,6 +26,8 @@ const require = createRequire(import.meta.url);
 const { AnthropicProvider } = require('bare-agent/providers');
 
 assert.ok(process.env.ANTHROPIC_API_KEY, 'set ANTHROPIC_API_KEY (env at runtime, never in the tree)');
+assert.ok(/^sk-[a-zA-Z0-9_-]{20,}$/.test(process.env.ANTHROPIC_API_KEY),
+  'ANTHROPIC_API_KEY looks like a placeholder — paste your real key (starts sk-ant-…)');
 
 const SEED = JSON.parse(readFileSync(new URL('../tests/fixtures/valid.json', import.meta.url), 'utf8'));
 const OPAQUE_CLOSE = new URL('./m6-opaque-close.mjs', import.meta.url).pathname;
