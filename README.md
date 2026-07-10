@@ -13,7 +13,7 @@
 <p align="center">
   <img src="https://img.shields.io/github/package-json/v/hamr0/adaptlearn?label=version&color=2a4f8c" alt="version (auto from package.json)">
   <img src="https://img.shields.io/badge/license-Apache%202.0-2a4f8c" alt="license: Apache 2.0">
-  <img src="https://img.shields.io/badge/status-M6%20complete%20·%20verdict%20pending-8a5a2a" alt="status">
+  <img src="https://img.shields.io/badge/status-ARCHIVED%20·%20boundary%20mapped-6a6a6a" alt="status">
 </p>
 
 **An experiment: can an agent's *harness* — not its plan, not its code — be an emergent artifact that improves across runs?**
@@ -90,10 +90,16 @@ at the given retry cap.* Informative test output and strong workers are two inst
 same masking. The regime where inheritance should become load-bearing on truth, not just
 cost: **weaker or cheaper workers, tighter budgets, and regularities a model can't guess.**
 
+**The verdict: ARCHIVED** (2026-07-10, v0.10.0) — by the rule this experiment set for itself
+before it started. The bar was pass/fail separation under an honest instrument; three attempts
+exhausted every excuse; the gate didn't separate. The mechanism works, the claim is *bounded*
+rather than proven, and the boundary is the deliverable. A successor experiment in the
+unmasked regime (weak workers, tight caps) would be a new ladder, not a fourth attempt.
+
 Full numbers, prediction scorecards, and the no-papering-over log:
 [docs/00-context/FINDINGS.md](docs/00-context/FINDINGS.md) (F1–F15). Governing spec:
-[docs/01-product/adaptlearn-prd.md](docs/01-product/adaptlearn-prd.md) (v1.4; the
-ladder-closing v1.5 edit lands with the verdict).
+[docs/01-product/adaptlearn-prd.md](docs/01-product/adaptlearn-prd.md) (v1.5, closed —
+verdict and boundary map in §7d).
 
 ---
 

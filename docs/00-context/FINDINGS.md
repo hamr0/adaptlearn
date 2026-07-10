@@ -483,3 +483,10 @@ because our tests leaked the answers (attempts 1–2), and finally because the A
 simply smart enough to guess the house rules within three blind tries (attempt 3). Learning
 happened and was inherited; on tasks this size, a strong worker just doesn't *need* it to
 pass — only to pass instantly and cheaply.
+
+### F15 verdict — ARCHIVED (hamr, 2026-07-10)
+
+The word is given: **archive**, per the pre-registered symmetric commitment. PRD v1.5 (§7d)
+closes the ladder with the boundary map; version 0.10.0 is the archive release. Every run in
+the denominator; no confident fake green anywhere in the record — the experiment ends the way
+it was designed to be allowed to.

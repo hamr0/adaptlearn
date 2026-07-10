@@ -18,6 +18,17 @@
 > M6 verdict is NOT taken in this amendment: the two pre-registered doors (archive on the
 > attempt-2 null vs one opaque-close attempt 3) are recorded in §7c and F14; whichever is
 > walked through closes the ladder explicitly. No change to claim, falsifier, shape, or budget.
+>
+> **v1.5 (2026-07-10, THE LADDER-CLOSING EDIT — F15): ARCHIVED.** Attempt 3 ran under the
+> declared opaque close ($18.02, complete, no exclusions) and the pre-registered symmetric
+> commitment fired: the gate does not separate on the claim axis with the leak closed
+> (gated-verbatim late 0.75 vs ungated late 0.88; gated-rules 0.88 ties ungated). Verdict:
+> **archive** (hamr, 2026-07-10). The claim is not falsified in general — it is BOUNDED, see
+> §7d: verdict-gated inheritance is masked wherever the environment's hidden regularities lie
+> within the worker's guessing reach at the given cap. The mechanism itself (discover → gate →
+> codify → transmit → stable first-try expression at ~10× lower cost) was demonstrated end to
+> end twice, in two close-verbosity conditions. The ladder is closed; no further attempts are
+> registered. Final spend: ~$46 of the ~$50 M2–M6 budget.
 
 **adaptlearn** is an experiment: can an agent's *harness* — not its plan, not its code — be an
 emergent, adapting artifact? It consumes the bare suite (`bareagent`, `litectx`, `bareguard`) and
@@ -312,3 +323,30 @@ meet its exit **stops the ladder** — that stop is a result, not a failure to r
   condition declared per §4b (opaque close, counts only, `poc/m6-opaque-close.mjs`); everything
   else attempt-2 verbatim; prediction carried from F14 unchanged. The ladder-closing v1.5 edit
   follows its result either way.
+
+### §7d Close-out: attempt-3 result, verdict, and the boundary map (v1.5 — FINAL)
+
+- **Attempt 3 (F15 results, complete, $18.02):** the instrument held. Mechanism: episode-recall
+  configs 20/20 green with green@1 = 0.80; non-episode configs green@1 = 0.00 (0/44) yet 0.73
+  total green — an Opus-class worker recovers house-convention regularities within a cap-3
+  blind search from counts alone. Claim axis: gated-verbatim late 0.75 vs ungated late 0.88;
+  gated-rules late 0.88 ties ungated exactly (whose own 0.63→0.88 has no inheritance to explain
+  it). gated-rules L1 replicated the full inheritance loop end-to-end a second time (discover
+  g4 → gate → codify → transmit → g4–g7 first-try greens at $0.040–$0.064, ~10× under arm mean).
+- **Verdict (hamr, 2026-07-10): ARCHIVE**, per the F14/F15 pre-registered symmetric commitment
+  ("if the gate still does not separate with the leak closed, archive with nothing left to
+  blame"). Nothing left to blame: the residual masker is the worker's prior, not an
+  unregistered channel.
+- **Boundary map (the result this experiment ships):** verdict-gated harness inheritance is
+  masked wherever the environment's hidden regularities lie within the worker's guessing reach
+  at the given retry cap. Informative closes (attempt 2) and strong workers (attempt 3) are two
+  instances of one masking mechanism. Where the claim could express, registered for any
+  successor experiment, never for this one: weaker/cheaper workers (competence window: strong
+  enough to follow recalled conventions, too weak to guess them), tighter caps, regularities
+  outside prior reach. On masked terrain the gate's value expresses on efficiency (first-try
+  rate, cost) — axes this PRD bars from carrying claims (§5, F7).
+- **What stands regardless of the verdict:** the three-layer shape held (no arbiter breach, no
+  gaming observed); schema v1 was never the binding constraint (no schema-can't-express
+  finding was filed in any attempt); the §4b instrument-channel doctrine and §5b
+  red-attribution doctrine were each earned twice; the spine + hash-verified resume survived a
+  provider outage in anger. These are consumables for successors; the ladder itself is closed.

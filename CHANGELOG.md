@@ -5,10 +5,18 @@ All notable changes to adaptlearn are documented here. Format follows
 [SemVer](https://semver.org/) (0.y.z pre-release: minor = a ladder module or spec milestone,
 patch = corrections). Versions before code exist are retroactive spec milestones.
 
-## [Unreleased]
+## [0.10.0] — 2026-07-10 — ARCHIVE RELEASE
 
-M6 (inheritance + selection — the claim) is built and mid-experiment; the version bump
-deliberately waits for the verdict (PRD v1.5 will close the ladder either way).
+**The ladder is closed: ARCHIVED** (PRD v1.5 §7d, F15). Attempt 3 ran under the declared
+opaque close and the pre-registered commitment fired — the verdict gate does not separate on
+the claim axis with the leak closed (gated-verbatim late 0.75 vs ungated 0.88; gated-rules
+0.88 ties ungated). The mechanism was demonstrated end-to-end twice (episode-recall green@1
+0.80 vs 0.00 in 44; gated-rules L1: discover → gate → codify → transmit → first-try greens at
+~10× lower cost), but it expresses on efficiency — an axis this project's own rules bar from
+carrying claims. Boundary map: verdict-gated harness inheritance is masked wherever the
+environment's hidden regularities lie within the worker's guessing reach at the given cap;
+the regime where it could express is weaker workers, tighter caps, harder-to-guess
+regularities. That successor experiment is not this one.
 
 ### Added
 - **M6 machinery (design → steps 1–5):** `src/mutate.js` (one-knob catalog + novelty-preferring
@@ -39,7 +47,9 @@ deliberately waits for the verdict (PRD v1.5 will close the ladder either way).
 - F12 (channel wired), F13 (attempt-1 ceiling + outage classes + store-furniture amendment,
   addendum: upstream clipipe unsettled-promise suspicion), F14 (attempt-2 null; informative
   close is an unregistered teaching channel; full mechanism demonstrated in one lineage),
-  F15 (attempt-3 pre-registration: opaque-close condition + carried prediction, results pending).
+  F15 (attempt-3 pre-registration, outage addendum + second upstream clipipe gap
+  [stderr-only error text], results: mechanism separates perfectly / gate still null, verdict:
+  ARCHIVE).
 
 ## [0.9.1] — 2026-07-09
 
