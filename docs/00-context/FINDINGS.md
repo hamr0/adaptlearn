@@ -665,3 +665,93 @@ rule and one diagnostic for THIS readout:
 
 The frame changes no prediction, commitment, or threshold in F17 as registered above — it adds
 an interpretation ORDER (leak search before any map re-rewrite) and one derived column.
+
+### F17 results — SP-3 complete ($12.93): Q1 holds, Q2 fails at arm level, the V1 leak search
+### finds the masker is the system's own M5 revision; Q3's retention clause HOLDS
+
+**Raw readout (evidence `/tmp/m6-cohort-ap1exS`, 64 cells, 0 excluded gens):** fixed 1.00/1.00
+early/late; ungated 1.00/1.00; gated-verbatim 1.00/0.88; gated-rules 1.00/1.00. Verdict axis
+saturated — again.
+
+**Q1 (floor): HELD, maximally.** Fixed arm 16/16 green, every one @1, mean cost-to-green
+$0.030. The notes suffice to implement the idiosyncratic rules first-try.
+
+**Q2 (blind collapse to ≤0.25): FAILED as written — but the V1 reading order (registered at
+g7, hours before this analysis) turned the failure into the finding.** The leak search, in
+order: task text clean (conventions only in seeds + suite, verified); close genuinely opaque
+(counts only, verified); worker genuinely sealed — `--disallowedTools` includes
+Read/Glob/Grep/Bash, cwd outside the workspace (the F8 lesson, correctly applied), so the
+co-located suite file was UNREACHABLE. The channel that remains is not contamination at all:
+**M5 mid-run revision reaching the per-cell seeded store.** The spine shows the same signature
+in every blind cell: iterations 1–2 red with recall hits 0–1 (decoy only), stall-detected,
+revision-accepted adding a fourth recall kind (`memory.recall.kinds.3` + hook kinds), hits
+jump 1→3, green @3. Grid over all 64 cells: ungated 16/16 greens feedback-acquired,
+gated-verbatim 13/16 (+1 cap-halt), gated-rules 11/16 acquired + 5 feedforward (the lock,
+below). **Genuinely blind greens: 2/64** (gated-verbatim g2/g5 @2, on the two most
+semi-natural conventions, csv + version-compare). Blind iteration could NOT reach the
+idiosyncratic tokens — the map's mechanism claim was right — but "no-episode config" is not a
+stable experimental condition when every arm carries a revisor with run-time access to the
+store. The prediction's subject barely exists.
+
+**Q3 (discovery locks): the retention clause HELD.** gated-rules L0's extractor captured
+episode-recall into the rules at g3 (`rules/g3-gated-rules-L0.json` is the first with an
+episode mention); every subsequent authorship was episode-wired and greened @1 at $0.025–0.068
+(~8× under acquisition-path cost): **5/5 generations retained, zero credit loss** — the exact
+opposite of F16's g0→g1 loss. Why it held here: on unguessable terrain the knob is
+load-bearing, so every generation's winner re-confirms the rule at extraction; on guessable
+terrain (F16) blind greens made episode non-load-bearing and the extractor dropped it.
+**Retention is free exactly where the knob matters.** L1 never codified it in 8 generations
+(16/16 acquisitions, rules still say `[code, fact]`) — discovery-of-codification without
+contrast evidence is stochastic, ~1 lineage in 2 per 8 gens. The arm-level clause (gated late
+≥ +0.25 over ungated) failed via saturation. One §5b escalation mid-run (g6-gated-rules-L0
+interpreter-red at $0, outage signature, operator chose retry) — handled, no row minted while
+the middle was down.
+
+**Commitment disposition:** (b) fires in substance — guessability was NOT the (dominant)
+masking variable — but with the variable positively identified rather than merely eliminated:
+see F18. Stop probing stands: no further token spend needed; F18's confirmation came free from
+worlds already on disk.
+
+## F18 — retroactive re-read of SP-1 and attempt 3: the masker was in-run acquisition all
+## along; every inheritance channel reads the config-as-authored and discards what the run learned
+
+**The SP-3 grid lens (classify greens by spine evidence — recall hits + revision events — not
+by starting config) applied to the two prior worlds still on disk, zero tokens:**
+
+- **SP-1 world (`aSqtvl`, haiku × house conventions, $10.70 — F16's cohort):** blind-arm
+  greens: **1 genuinely blind, 37 feedback-acquired** (ungated 13/13, gated-verbatim 13/14,
+  gated-rules 11/11). F16's "blind recovery 0.80 ≈ opus, therefore guessability" was a
+  misread: haiku wasn't guessing the house conventions, it was stall→revise→recall, same as
+  SP-3. Capability-invariance is exactly what an acquisition mechanism predicts (revision is
+  capability-invariant) and what a guessing mechanism doesn't.
+- **Attempt-3 world (`7xErzP`, opus × house conventions, $17.93 — F15's cohort):** blind-arm
+  greens: **5 genuinely blind, 24 feedback-acquired.** F15's "the residual masker is the
+  worker's own prior" was mostly the same misread; opus shows a real but minor prior effect
+  (5 vs haiku's 1–2 blind greens).
+
+**One mechanism, three misattributions.** F15 called it worker prior; F16 called it
+guessability; both analyses classified runs by `configs/*.json` — the config-as-authored —
+which is blind to M5 revision. The actual masker across all three cohorts: **the run is
+ultrastable (M5 + seeded store), so it acquires requisite variety in-run and the run-level
+verdict saturates regardless of gate.** In Conant–Ashby terms (CYBERNETICS.md, registered
+pre-readout): every good regulator became a model of the task — the regulator is the RUN
+(config + revisor + store), not the config, and prediction Q2 was written about the wrong
+regulator. The F14 informative-close masker remains real and distinct; F15/F16's maskers
+collapse into this one.
+
+**The structural corollary (root of the credit-attribution gap):** ungated discovered
+episode-recall in-run 16/16 times in SP-3 and retained it 0/16 — because every inheritance
+channel (ungated, verbatim, one-knob mutation) reads the config-as-AUTHORED, and the revised
+config is discarded at run end. The run's learning is structurally invisible to lineage; the
+ONLY channel that can see the run-as-executed is the rules extractor reading the ledger/spine
+— which is why codification was the sole retention path in every cohort. **Design law for the
+successor: inherit and extract from the run-as-executed (final revised config + spine
+evidence), never the run-as-authored — still verdict-gated (an ungated run-as-executed
+channel would inherit drift, the fit-to-pass surface §2 warns about).**
+
+**What this closes:** the probe track. Q1 machinery proven (notes → first-try greens at
+~$0.03), the masker positively identified with direct spine evidence in three cohorts, the
+lock demonstrated with zero credit loss on load-bearing terrain, and the successor's
+inheritance mechanism corrected before a line of it was written. No rerun (SP-3b) is
+registered: a revision-off cohort would manufacture verdict-axis separation we can already
+read mechanistically from the V6 class, at real token cost and no additional information.

@@ -61,6 +61,23 @@
 > non-invariance generalizes per VSM to "every declared channel condition is a lineage-key
 > dimension" (V3). The frame changes no claim, threshold, or verdict — V-items are registered
 > for the successor, not this record.
+>
+> **v1.5.4 (2026-07-10, post-SP-3 record note — the masker identified, probe track closed):**
+> SP-3 completed (F17, $12.93): Q1 held maximally (fixed 16/16 green@1, $0.030 mean); Q2
+> failed as written — and the V1 reading order found why: the masker is **in-run acquisition**,
+> M5 revision reaching the seeded store (blind cells: red → stall → revise-to-episode-recall →
+> green@3; genuinely blind greens 2/64). The same spine-evidence lens applied retroactively to
+> the SP-1 and attempt-3 worlds (F18, zero tokens) shows it was the dominant mechanism there
+> too (1/38 and 5/29 genuinely blind greens respectively): F15's "worker prior" and F16's
+> "guessability" were two misattributions of one mechanism, produced by classifying runs by
+> config-as-authored — a lens blind to revision. **Final form of the boundary map: run-level
+> verdict is masked wherever the RUN (config + revisor + store) can acquire requisite variety
+> in-run through any declared path; the F14 informative close and F18 revision+store are the
+> two demonstrated instances.** Q3's retention clause held (gated-rules L0: codified at g3,
+> 5/5 generations retained, green@1 at ~8× under acquisition cost — retention is free where
+> the knob is load-bearing). Successor design law recorded in F18: inherit and extract from
+> the run-as-executed, never the run-as-authored, still verdict-gated. Probe track CLOSED; no
+> SP-3b. The experiment's claim, falsifier, and archive verdict remain untouched.
 
 **adaptlearn** is an experiment: can an agent's *harness* — not its plan, not its code — be an
 emergent, adapting artifact? It consumes the bare suite (`bareagent`, `litectx`, `bareguard`) and

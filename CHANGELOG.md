@@ -11,6 +11,17 @@ Post-archive continuation track — the experiment record stays closed; this sec
 the successor-product groundwork living in this repo until the new repo is cut.
 
 ### Added
+- **SP-3 results + retroactive re-read (F17 results, F18, PRD v1.5.4):** SP-3 complete
+  ($12.93). Q1 held (fixed 16/16 green@1, $0.030); Q2 failed as written; the pre-registered
+  V1 leak search identified the real masker — **in-run acquisition via M5 revision + seeded
+  store** (2/64 genuinely blind greens; every other blind-arm green shows
+  stall → revise-to-episode-recall → green@3 in the spine). Same lens applied free to the
+  SP-1 and attempt-3 worlds on disk: dominant mechanism there too (1/38, 5/29 blind) — F15
+  "worker prior" and F16 "guessability" were misattributions from a config-as-authored
+  analysis lens blind to revision. Q3 retention clause HELD (gated-rules L0 codified
+  episode-recall at g3, retained 5/5 at ~8× under acquisition cost; retention is free where
+  the knob is load-bearing). F18 design law: inherit/extract from the run-as-executed, never
+  the run-as-authored, still verdict-gated. Probe track closed; no SP-3b.
 - **Cybernetics frame** (`docs/00-context/CYBERNETICS.md`, PRD v1.5.3, F17 addendum):
   the experiment's earned doctrine mapped onto Wiener/Ashby/Conant/Beer/von Foerster —
   requisite variety = the F16 guessability result; Conant–Ashby predicts F17's Q2 (registered
