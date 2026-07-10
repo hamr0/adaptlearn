@@ -433,3 +433,53 @@ finding after the unsettled-promise suspicion (F13 addendum).
 Two `red:interpreter-red @ 2` rows (g3/g6 gated-verbatim-L1, ~$0.04 each) fell inside the same
 evening and are plausibly outage-adjacent (non-$0, so the F13 signature couldn't catch them);
 the resume design already refuses to replay interpreter-reds, so both re-run live.
+
+### F15 results — attempt 3 complete: mechanism separates perfectly; gate still not load-bearing on verdict; the residual masker is the worker's own prior
+
+Complete (2026-07-10, world `/tmp/m6-cohort-uTY3nt`, $18.02, 64 rows, no exclusions; resumed
+across the F15-addendum outage, 52 rows replayed hash-verified; both outage-window
+interpreter-reds re-ran live and greened — outage-adjacency confirmed).
+
+**Prediction scorecard (registered in F14/F15, judged clause by clause):**
+- "verdict axis regains dynamic range" — PARTIAL YES: 12 cap-halts (attempt 2: ~0) and, on the
+  first-attempt axis, perfect separation.
+- "no-episode configs stay red" — **NO**: they greened 0.73 within cap 3 given nothing but a
+  pass/fail count. Blind convention-guessing by the worker (Opus-class) recovers most tasks in
+  ≤3 attempts with zero informative feedback.
+- "gated-vs-ungated uncontaminated read" — YES, and it's null: gated-verbatim late 0.75 vs
+  ungated late 0.88 (gate loses); gated-rules late 0.88 ties ungated exactly. Ungated's own
+  0.63→0.88 "improvement" has no inheritance to explain it — noise/task-mix — which equally
+  forbids reading gated-rules' identical trajectory as inheritance.
+
+**Mechanism (ledger × persisted configs, recall-kinds precise):** configs recalling `episode`:
+20/20 green, **green@1 = 0.80**; configs without: green@1 = **0.00 (0/44)**, total green 0.73.
+The fixed arm's 1.00 is explained, not anomalous — `valid.json` has always recalled
+`["fact","episode"]`; it sits on the conventions ($0.083 mean cost-to-green vs ~$0.34 learning
+arms). **gated-rules L1 replicated the full inheritance loop a second time, in a second
+close-verbosity condition:** blind g0–g3 → wired episode-recall at g4 → green@1 → extractor
+codified → g4–g7 = green@1, green@3, green@1, green@1, tail runs at $0.040–$0.064 (~10× under
+arm mean). L0 never discovered it, again.
+
+**Reading:** the pre-registered symmetric commitment fired — the gate does not separate on the
+claim axis *with the leak closed and nothing left to blame*. The masker this time is not an
+unregistered channel but the **worker's prior**: an Opus-class worker guesses house-convention
+regularities within a cap-3 blind search, so memory cannot decide pass/fail — only first-try
+rate and cost, axes barred (F7 2×2) from carrying claims. Boundary map, final form:
+**verdict-gated harness inheritance is masked wherever the environment's hidden regularities
+lie within the worker's guessing reach at the given cap** — informative closes (attempt 2) and
+strong workers (attempt 3) are two instances of the same masking. The regime where the claim
+could express: weaker/cheaper workers, tighter caps, regularities outside prior reach.
+Verdict word (archive per the registered clause) and the ladder-closing PRD v1.5 edit remain
+hamr's; recorded here before any decision.
+
+**In plain terms (the whole experiment, one paragraph):** we asked whether an agent's setup —
+what it remembers, when it retries, where it looks for notes — can evolve across runs, with
+only *proven* successes allowed to pass lessons forward. The machinery all worked: a dumb
+un-gameable referee, setups as validated forms, AI-authored setups, mid-run revision, and
+lesson inheritance that twice discovered a hidden "which drawer are the house rules in" fact
+and transmitted it, making every later run first-try and ~10× cheaper. What failed was the
+headline: on strict pass/fail the inheriting teams never beat the non-inheriting one, first
+because our tests leaked the answers (attempts 1–2), and finally because the AI worker is
+simply smart enough to guess the house rules within three blind tries (attempt 3). Learning
+happened and was inherited; on tasks this size, a strong worker just doesn't *need* it to
+pass — only to pass instantly and cheaply.
