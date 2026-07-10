@@ -543,3 +543,25 @@ world: 466/567/421); the smoke script read a wrong field name. No gap anywhere. 
 0/3 on task 0 WITH the conventions recalled via the API path — while SP-1's fixed arm (same
 config, CLI path) greens. If that divergence holds it's provider-path non-invariance (raw API
 worker vs CLI scaffolding), a product-relevant caveat for cross-provider comparisons.
+
+### SP-2 addendum — provider-path non-invariance, confirmed n=3 (2026-07-10)
+
+Same model (haiku), same episode-wired config, recall verified surfacing all 3 notes every
+iteration — and the outcome differs by DELIVERY PATH: via the claude CLI the worker greens
+(SP-1 fixed arm, 6/6 through g2); via the raw API (`AnthropicProvider`) it capped 3/3 runs
+(0/9 attempts), each time failing precisely the note-carried conventions (case-insensitive
+units, the RangeError contract that exists only in a seed note). The notes are in context;
+the raw-API worker does not apply them.
+
+**Candidate causes (unresolved, in suspicion order):** (1) the CLI wraps input in Claude
+Code's own system scaffolding — a strong adherence primer the raw API call lacks (our PERSONA
+is one sentence); (2) message structure — CLIPipe flattens system+notes+task into one text
+blob, the API path sends structured messages; (3) sampling defaults. Not a bug anywhere —
+nothing to fix upstream; it is a property of the instrument.
+
+**Why this matters to the successor product (thesis in miniature):** scaffolding requirement
+is a function of the full worker PATH (model × provider × prompt assembly), not the model
+alone. The evolving harness is exactly the machinery that would discover path-specific
+scaffolding (e.g., render recalled notes more forcefully for raw-API workers) — and lineages
+must be keyed per (job × worker path); configs should not be assumed to transfer across
+provider paths even at the same model.
