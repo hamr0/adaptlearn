@@ -413,3 +413,23 @@ closed, archive with nothing left to blame. Baseline priors are per-close-verbos
 attempt-2 rates do NOT carry over as priors here.
 
 **Results:** PENDING — appended after the run, whatever they say.
+
+### F15 addendum — attempt-3 run halted by provider outage; clipipe error-reporting gap (upstream)
+
+Attempt 3 (world `/tmp/m6-cohort-uTY3nt`) ran clean through g0–g6-gated-verbatim, then died in
+the `g6-gated-rules-L0` authoring call: clipipe `ProviderError: process exited with code 1:`
+with EMPTY error text, retries failed identically, operator halted (correct per §5b — no rows
+minted). Next morning the identical call succeeds — a **provider-side Opus outage window**
+(2026-07-09 evening), independently corroborated by unrelated tooling reporting
+"claude-opus-4-8 temporarily unavailable" at the same time. Not a launcher or condition defect;
+`--resume` continues the same world.
+
+**Upstream (bareagent, consume-don't-paper):** `provider-clipipe.js:180` interpolates only
+`stderr` into the ProviderError message, but `claude -p --output-format json` emits its error
+payload on STDOUT — so the operator saw a blank reason during a diagnosable outage. Fix belongs
+upstream: include a stdout tail (or the parsed JSON error) when stderr is empty. Second clipipe
+finding after the unsettled-promise suspicion (F13 addendum).
+
+Two `red:interpreter-red @ 2` rows (g3/g6 gated-verbatim-L1, ~$0.04 each) fell inside the same
+evening and are plausibly outage-adjacent (non-$0, so the F13 signature couldn't catch them);
+the resume design already refuses to replay interpreter-reds, so both re-run live.
