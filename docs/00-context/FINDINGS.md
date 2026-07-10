@@ -537,7 +537,9 @@ category; and the failure path (invalid key, from an earlier placeholder run) es
 decision-ready at $0 instead of crashing — §5b broken-middle behavior holds on a second
 provider type. The product's "your APIs" promise is de-risked; local LLMs deferred by decision.
 
-Two side notes: (1) spine `worker-result` events carry cost but not token usage — cosmetic
-here, but the successor product's spine should carry both. (2) haiku went 0/3 on task 0 WITH
-the conventions recalled — a second independent hint (after SP-1's early rows) that haiku sits
-below the P1 competence floor; SP-1's full readout decides.
+Two side notes: (1) CORRECTED — the first filing here claimed spine `worker-result` events
+lack token usage; false. `interpret.js` emits `tokens` per worker-result (verified in the smoke
+world: 466/567/421); the smoke script read a wrong field name. No gap anywhere. (2) haiku went
+0/3 on task 0 WITH the conventions recalled via the API path — while SP-1's fixed arm (same
+config, CLI path) greens. If that divergence holds it's provider-path non-invariance (raw API
+worker vs CLI scaffolding), a product-relevant caveat for cross-provider comparisons.

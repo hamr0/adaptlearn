@@ -61,6 +61,6 @@ const costUsd = workerEvents.reduce((s, e) => s + (e.costUsd ?? 0), 0);
 console.log(`\nSP-2 API smoke — world ${workdir}`);
 console.log(`outcome: ${outcome} @ ${end?.iterations ?? 0} iterations`);
 console.log(`worker events: ${workerEvents.length}, metered cost: $${costUsd.toFixed(4)}`);
-for (const e of workerEvents) console.log(`  ${e.type} iter ${e.iteration}: costUsd=${e.costUsd ?? 'ABSENT'} tokens in/out=${e.usage?.inputTokens ?? '?'}/${e.usage?.outputTokens ?? '?'}`);
+for (const e of workerEvents) console.log(`  ${e.type} iter ${e.iteration}: costUsd=${e.costUsd ?? 'ABSENT'} tokens=${e.tokens ?? 'ABSENT'}`);
 console.log('\nread: outcome green/red is NOT the point — the seam is. A $0 or ABSENT cost on a');
 console.log('completed worker call is a metering gap (finding, upstream); a crash is a seam gap.');
