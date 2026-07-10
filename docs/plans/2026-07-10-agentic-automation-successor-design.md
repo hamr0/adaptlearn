@@ -99,6 +99,27 @@ arbiter > rubric-advisory hierarchy per relayfact); job/schedule model (bareagen
 budget per run via bareguard); multi-provider worker seam (SP-2); the panel; per-job channel
 declarations; the primitive request-red registry.
 
+## Post-SP-1 amendments (2026-07-10, F16 — supersedes the boundary-map framing above)
+
+SP-1 completed after this doc was first written; two results amend the design directly:
+
+1. **The payoff variable is regularity GUESSABILITY, not worker tier.** P1 held (haiku follows
+   recalled conventions: fixed 1.00 at $0.046) but P2/P3 failed — haiku blind-grinds guessable
+   conventions at the opus rate (0.80). The §7d boundary map is superseded (F16): inheritance
+   pays where the environment's regularities are OUTSIDE iterative reach at the cap —
+   idiosyncratic house rules, arbitrary internal conventions — for any worker above the
+   competence floor. Product consequence: job #1's value driver is that real repos' folklore
+   is mostly the unguessable kind; worker tier is a cost knob, not the capability knob.
+2. **Verdict admits, contrast attributes — the extractor MUST see contrast evidence.** SP-1's
+   gated-rules arm authored the working feature at g0, greened with it, and then LOST it,
+   because a bare green carries no signal about which knob earned it when greens are cheap.
+   The product's rule extractor receives the run's standing among siblings/history (green@1
+   vs ground @3 vs capped), not just "green". This is a hard requirement, not a tuning choice
+   — without it inheritance drifts and can shed working features (gated-rules finished worst).
+   SP-3 (registered in F16, ~$6–8, unguessable-conventions probe) is the pre-repo test of the
+   rewritten map plus this attribution fix; if inheritance still fails to lock WITH contrast
+   present, the mechanism itself is in question.
+
 ## Open questions (deliberately unresolved until the new repo's PRD)
 
 - Rules generalization: adaptlearn proved transmission within one task family; job #1 assumes
