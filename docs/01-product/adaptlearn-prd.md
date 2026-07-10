@@ -48,6 +48,19 @@
 > the direct guessability probe: idiosyncratic conventions, notes as the only path. The
 > experiment's claim, falsifier, and archive verdict remain closed; these are post-archive
 > probe results recorded for the successor's ground.
+>
+> **v1.5.3 (2026-07-10, theoretical frame — record unchanged):** the experiment's earned
+> doctrine was mapped onto classical cybernetics (`docs/00-context/CYBERNETICS.md`, registered
+> pre-SP-3-readout at g7 so its one prediction binds as pre-registration). Highlights: the F16
+> guessability result is Ashby's Law of Requisite Variety; the Conant–Ashby good-regulator
+> theorem predicts F17's Q2 and imposes a reading order (leak search before any map
+> re-rewrite); the credit-attribution gap is a feedback-channel-capacity failure, making
+> "verdict admits, contrast attributes" a countable budget (≥1 contrast bit per knob claimed —
+> a successor extractor rule, V2); cap-halt/HITL escalation is Beer's algedonic channel and
+> must stay structurally un-summarizable by emergent components (V4); SP-2's provider-path
+> non-invariance generalizes per VSM to "every declared channel condition is a lineage-key
+> dimension" (V3). The frame changes no claim, threshold, or verdict — V-items are registered
+> for the successor, not this record.
 
 **adaptlearn** is an experiment: can an agent's *harness* — not its plan, not its code — be an
 emergent, adapting artifact? It consumes the bare suite (`bareagent`, `litectx`, `bareguard`) and

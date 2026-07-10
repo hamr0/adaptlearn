@@ -11,6 +11,13 @@ Post-archive continuation track — the experiment record stays closed; this sec
 the successor-product groundwork living in this repo until the new repo is cut.
 
 ### Added
+- **Cybernetics frame** (`docs/00-context/CYBERNETICS.md`, PRD v1.5.3, F17 addendum):
+  the experiment's earned doctrine mapped onto Wiener/Ashby/Conant/Beer/von Foerster —
+  requisite variety = the F16 guessability result; Conant–Ashby predicts F17's Q2 (registered
+  pre-readout at g7, with a leak-search-first reading order); credit-attribution gap =
+  feedback-channel capacity ("verdict admits, contrast attributes" becomes a countable
+  ≥1-contrast-bit-per-knob budget); algedonic escalation path; lineage keys per declared
+  channel condition. Six V-items registered for the successor; no claim or verdict touched.
 - **SP-1 successor probe (F16, pre-registered, running):** `--worker-model` launcher knob pins
   the WORKER's model only (author/extract/revisor stay on the CLI default); `condition.json`
   stamped per world, resume refuses condition mismatches. Tests the §7d boundary map with a

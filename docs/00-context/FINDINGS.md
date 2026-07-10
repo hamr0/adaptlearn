@@ -641,3 +641,27 @@ gens, $38 stop, fresh world, condition-stamped.
   lock) — the mechanism needs redesign before the product trusts inheritance.
 
 **Results:** PENDING.
+
+### F17 addendum — theoretical frame registered pre-readout (2026-07-10, run at g7)
+
+Registered while the SP-3 run was at g7 (63/64 cells logged, `cohort-result.json` not yet
+written), so it binds as pre-registration: `docs/00-context/CYBERNETICS.md` maps the
+experiment's earned doctrine onto Wiener/Ashby/Conant/Beer/von Foerster and adds one reading
+rule and one diagnostic for THIS readout:
+
+- **Conant–Ashby reading (V1):** "every good regulator of a system must be a model of that
+  system" predicts Q2 directly — on unguessable conventions the only good regulator is an
+  episode-wired config, because the notes are the only declared path to the rules. Q1 ∧ Q2 is
+  recorded as a good-regulator demonstration. **Q1 ∧ ¬Q2 requires an explicit leak search
+  before commitment (b) fires:** the theorem says a no-episode green means the model got in
+  somehow — enumerate every channel (task text, close output, authoring notes, catalog, CLI
+  scaffold) and only a clean search concludes "guessability was not the variable." §4b
+  precedent, learned twice; not learning it a third time is the point of registering this now.
+- **Feedback/feedforward classification (V6):** each green classifies as feedforward-reached
+  (recall evidence ∧ green@1) or feedback-reached (iterations > 1 ∧ no recall evidence), from
+  ledger + spine. Q3's lock prediction restated in these terms: late gated-arm greens migrate
+  feedforward; ungated stays feedback throughout. The grid script computes this alongside the
+  registered recallsEpisode read.
+
+The frame changes no prediction, commitment, or threshold in F17 as registered above — it adds
+an interpretation ORDER (leak search before any map re-rewrite) and one derived column.
