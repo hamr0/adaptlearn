@@ -28,6 +28,26 @@ the successor-product groundwork living in this repo until the new repo is cut.
   auto-maintainer on litectx (review → fix → branch → PR → HITL merge). PRD carries a v1.5.1
   continuation pointer; the archive verdict is not reopened.
 
+- **SP-1 results (F16): the symmetric commitment fired — boundary map rewritten.** Haiku
+  worker, $10.70, complete: P1 held (fixed arm 1.00 green at $0.046 — haiku follows recalled
+  conventions), P2/P3 failed (blind configs greened 0.80 ≈ opus's 0.73; gate did not separate).
+  §7d's map is superseded: the masking variable is regularity GUESSABILITY (iterative reach at
+  the retry cap), not worker capability. NEW credit-attribution finding: gated-rules authored
+  the winning feature at g0, greened with it, and LOST it by g1 — bare greens carry no signal
+  about which knob earned them. Design law for the successor: verdict admits, contrast
+  attributes (the extractor must see a run's standing among siblings, never a bare green).
+- **SP-2 results: API worker seam PASSES** — worker on AnthropicProvider with per-call cost
+  metered and gate-visible; cap-halt and invalid-key paths escalate cleanly. Addendum
+  (n=3): provider-path NON-INVARIANCE — same model, same config, notes verifiably surfaced;
+  CLI-delivered haiku applies them, raw-API haiku does not (suspects: the CLI's system
+  scaffold; flattened vs structured messages). Lineages must key per (job × worker path).
+- **SP-3 guessability probe (F17, pre-registered, ready):** `poc/sp3-tasks.mjs` + `--task-set
+  sp3` — same eight function shapes, every convention IDIOSYNCRATIC (128ms tick unit,
+  middle-dot bytes, descending ranges, Swiss-apostrophe money with trailing-DR negatives,
+  appended-zero color shorthand, dotted lowercase initials …); notes are the only path. Q1
+  floor / Q2 blind collapse ≤0.25 / Q3 discovery LOCKS, with three symmetric commitments
+  including both honest kills (map wrong again; attribution gap deeper than F16's account).
+
 ### Changed
 - **Consumed upstream bareagent clipipe fix** (settle-guaranteed `_spawn`, stdout-tail error
   detail, loud onChunk) — both halves were adaptlearn field findings (F13/F15 addenda), fixed

@@ -38,6 +38,16 @@
 > boundary map sets the payoff axes per worker tier). New repo after SP-1 (F16) concludes;
 > job #1 = auto-maintainer on litectx. This experiment's claim, falsifier, and verdict are
 > not reopened by any of it.
+>
+> **v1.5.2 (2026-07-10, post-SP-1 record note):** SP-1 completed and its symmetric commitment
+> FIRED (F16): P1 held (haiku fixed arm 1.00), P2/P3 failed (blind recovery 0.80 ≈ opus). The
+> §7d boundary map is SUPERSEDED as stated — the masking variable is regularity GUESSABILITY
+> (iterative reach at the cap), not worker capability. F16 also surfaced the credit-attribution
+> gap (a working feature authored at g0 was lost by g1 — bare greens carry no signal about
+> which knob earned them; verdict admits, contrast attributes). SP-3 (F17, pre-registered) is
+> the direct guessability probe: idiosyncratic conventions, notes as the only path. The
+> experiment's claim, falsifier, and archive verdict remain closed; these are post-archive
+> probe results recorded for the successor's ground.
 
 **adaptlearn** is an experiment: can an agent's *harness* — not its plan, not its code — be an
 emergent, adapting artifact? It consumes the bare suite (`bareagent`, `litectx`, `bareguard`) and
