@@ -490,3 +490,31 @@ The word is given: **archive**, per the pre-registered symmetric commitment. PRD
 closes the ladder with the boundary map; version 0.10.0 is the archive release. Every run in
 the denominator; no confident fake green anywhere in the record — the experiment ends the way
 it was designed to be allowed to.
+
+## F16 — Successor probe SP-1 PRE-REGISTRATION: weak worker (haiku), boundary-map test (results pending)
+
+**This is NOT M6 attempt 4.** The ladder is closed and the archive verdict stands regardless of
+this probe's outcome (PRD v1.5 §7d). SP-1 tests the §7d boundary map itself: "inheritance is
+masked wherever regularities are within the worker's guessing reach" predicts the mask LIFTS
+when the worker cannot guess. Decision + scope (hamr, 2026-07-10): haiku worker only, ~$5–8.
+
+**Condition (one knob vs attempt 3):** worker model = `claude-haiku-4-5-20251001` via
+`--worker-model` (new launcher flag; appends `--model` to the WORKER's sealed CLI call only).
+Author, extractor, and revisor stay on the default (opus) — the two-role split is deliberate:
+vary guessing ability, hold authoring competence. Everything else attempt-3 verbatim: same 8
+tasks, opaque close, capRuns 3, 4 arms × 2 lineages × 8 generations, $38 stop, fresh world.
+The world dir records `condition.json`; resume refuses a condition mismatch.
+
+**Registered predictions (before any spend):**
+- **P1 (instrument validity / competence floor):** the fixed arm — episode-wired by
+  construction — stays ≥ 0.75 green overall. Below that, haiku cannot follow even recalled
+  conventions → worker below the competence window → instrument invalid, STOP, no claim read.
+- **P2 (the mask lifts):** no-episode configs collapse from opus's 0.73 gap-blind recovery to
+  ≤ 0.35 total green (green@1 stays 0.00). Blind convention-guessing was the masker.
+- **P3 (the unmasked read):** late-half verdict separates: gated-rules late minus ungated late
+  ≥ +0.25 (≥ 2 rows at n=8/cell). This is the §7d prediction proper — memory becomes
+  load-bearing on pass/fail when guessing is out of reach.
+- Symmetric commitment: if P1 holds and P3 still fails, the boundary map is WRONG as stated —
+  worker strength was not the (only) masker — and that gets written down as the result.
+
+**Results:** PENDING.

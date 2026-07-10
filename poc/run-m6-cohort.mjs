@@ -147,9 +147,23 @@ async function promptChoice(question, options) {
   return answer;
 }
 
-const sealed = () => new CLIPipeProvider({
+// SP-1 (F16): --worker-model <id> pins the WORKER's model only — author, extractor, and
+// revisor stay on the CLI default. One knob: guessing ability varies, authoring competence
+// held. The condition is stamped into the world; resume refuses a mismatch.
+const wmAt = process.argv.indexOf('--worker-model');
+const WORKER_MODEL = wmAt !== -1 ? process.argv[wmAt + 1] : null;
+const condFile = join(work, 'condition.json');
+if (existsSync(condFile)) {
+  const prior = JSON.parse(readFileSync(condFile, 'utf8'));
+  assert.equal(prior.workerModel ?? null, WORKER_MODEL, `condition mismatch: world ran workerModel=${prior.workerModel}, flag says ${WORKER_MODEL} — same-condition resume only`);
+} else {
+  writeFileSync(condFile, JSON.stringify({ workerModel: WORKER_MODEL }, null, 2));
+}
+if (WORKER_MODEL) console.log(`condition: worker model pinned to ${WORKER_MODEL} (author/extract/revisor on CLI default)\n`);
+
+const sealed = (model = null) => new CLIPipeProvider({
   command: 'claude',
-  args: ['-p', '--output-format', 'json', '--disallowedTools', 'Write,Edit,NotebookEdit,Bash,WebFetch,WebSearch,Task,Glob,Grep,Read,TodoWrite'],
+  args: ['-p', '--output-format', 'json', ...(model ? ['--model', model] : []), '--disallowedTools', 'Write,Edit,NotebookEdit,Bash,WebFetch,WebSearch,Task,Glob,Grep,Read,TodoWrite'],
   parse: 'claude-json', cwd: CLI_HOME, timeout: 180_000,
 });
 
@@ -202,7 +216,7 @@ async function runOnce(ctx) {
     // 30min covers the worst legit run (3 iterations x plan's 2 calls x 180s + a revision)
     const outcome = await guarded(`run ${key(ctx)}`, () => withTimeout(interpret(config, {
       task: t.task, target: join(workdir, 'src', `${t.id}.mjs`), close: closeArgv(suite),
-      workdir, capRuns: CAP_RUNS, emit: makeSpine(spineFile), provider: sealed(), shellCapUsd: 2,
+      workdir, capRuns: CAP_RUNS, emit: makeSpine(spineFile), provider: sealed(WORKER_MODEL), shellCapUsd: 2,
       // a hung/failed revisor becomes a revision-red (run continues on the old
       // config), never an interpreter-red the harness didn't earn — but a gate
       // HaltError still propagates as the cap-halt it is (F11 / §7b.3)
