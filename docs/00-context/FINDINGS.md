@@ -810,7 +810,36 @@ typical `[code,doc,fact]` authored config.
   masked, not false — the archive verdict stands (it was correct on its evidence), the record
   gains the annotation, and the successor builds on gated inheritance with confidence.
 
-**Results:** PENDING.
+### F19 results — attempt 4 complete ($8.29): P1 ∧ P2 ∧ P3 — commitment (d) FIRES. The §1
+### claim expresses on a valid instrument: gated late 1.00 vs ungated late 0.13
+
+Evidence `/tmp/m6-cohort-K9Ofzk`, 64 cells, 0 excluded gens.
+
+- **P1 HELD:** fixed 16/16 green (15 @1, one @2), late 1.00 ≥ 0.75.
+- **P2 HELD:** with the revisor gone, in-run acquisition is zero (0 revision events, no recall-
+  hit jumps anywhere) and blind cells cap-halt. Genuinely blind greens: **1/64** (ungated g5,
+  @2, the semi-natural version-compare instance — inside the registered residue). Every other
+  learning-arm green is episode-wired-at-authorship, green@1.
+- **P3 HELD, categorically:** late green-rate — gated-verbatim **1.00**, gated-rules **1.00**,
+  ungated **0.13**; gap +0.87 ≥ +0.25. Both gated arms: one early failure (L1 cap-halt at g0),
+  re-authored, drew an episode-wired config at g0/g1, greened @1, and the gate locked it —
+  15/16 feedforward thereafter, zero losses. Ungated: dragged its g0 cap-halted config forward
+  verdict-blind for all 8 generations, mutating one knob per gen, and never reached episode.
+- **Anatomy of the separation (named honestly):** the gate's contribution is TWO semantics,
+  both pre-registered as the arm's definition — failures never enter the lineage (so a
+  failed lineage re-draws authorship until something greens), and greens lock. Ungated's
+  failure is the mirror: it never re-draws (its parent always exists, verdict-blind) and its
+  one-knob walk was structurally slow — the g4 kinds mutation fired but KINDS order
+  (`[code,doc,fact,episode]`) added `doc` first; episode sat two kinds-visits away (~16 gens
+  at the novelty picker's pace). Mutation discovery contributed nothing in this horizon in
+  either direction; authorship re-draw + gate retention did all the work. One anomaly:
+  g3-ungated-L1 `red:interpreter-red` at $0.085 (paid, not the $0 outage signature; single
+  cell, no bearing on any read).
+- **Commitment (d) disposition:** the archived claim was **masked, not false**. The archive
+  verdict stands — it was correct on its evidence — and the record gains this annotation: on
+  the first instrument where in-run acquisition was removed (F18) and the regularity sat
+  outside prior reach (F17), verdict-gated inheritance beat ungated inheritance categorically
+  on the claim axis, in both gated representations.
 
 ## F20 — SUCCESSOR POC #1 PRE-REGISTRATION: run-as-executed inheritance (inherit=executed,
 ## results pending)
@@ -842,4 +871,33 @@ learning must be able to enter the lineage). Everything else SP-3 verbatim; cond
   successor leans on HITL verdict classes and hard-green attribution instead of gate-based
   selection.
 
-**Results:** PENDING.
+### F20 results — successor POC #1 complete ($7.03): the kill-switch PASSES — run-as-executed
+### inheritance transmits 100% at the first generation boundary; the gate discriminator did not fire
+
+Evidence `/tmp/m6-cohort-vVsQda`, 64 cells, 0 excluded gens.
+
+- **P1 HELD — total transmission.** g0: all six learning-lineages feedback-acquired (red → red
+  → revise-to-episode → green@3), exactly as SP-3. g1: **every one of the six starts
+  episode-wired and greens @1** — the g0 in-run acquisition entered the lineage through the
+  executed config and paid off immediately. From g1 to g7 the cohort is near-uniformly
+  feedforward (55/64 cells green@1 overall); the handful of re-acquisitions (e.g.
+  g6-gated-rules-L1) recovered within their own run. The credit-attribution gap, closed
+  mechanically: what F16 watched die at the g0→g1 boundary survived it in 6/6 lineages.
+- **P2 (rank evidence only):** cohort total $7.03 vs SP-3's $12.93 — executed inheritance
+  roughly halved cohort cost by deleting the per-generation re-acquisition tax (~$0.20/cell →
+  ~$0.03–0.07 post-lock).
+- **P3 NOT supported at this horizon — the commitment fires.** Ungated retained the acquired
+  knob 14/16 epi0 with late green 1.00, indistinguishable from the gated arms; no drift loss
+  in 8 generations. Under executed inheritance the gate added nothing observable here. Per the
+  registered commitment: the successor leans on HITL verdict classes and hard-green
+  attribution rather than assuming gate-based selection adds value — while noting the honest
+  bound: 8 generations of one-knob drift on a task family where the knob is load-bearing is a
+  short window for junk accumulation; the fit-to-pass risk (§2) is deferred, not refuted.
+- **Verdict axis, for the record:** all four arms 1.00/1.00 early/late — saturated by design
+  (revision stayed on); the result lives entirely in the V6 mechanism class, as registered.
+
+**F19 + F20 together, one sentence each:** authored inheritance needs the gate (F19: +0.87
+categorical separation); executed inheritance transmits so completely that the gate's value
+moves to the risks an 8-gen window cannot show (F20). The successor takes both: inherit the
+run-as-executed, verdict-gate what enters the lineage, and let attribution (V2 contrast bits)
+say which knob earned the green.

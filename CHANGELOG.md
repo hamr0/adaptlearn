@@ -11,6 +11,14 @@ Post-archive continuation track — the experiment record stays closed; this sec
 the successor-product groundwork living in this repo until the new repo is cut.
 
 ### Added
+- **F19 + F20 results (PRD v1.5.5 — the claim expresses; the record closes twice over):**
+  F19 attempt 4 ($8.29): P1 ∧ P2 ∧ P3, commitment (d) fires — on the first valid instrument,
+  gated inheritance beat ungated categorically (late 1.00 both gated arms vs 0.13 ungated,
+  gap +0.87); the archived claim was masked, not false; archive verdict stands, annotated.
+  F20 successor POC #1 ($7.03): kill-switch PASSES — run-as-executed inheritance transmitted
+  g0 acquisitions to 6/6 lineages at g1 (the exact F16 credit-loss boundary), cohort cost
+  halved; gate discriminator did not fire in 8 gens (successor leans on verdict classes +
+  attribution per the registered commitment; fit-to-pass risk deferred, not refuted).
 - **F19 attempt-4 + F20 successor-POC pre-registrations, with machinery:** `--no-revision`
   launcher flag (F19: revision off → cross-run search is the only discovery path; the §1
   gated-vs-ungated claim finally gets a valid instrument) and `--inherit executed` (F20:

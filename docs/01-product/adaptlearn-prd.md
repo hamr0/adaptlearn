@@ -78,6 +78,21 @@
 > the knob is load-bearing). Successor design law recorded in F18: inherit and extract from
 > the run-as-executed, never the run-as-authored, still verdict-gated. Probe track CLOSED; no
 > SP-3b. The experiment's claim, falsifier, and archive verdict remain untouched.
+>
+> **v1.5.5 (2026-07-10, attempt-4 + successor-POC record note — the claim expresses):** F19
+> (attempt 4: revision OFF × idiosyncratic conventions, $8.29) hit P1 ∧ P2 ∧ P3 — on the first
+> valid instrument (in-run acquisition removed, regularity outside prior reach), **verdict-
+> gated inheritance beat ungated categorically on the claim axis: gated late 1.00 (both
+> representations) vs ungated late 0.13.** Per the pre-registered commitment (d): the archived
+> claim was MASKED, NOT FALSE. The archive verdict stands — it was correct on its evidence —
+> and this annotation completes it. F20 (successor POC #1: inherit=executed, $7.03) passed its
+> kill-switch: run-as-executed inheritance transmitted the g0 in-run acquisition to 6/6
+> lineages at g1 (the F16 credit-loss boundary), halving cohort cost; its gate discriminator
+> did not fire in the 8-gen window (registered commitment: successor leans on verdict classes
+> + attribution, fit-to-pass risk deferred not refuted). The experiment record is now fully
+> closed twice over: the mechanism proven, the claim demonstrated post-archive on a valid
+> instrument, and the successor's core mechanism de-risked. This PRD takes no further notes;
+> anything after this line belongs to the successor's repo.
 
 **adaptlearn** is an experiment: can an agent's *harness* — not its plan, not its code — be an
 emergent, adapting artifact? It consumes the bare suite (`bareagent`, `litectx`, `bareguard`) and
