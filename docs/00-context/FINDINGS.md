@@ -565,3 +565,47 @@ alone. The evolving harness is exactly the machinery that would discover path-sp
 scaffolding (e.g., render recalled notes more forcefully for raw-API workers) — and lineages
 must be keyed per (job × worker path); configs should not be assumed to transfer across
 provider paths even at the same model.
+
+## F16 results — SP-1 complete: P1 holds, P2/P3 fail, the symmetric commitment FIRES — boundary map wrong as stated; plus a new credit-attribution finding
+
+Complete (2026-07-10, world `/tmp/m6-cohort-aSqtvl`, $10.70, 64 rows, no exclusions, one
+transient interpreter-red).
+
+**Prediction scorecard (F16, clause by clause):**
+- **P1 (competence floor) — HOLDS, decisively.** Fixed arm 1.00/1.00, zero cap-halts, mean
+  cost-to-green $0.046, mostly green@1. Haiku follows recalled conventions perfectly well
+  (via the CLI path; contrast SP-2's API-path divergence).
+- **P2 (mask lifts) — FAILS.** No-episode configs greened 0.80 overall (registered threshold:
+  ≤0.35) — haiku blind-grinds guessable conventions to green within cap 3 at essentially the
+  opus rate (0.80 vs 0.73). green@1 separation stays perfect (episode 0.72 vs no-episode 0.00).
+- **P3 (gate separates) — FAILS.** gated-rules late 0.75 vs ungated late 0.88 (gate loses);
+  gated-verbatim 0.88 ties ungated. 
+- **The pre-registered symmetric commitment fires: the §7d boundary map is WRONG AS STATED.**
+  Worker strength is not the masking variable. Rewrite: **verdict-gated inheritance is masked
+  wherever the regularities are within ITERATIVE reach at the cap for any worker above the
+  competence floor** — guessability of the regularity, not capability of the worker, is the
+  discriminating variable. (Attempt 2's informative close, attempt 3's strong worker, and
+  SP-1's weak worker are all one mechanism: the environment answers cheap queries.)
+
+**New finding — the credit-attribution gap (unpredicted, the run's most valuable result):**
+gated-rules L0/L1 both authored episode-recall at g0 — before any inheritance — and L0
+GREENED with it. By g1 both lineages had dropped it and never re-wired it (16 rows, zero
+episode after g0). Mechanism: the verdict gate admits whole configs but attributes nothing;
+when greens are cheap (blind grind succeeds at 0.80), a green-with-episode looks identical to
+a green-without, so the extractor gets no signal about WHICH feature earned the green — and
+novelty-nudged authorship drifts off the working feature. Contrast attempt 3, where the g4
+discovery greened @1 (dramatic, cheap) and the lesson locked for good. **Corollary for the
+successor product: the extractor must receive CONTRAST evidence (this config greened @1 while
+siblings ground @3 / capped), not bare green — verdict admits, contrast attributes.** Without
+it, inheritance in guessable environments doesn't just plateau — it can lose working features
+(gated-rules finished WORST: 0.69 overall, 5 cap-halts).
+
+**Cost read (ranks, never claims):** knowing beats guessing ~4× even at haiku prices ($0.046
+fixed vs ~$0.19 learning arms); cohort $10.70 vs opus's $18.02.
+
+**Registered next probe (SP-3, not yet run, ~$6–8):** same everything, IDIOSYNCRATIC
+conventions (arbitrary unguessable tokens, e.g. "error codes prefixed XK-", "round to 7
+cents"). Isolates guessability — the rewritten map predicts: blind recovery collapses at every
+tier, discovery becomes note-only, green@1 contrast becomes dramatic, and codification locks.
+If inheritance STILL doesn't lock with the credit signal present, the mechanism itself is in
+question — that would be the honest kill.
