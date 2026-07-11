@@ -7,9 +7,31 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-(nothing — the record is closed; successor work lands in the bareloop repo. 0.11.2 is the one
-registered exception: a bareloop de-risk probe run in this sandbox because the machinery and
-evidence conventions live here.)
+(nothing — the record is closed; successor work lands in the bareloop repo. 0.11.2/0.11.3 are
+the registered exceptions: bareloop de-risk probes run in this sandbox because the machinery
+and evidence conventions live here.)
+
+## [0.11.3] — 2026-07-11 — bareloop de-risk probe #2: menu disclosure (F22) — record unchanged
+
+### Added
+- **F22** — menu-disclosure probe (F21's registered B-arm + author selection + ask channel),
+  pre-registered in `poc/menu-disclosure-prereg.md`. Keystone: **the admission chain proves
+  end-to-end** — author selects `impact` from the disclosed menu → dispatch injects callers →
+  **3/3 green@1** (vs D0 baseline 1/3@[4]). Author selection is **cargo-cult** (grabs the verb
+  6/6 on the inert task too, both worlds); run 1's "lock creates discrimination" **did not
+  replicate** (downgraded — asks are alive but not need-weighted); the §4b disclosure-leak
+  concern is **unsupported** (fired opposite-direction, no config compensation). Bonus:
+  within-run request-red frequency (4/run) is a free, structured need signal; one D0
+  grind-green@4 sharpens F21's bound — the wide menu buys first-try *certainty* (cost axis),
+  not raw possibility.
+- **`poc/probe-menu-disclosure.mjs`** + **`poc/menu-disclosure-prereg.md`** — runner (author
+  layer via stock renderCatalog + POC-local catalog conditions and impact dispatch; schema v1
+  closed, `src/` untouched) and the self-contained prereg → run-1 postmortem → run-2 results.
+- **`docs/archive/evidence/menu-disclosure-RuUllB/`** (run 2, complete: authored configs,
+  spines, artifacts, console log) and **`menu-disclosure-hhD2yp/`** (run 1: runs VOID on two
+  instrument failures — op-composition clobber, provider crashes — kept for the postmortem;
+  authoring cells load-bearing).
+- PRD **v1.5.7** record note (pointer only; the closure stands).
 
 ## [0.11.2] — 2026-07-11 — bareloop de-risk probe: menu breadth (F21) — record unchanged
 

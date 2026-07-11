@@ -967,3 +967,58 @@ litectx `collectFiles` (`src/indexer.js:41`) trusts `git ls-files`, which is emp
 commit-less repo, and `index()` gives no signal that zero files were collected. Found live by
 machinery negative #2 (impact 0/8) before any token burned; fixed here by committing seed
 files (the honest fix — litectx targets real repos). Ask: surface an empty collect.
+
+## F22 — BARELOOP DE-RISK PROBE #2 (menu disclosure): the ADMISSION CHAIN PROVES END-TO-END
+## (author selects → dispatch injects → 3/3 green@1); author choice and authoring-time asks
+## are both CARGO-CULT (no need signal); the §4b disclosure-leak concern is unsupported
+
+**Track note:** successor (bareloop) probe #2, F21's registered follow-up + author-side
+selection, run in the adaptlearn sandbox. Pre-registered in `poc/menu-disclosure-prereg.md`
+(three questions, three conditions, predictions and the leak's named legal path committed
+before spend). Evidence: `docs/archive/evidence/menu-disclosure-RuUllB/` (run 2, complete,
+27/27 cells readable) and `menu-disclosure-hhD2yp/` (run 1: run cells VOID on two instrument
+failures — kept for the postmortem; authoring cells load-bearing). Record unchanged.
+
+**Design:** one axis — how litectx `impact` is disclosed to the M4 AUTHOR: D0 absent (stock
+catalog) | D1 admitted (selected → dispatched) | D2 locked (selected → request-red, skipped).
+Authoring {D0,D1,D2} × {MAIN, LEAF} × 3; runs MAIN-only on each rep's own authored config,
+cap 4, clipipe. Schema v1 stayed closed (impact stripped-and-counted before stock
+validation). Six machinery-negative groups, incl. two added after run 1's postmortem.
+
+**Results (run 2, world RuUllB):**
+- **P4 HOLDS — the probe's keystone.** D1 3/3 green@1 vs D0 1/3 green@[4]: author reads
+  menu → selects impact → dispatch injects 8 callers → first-try green. F21-C reproduced
+  through the AUTHORED path — bareloop decision #3's admission chain demonstrated end-to-end,
+  in both authored op orders.
+- **P1 CARGO-CULT, replicated across both worlds.** D1 selects impact 3/3 MAIN and 3/3 LEAF
+  (pooled 6/6, 6/6). Free listing exerts zero selection pressure; author selection is NOT a
+  need signal.
+- **P2 ALIVE, but run 1's "lock creates discrimination" DID NOT REPLICATE.** D2 asks: MAIN
+  6/6 pooled, LEAF 4/6 pooled (1/3 then 3/3). The lock keeps the ask channel alive; it does
+  not need-weight it. Downgraded to weak trend — a live demonstration of why single-world
+  findings don't get designed around (the pre-registered replication caught it).
+- **P3: catBeats fired in the OPPOSITE direction to the leak hypothesis** (D0 1/3 vs D2 0/3;
+  listing-without-capability never helped). Registered config-inspection procedure: no
+  systematic recall-widening in D2. The §4b catalog-leak concern is UNSUPPORTED here.
+- **Bonus reads:** (a) locked ops fire request-red EVERY iteration (4/run) — within-run
+  request-red frequency is a free, structured need signal, stronger than the authoring-time
+  ask; (b) one D0 cell ground to green@4 under the fixed instrument — sharpening F21's bound:
+  the narrow menu CAN occasionally grind to green; the wide menu makes it deterministic @1.
+  The menu buys first-try certainty (~4× iterations), i.e. it lives on the cost axis, exactly
+  where across-run selection (green gates, cost ranks) reads it.
+
+**Run 1 postmortem (instrument, both found in spines, both fixed + negative-guarded):**
+(1) op-composition clobber — recall ASSIGNED context while impact appends; authored
+[impact, recall] order erased the caller view, every D1 worker ran effectively-D0; fixed to
+append-only composition with a machinery negative driving the REAL dispatch path (fails on
+the old code). (2) provider crashes killed all 3 D2 runs at iteration 1; fixed with one
+retry + 30s backoff, second failure tags the cell provider-red and EXCLUDES it from every
+read (§5b: a broken middle is never a verdict). Run 2 absorbed two provider timeouts through
+this seam with zero cells lost.
+
+**Design consequence for bareloop (incl. hamr's primary/secondary tiering question):**
+author selection cannot curate (cargo-cult, robust) and authoring-time asks cannot curate
+(non-replicated) — so menu choice management must be EVIDENCE-driven: secondary tier locked
+by default, admission steered by within-run request-red frequency plus outcome contrast, and
+post-green menu expansion as an across-runs mutation knob (one primitive per mutation, green
+gates, cost ranks, removal symmetric).

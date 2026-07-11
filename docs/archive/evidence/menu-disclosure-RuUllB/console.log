@@ -1,0 +1,44 @@
+world: /tmp/probe-disclose-RuUllB
+
+machinery: catalogs, acceptance (pass/count/misplace/fail), world (stub red / ref green / impact 8/8 / recall <8), extraction, D2 request-red via real dispatch, D1 op-order composition — all measured green (token-free)
+
+[author:D0:main:0] valid impact=0 authored={"loop":{"shape":"refine","maxIterations":8},"k":6,"kinds":["code","fact","episode"],"hooks":{"before-attempt":["recall","compress"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D0:main:1] valid impact=0 authored={"loop":{"shape":"refine","maxIterations":8},"k":6,"kinds":["code","fact","episode"],"hooks":{"before-attempt":["recall","compress"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D0:main:2] valid impact=0 authored={"loop":{"shape":"refine","maxIterations":8},"k":6,"kinds":["episode","fact","doc"],"hooks":{"before-attempt":["recall"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D0:leaf:0] valid impact=0 authored={"loop":{"shape":"refine","maxIterations":6},"k":6,"kinds":["code","doc","fact","episode"],"hooks":{"before-attempt":["recall","compress"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D0:leaf:1] valid impact=0 authored={"loop":{"shape":"refine","maxIterations":8},"k":6,"kinds":["episode","fact","code","doc"],"hooks":{"before-attempt":["recall","compress"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D0:leaf:2] valid impact=0 authored={"loop":{"shape":"refine","maxIterations":6},"k":6,"kinds":["code","fact","episode"],"hooks":{"before-attempt":["recall","compress"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D1:main:0] valid impact=1 authored={"loop":{"shape":"refine","maxIterations":8},"k":8,"kinds":["code","fact","episode"],"hooks":{"before-attempt":["impact","recall"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D1:main:1] valid impact=1 authored={"loop":{"shape":"refine","maxIterations":6},"k":6,"kinds":["code","fact","episode"],"hooks":{"before-attempt":["impact","recall"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D1:main:2] valid impact=1 authored={"loop":{"shape":"refine","maxIterations":8},"k":6,"kinds":["code","fact","episode"],"hooks":{"before-attempt":["impact","recall"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D1:leaf:0] valid impact=1 authored={"loop":{"shape":"refine","maxIterations":6},"k":6,"kinds":["code","doc","fact","episode"],"hooks":{"before-attempt":["recall","impact"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D1:leaf:1] valid impact=1 authored={"loop":{"shape":"refine","maxIterations":6},"k":6,"kinds":["code","fact","episode"],"hooks":{"before-attempt":["impact","recall"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D1:leaf:2] valid impact=1 authored={"loop":{"shape":"refine","maxIterations":6},"k":6,"kinds":["code","doc","fact"],"hooks":{"before-attempt":["recall","impact"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D2:main:0] valid impact=1 authored={"loop":{"shape":"refine","maxIterations":6},"k":8,"kinds":["code","fact","episode"],"hooks":{"before-attempt":["recall","impact"],"after-red":["stash","compress"],"on-green":["remember"]}}
+[author:D2:main:1] valid impact=1 authored={"loop":{"shape":"refine","maxIterations":8},"k":8,"kinds":["episode","fact","code","doc"],"hooks":{"before-attempt":["impact","recall"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D2:main:2] valid impact=1 authored={"loop":{"shape":"refine","maxIterations":8},"k":8,"kinds":["code","doc","fact","episode"],"hooks":{"before-attempt":["impact","recall"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D2:leaf:0] valid impact=1 authored={"loop":{"shape":"refine","maxIterations":6},"k":6,"kinds":["code","doc","fact","episode"],"hooks":{"before-attempt":["recall","impact"],"after-red":["stash","compress"],"on-green":["remember"]}}
+[author:D2:leaf:1] valid impact=1 authored={"loop":{"shape":"refine","maxIterations":8},"k":6,"kinds":["code","doc","fact","episode"],"hooks":{"before-attempt":["recall","impact"],"after-red":["stash"],"on-green":["remember"]}}
+[author:D2:leaf:2] valid impact=1 authored={"loop":{"shape":"refine","maxIterations":8},"k":8,"kinds":["code","doc","fact","episode"],"hooks":{"before-attempt":["recall","impact"],"after-red":["stash"],"on-green":["remember"]}}
+[run:D0:0] escalated (4 iters)
+[run:D0:1] escalated (4 iters)
+  [provider retry in 30s] [CLIPipeProvider] timed out after 180000ms
+[run:D0:2] green@4
+[run:D1:0] green@1
+[run:D1:1] green@1
+[run:D1:2] green@1
+[run:D2:0] escalated (4 iters) request-reds=4
+[run:D2:1] escalated (4 iters) request-reds=4
+  [provider retry in 30s] [CLIPipeProvider] timed out after 180000ms
+[run:D2:2] escalated (4 iters) request-reds=4
+
+—— probe-menu-disclosure readout ——
+Q1 selection    : D1-main 3/3 selected impact | D1-leaf 3/3 (discrimination)
+Q2 ask channel  : D2-main 3/3 asked for the locked verb | D2-leaf 3/3
+Q3 leak         : D0 1/3 green @ [4] | D2 0/3 green (must be ~; read conditional on authored recall params printed above)
+P4 expression   : D1 3/3 green @ [1,1,1] (green@1 expected where impact selected)
+evidence: /tmp/probe-disclose-RuUllB
+
+P1 discrimination: CARGO-CULT — authors grab the verb everywhere; choice management (tiering/curation) earns its complexity
+P2 ask channel: ALIVE — request-reds fire; unlock-by-request viable
+P3 leak: DIFFER — inspect authored recall params before reading (named §4b catalog-leak path)

@@ -19,6 +19,8 @@ non-load-bearing).
 | `f20-vVsQda` | Successor POC #1 — inherit=executed ($7.03): kill-switch passes | F20 (6/6 transmission) |
 | `aborted-start-3OYEnQ` | 6-row aborted start (kept for completeness) | — |
 | `menu-breadth-rpcu95` | bareloop de-risk probe — menu-breadth kill-switch (12 runs, clipipe). Probe layout, not cohort: `spines/<cell>.jsonl` + `artifacts/<cell>-*.mjs` (final artifact per cell); world + negatives reproducible from `poc/probe-menu-breadth.mjs` (`--negatives-only`) | F21 (WIRED-IN; attribution-poisoning mechanism); prereg `poc/menu-breadth-prereg.md` |
+| `menu-disclosure-hhD2yp` | bareloop probe #2, run 1 — RUN CELLS VOID (op-composition clobber + provider crashes; postmortem in the prereg). Authoring cells load-bearing: `authored/` per-cell configs, `spines/` of the voided runs | F22 (run-1 postmortem; cargo-cult first observation) |
+| `menu-disclosure-RuUllB` | bareloop probe #2, run 2 — COMPLETE (18 author + 9 run cells, 0 excluded): `authored/`, `spines/`, `artifacts/`, `console.log` | F22 (admission chain 3/3 green@1; cargo-cult replicated; lock-discrimination failed replication; leak unsupported); prereg `poc/menu-disclosure-prereg.md` |
 
 Re-run the analyses against any directory here:
 

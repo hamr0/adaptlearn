@@ -101,6 +101,14 @@
 > identical), plus a mechanism finding — partial retrieval poisons gap attribution. Nothing in
 > this experiment's claim, falsifier, thresholds, or verdict is touched; the record lives in
 > FINDINGS F21 + `poc/menu-breadth-prereg.md`. This line is a pointer, not a reopening.
+>
+> **v1.5.7 (2026-07-11, pointer only — the closure stands):** successor-track probe #2 (F22,
+> menu disclosure): the bareloop admission chain proved end-to-end (author selects the
+> disclosed verb → dispatch → 3/3 green@1 vs baseline 1/3@[4]); author selection and
+> authoring-time asks are both cargo-cult (no need signal — one run-1 sub-finding failed
+> replication and was downgraded per the pre-registered read); the §4b disclosure-leak
+> concern unsupported. Record untouched; details in FINDINGS F22 +
+> `poc/menu-disclosure-prereg.md`.
 
 **adaptlearn** is an experiment: can an agent's *harness* — not its plan, not its code — be an
 emergent, adapting artifact? It consumes the bare suite (`bareagent`, `litectx`, `bareguard`) and
