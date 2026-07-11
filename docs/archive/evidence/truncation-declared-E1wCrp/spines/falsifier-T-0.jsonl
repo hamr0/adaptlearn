@@ -1,0 +1,9 @@
+{"type":"run-start","capRuns":4,"close":"node --test /tmp/probe-trunc-E1wCrp/falsifier-T-0/closes/leaf.test.mjs","seq":1,"ts":"2026-07-11T23:16:37.081Z"}
+{"type":"iteration-start","iteration":1,"seq":2,"ts":"2026-07-11T23:16:37.081Z"}
+{"type":"hook-op","op":"recall","hits":9,"iteration":1,"seq":3,"ts":"2026-07-11T23:16:37.085Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.10391700000000001,"seq":4,"ts":"2026-07-11T23:17:04.179Z"}
+{"type":"persona-break","iteration":1,"seq":5,"ts":"2026-07-11T23:17:04.179Z"}
+{"type":"meter","iteration":1,"pass":6,"total":6,"gapOnlyPass":0,"seq":6,"ts":"2026-07-11T23:17:04.895Z"}
+{"type":"middle-done","iteration":1,"seq":7,"ts":"2026-07-11T23:17:04.895Z"}
+{"type":"close-verdict","iteration":1,"verdict":"satisfied","seq":8,"ts":"2026-07-11T23:17:05.459Z"}
+{"type":"run-end","outcome":"green","iterations":1,"seq":9,"ts":"2026-07-11T23:17:05.459Z"}

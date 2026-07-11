@@ -1022,3 +1022,55 @@ author selection cannot curate (cargo-cult, robust) and authoring-time asks cann
 by default, admission steered by within-run request-red frequency plus outcome contrast, and
 post-green menu expansion as an across-runs mutation knob (one primitive per mutation, green
 gates, cost ranks, removal symmetric).
+
+## F23 — BARELOOP DE-RISK PROBE #3 (declared truncation): NULL — the label is NOT load-bearing,
+## because F21's attribution-poisoning mechanism DOES NOT REPLICATE under the fixed instrument;
+## the narrow arm's real failure mode is hunting, not dismissal; artifact-red revalidated
+
+**Track note:** successor (bareloop) probe #3, gating bareloop PRD v1.6 commitment #5
+(amplifier-truncation rule). Pre-registered in `poc/truncation-declared-prereg.md` before
+spend; runner `poc/probe-truncation-declared.mjs`; evidence
+`docs/archive/evidence/truncation-declared-E1wCrp/` (12/12 cells readable, two provider
+timeouts absorbed, zero exclusions). The archive record is unchanged.
+
+**Question:** is the VSM manifest rule "every amplifier declares its truncation" load-bearing
+— does labeling recall's injected block "ranked top-k, may be incomplete" restore honest gap
+attribution in the narrow arm — or is attribution only fixed structurally (F21's admission
+answer)? One knob: the declaration parenthetical in the context header (U undeclared vs T
+declared), F21 world verbatim, narrow menu only, F22 fixed instrument. Primary read is an
+observer-only per-test meter: does the iteration-2 artifact (first authored after seeing the
+gap) pass ≥2/3 of the {badge, price, qty} tests recall cannot surface.
+
+**Results:** MAIN attribution@2 **U 3/3 | T 3/3** → pre-registered NULL (no separation).
+MAIN outcome U 0/3, T 0/3 green (narrow-arm cap-halt bound replicated; pooled 0/9 narrow vs
+wide green@1 6/6 across F21/F22). FALSIFIER U 3/3 ≈ T 3/3 green@1 — guard clean, no confound.
+Iteration-1 gapOnly 0 everywhere (no leak). The runner's canned null wording ("poisoning
+persists") was wrong for this data — the null took its other shape:
+
+**The retro-read is the probe's real output: F21's poisoning mechanism does not replicate.**
+Zero dismissal prose in all 24 main-arm artifacts; every narrow-arm worker adopted the gap
+evidence at iteration 2; the cleanest counter-example (main-U-0@2, UNDECLARED arm) annotates
+each convention "verified" (from the gap diff) vs "INFERRED (exact input/output truncated)"
+— the worker declares its own evidence truncation unprompted. F21's poisoning quote came from
+a single cell's final artifact inside the stripFences-contaminated region. F22's lesson, one
+level down: single-world sub-findings don't get designed around — and single-CELL
+sub-findings harvested from a contaminated instrument region especially don't. F21's headline
+(menu axis WIRED-IN) is untouched and replicated here again.
+
+**What narrow-arm failure actually is (observational):** hunting (Wiener), not dismissal —
+attribution lands @2 (~4-5/8), then oscillates: fixing gap conventions breaks
+previously-passing ones under a partial caller view; cap 4 halts mid-oscillation. The wide
+menu's value re-reads as delivering the whole constraint set at once (convergence@1), not as
+preventing misattribution.
+
+**Instrument (revalidates the F21 artifact-red port note):** one reply was prose + UNFENCED
+code — last-fence extraction passes it through whole → SyntaxError artifact → the close reds
+"artifact invalid" while meaning "code wrong". No extraction heuristic closes this class; a
+non-code artifact needs its own red category (artifact-red). Persona breaks concentrated in
+the info-starved MAIN arms (U 4, T 7 vs falsifier 1) — direction consistent with F21, small-n.
+
+**Consequence for bareloop (commitment #5, gate honored both directions):** the full
+amplifier rule does NOT enter. The floor survives — ranked views never claim exhaustiveness;
+exhaustive views may — but re-grounded: it rests on the manifest/honesty principle (injection-
+side twin of ledger ABSENT-not-fabricated), not on a demonstrated poisoning mechanism. The
+successor seed PRD §11 amplifier-manifest item is annotated accordingly.

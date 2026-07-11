@@ -4,8 +4,9 @@
 > starting document for the successor's own repo; it becomes that repo's PRD v1 after a
 > naming pass and a final bloat audit there. Ground truth it consumes:
 > `docs/plans/2026-07-10-agentic-automation-successor-design.md` (validated interview + all
-> amendments), FINDINGS F1–F20, PRD v1.5.5, `docs/00-context/CYBERNETICS.md`. Nothing here
-> reopens the adaptlearn record. Name: deliberately TBD.
+> amendments), FINDINGS F1–F23, PRD v1.5.5, `docs/00-context/CYBERNETICS.md`,
+> `docs/plans/2026-07-11-upstream-ledger-design.md`. Nothing here reopens the adaptlearn
+> record. Name: deliberately TBD.
 
 ## §1 What it is
 
@@ -139,6 +140,77 @@ non-identical runs — the §2 open question) → N4 verdict classes complete (s
 → N5 scheduler + budget ops → N6 panel. A rung that cannot meet its exit stops the ladder;
 the stop is a result. Budget discipline unchanged: hard cap per run, cap-not-estimate.
 
+## §11 The PRD-spine checklist (VSM variety audit, 2026-07-12 — rides into the repo cut)
+
+The one-sentence version: **a system heals at every level it has** — give every subsystem its
+own loop, its own named red, and its own undeletable signal. Each item below names its spine
+events and the evidence that paid for it; the new repo's PRD v1 must place every item in a
+section or strike it deliberately (no silent drops).
+
+### Five healing loops
+
+1. **Within-run — the step heals itself.** Mid-run revision (F11), plus two F21 port notes as
+   first-class red categories: **artifact-red** (a non-code artifact reds on its own, never
+   corrupts the close signal) and **primitive-smoke** — a per-job known-answer check for every
+   admitted primitive BEFORE spend (the A3 class: silent bugs throw nothing; the empty index
+   was caught only by a measured negative). Spine: `revision`, `artifact-red`,
+   `primitive-smoke`.
+2. **Across-run — selection heals the harness.** Green gates, cost ranks; one knob per
+   mutation; inherit the run-as-executed (F18/F20). Spine: `config-final` per run, and ≥1
+   contrast bit per claimed knob (V2) — bare greens admit nothing.
+3. **Menu — admission heals capability.** Locked primitive → structured `request-red` (op +
+   iteration; within-run frequency is the need weight, F22 bonus read) → registry admission →
+   rerun. Admission keys on ledger evidence (request-red frequency + green@1-vs-grind
+   contrast), NEVER on author selections or authoring-time asks — both proved cargo-cult
+   (F22 P1 robust, P2 non-replicated). Removal is symmetric, first-class mutation.
+4. **Lib — the human heals the substrate.** The upstream ledger is a pure listener over
+   spines (8 classes, dedupe by lib:verb:class:signature, fold = current state); lifecycle
+   `open→filed→fixed→consumed` with filing human-gated forever. Spec + reference impl:
+   `docs/plans/2026-07-11-upstream-ledger-design.md`, `poc/upstream-ledger.mjs` — consume
+   as-is. Close reds and bare cap-halts are excluded BY DESIGN (workflow stories, not lib
+   incidents).
+5. **Instrument — the probes heal the probe.** Machinery negatives measured token-free before
+   any spend; every meter carries a must-fail fixture; negatives drive the REAL code path,
+   never a replica (the F22 run-1 clobber survived a replica-based negative). Provider
+   failures are instrument, not verdict: retry once, then `provider-red`, excluded from every
+   read (§5b).
+
+### Three structural rules (make the failure unrepresentable, not discouraged)
+
+- **V8 — no single fitness score (anti-S5-collapse).** Verdict and cost travel as separate
+  values end-to-end; no function in the selection path combines them into one scalar.
+  Lintable; a PR introducing a combined score is rejected on sight.
+- **V4 — algedonic escalation.** Escalation text reaches the human byte-identical to what the
+  shell emitted; no emergent component writes, summarizes, or filters that channel.
+  Testable: byte-compare shell emission vs human delivery.
+- **V7 — the S2 red category (registered probe, fires on job #1).** Coordination failures
+  between steps/units — write-scope contention, step-order violations, store races — get
+  their own spine name (`coordination-red`), never folded into worker-red/interpreter-red.
+  This is the ONE subsystem adaptlearn structurally could not test (one process, one S1,
+  sequential runs — nothing to coordinate), so it ships as a pre-registered prediction, not
+  a proven mechanism: **prediction** — the first multi-step job surfaces ≥1 red that
+  attributes to no single unit (S2-class); **falsifier** — if every job-#1 red attributes
+  cleanly to a single unit under §5b contrast, V7 over-predicted: note it, keep the category
+  as a named-but-empty bin, and move on. Until the probe fires, no S2 machinery beyond the
+  named category is built (the category is the instrument that makes S2 reds visible;
+  building schedulers before one is observed would be cargo-cult coordination).
+
+### Two variety-engineering manifests (Beer's question, made a deliverable)
+
+- **Every attenuator declares its destruction.** Each summarizing point (extractor, ledger
+  fold, gap slice, escalation routing) documents per field: what is destroyed, what survives,
+  and why nothing downstream needs the dropped part — the ledger design doc's field table is
+  the template. An attenuation without this manifest is a review blocker.
+- **Every amplifier declares its truncation — HYGIENE, not load-bearing (F23 decided).**
+  The floor stands: ranked views never claim exhaustiveness; only structurally exhaustive
+  views may. The FULL rule (a declaration sentence in every partial injection) tested NULL —
+  attribution@2 was 3/3 in BOTH arms, because F21's poisoning mechanism itself failed
+  replication under the fixed instrument (its evidence lived in the contaminated iterations;
+  narrow-arm failure is hunting/oscillation, not dismissal). Keep the floor on manifest/
+  honesty grounds — the injection-side twin of the ledger's "ABSENT, not fabricated" — and
+  never rely on a declaration to fix attribution: that fix is structural (exhaustive verbs,
+  admission). Evidence: F21, F23, `truncation-declared-E1wCrp`.
+
 ---
-*Seed written 2026-07-10 in adaptlearn (v0.11.0). First act in the new repo: name it, audit
-this draft for bloat, lock v1.*
+*Seed written 2026-07-10 in adaptlearn (v0.11.0); §11 checklist added 2026-07-12 (v0.11.x
+probe track). First act in the new repo: name it, audit this draft for bloat, lock v1.*

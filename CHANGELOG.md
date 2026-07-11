@@ -11,6 +11,30 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 the registered exceptions: bareloop de-risk probes run in this sandbox because the machinery
 and evidence conventions live here.)
 
+## [0.11.5] — 2026-07-12 — bareloop de-risk probe F23 (declared truncation) + successor seed PRD §11 checklist
+
+### Added
+- **F23 (`docs/00-context/FINDINGS.md`)** — declared-truncation probe, gating bareloop PRD
+  v1.6 commitment #5: pre-registered NULL — the truncation declaration is NOT load-bearing,
+  because **F21's attribution-poisoning mechanism failed replication** under the F22 fixed
+  instrument (attribution@2 = 3/3 in BOTH arms; zero dismissal prose in 24 artifacts; the
+  original evidence lived in the stripFences-contaminated iterations). Narrow-arm failure
+  re-read as hunting/oscillation (Wiener), not dismissal; F21's WIRED-IN headline untouched
+  and replicated (narrow 0/9 pooled vs wide green@1 6/6). Artifact-red port note revalidated
+  on a residual class (prose + unfenced code survives last-fence extraction).
+- **`poc/truncation-declared-prereg.md` + `poc/probe-truncation-declared.mjs`** — prereg
+  (predictions committed before spend, incl. the falsifier guard that read clean) + runner
+  with the observer-only per-test attribution meter (TAP; must-fail fixtures measured
+  token-free: 8/8, 5/8, gapOnly 0/3, gap-names-all-three).
+- **`docs/archive/evidence/truncation-declared-E1wCrp/`** — 12 spines (with per-iteration
+  `meter` events), 30 per-iteration artifacts, console log; README row added.
+- **Successor seed PRD §11 (`docs/01-product/successor-product-prd-draft.md`)** — the
+  PRD-spine checklist from the VSM variety audit, riding into the bareloop repo cut: five
+  healing loops, three structural rules (V8 no-scalar, V4 algedonic byte-identity, V7
+  coordination-red with its registered job-#1 probe + falsifier), two variety-engineering
+  manifests (attenuators declare destruction; amplifiers declare truncation — the latter
+  annotated HYGIENE per F23).
+
 ## [0.11.4] — 2026-07-11 — upstream-ledger feature spec + reference implementation (bareloop-destined)
 
 ### Added
