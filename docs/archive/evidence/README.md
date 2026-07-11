@@ -18,6 +18,7 @@ non-load-bearing).
 | `f19-K9Ofzk` | Attempt 4 — revision OFF × idiosyncratic ($8.29): **the claim expresses** | F19 (gated 1.00 vs ungated 0.13) |
 | `f20-vVsQda` | Successor POC #1 — inherit=executed ($7.03): kill-switch passes | F20 (6/6 transmission) |
 | `aborted-start-3OYEnQ` | 6-row aborted start (kept for completeness) | — |
+| `menu-breadth-rpcu95` | bareloop de-risk probe — menu-breadth kill-switch (12 runs, clipipe). Probe layout, not cohort: `spines/<cell>.jsonl` + `artifacts/<cell>-*.mjs` (final artifact per cell); world + negatives reproducible from `poc/probe-menu-breadth.mjs` (`--negatives-only`) | F21 (WIRED-IN; attribution-poisoning mechanism); prereg `poc/menu-breadth-prereg.md` |
 
 Re-run the analyses against any directory here:
 

@@ -7,7 +7,30 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-(nothing — the record is closed; anything after 0.11.1 belongs to the successor's repo)
+(nothing — the record is closed; successor work lands in the bareloop repo. 0.11.2 is the one
+registered exception: a bareloop de-risk probe run in this sandbox because the machinery and
+evidence conventions live here.)
+
+## [0.11.2] — 2026-07-11 — bareloop de-risk probe: menu breadth (F21) — record unchanged
+
+The experiment's claim, falsifier, and archive verdict are untouched; this release only adds
+successor-track probe evidence, F20-style.
+
+### Added
+- **F21** — menu-breadth kill-switch (bareloop design decision #3): pre-registered
+  (`poc/menu-breadth-prereg.md`), 12 runs, read **WIRED-IN** — A=[recall] 0/3 cap-halt@4 vs
+  C=[recall,impact] 3/3 green@1 where impact has purchase; identical 3/3 green@1 both arms
+  where it is inert (falsifier clean, no op-presence confound). Consequence: bareloop builds
+  the admission registry. Mechanism finding: ranked top-k retrieval **poisoned gap
+  attribution** (the narrow arm dismissed real failing tests as another repo's noise) —
+  exhaustive structural verbs prevent evidence misattribution, not just add context.
+- **`poc/probe-menu-breadth.mjs`** + **`poc/menu-breadth-prereg.md`** — the runner (POC-local
+  `impact` dispatch; schema v1 stays closed, `src/` untouched) and the self-contained
+  prereg→results record.
+- **`docs/archive/evidence/menu-breadth-rpcu95/`** — per-cell spines + final artifacts.
+- **UPSTREAM-ASKS A3** (litectx): `index()` is silent when `git ls-files` returns empty in a
+  commit-less repo — a silently blind index (found live by a machinery negative, token-free).
+- PRD **v1.5.6** record note (pointer only; the v1.5.5 closure stands).
 
 ## [0.11.1] — 2026-07-10 — evidence preserved in-repo
 

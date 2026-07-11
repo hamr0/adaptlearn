@@ -131,8 +131,8 @@ A footnote for the curious: the diagnosis was materially helped by 1948–1972 c
 pre-registered reading rule that stopped us from mis-concluding a second time.
 
 Full numbers, prediction scorecards, and the no-papering-over log:
-[docs/00-context/FINDINGS.md](docs/00-context/FINDINGS.md) (F1–F20). Governing spec:
-[docs/01-product/adaptlearn-prd.md](docs/01-product/adaptlearn-prd.md) (v1.5.5, closed —
+[docs/00-context/FINDINGS.md](docs/00-context/FINDINGS.md) (F1–F21; F21 is a post-closure bareloop de-risk probe). Governing spec:
+[docs/01-product/adaptlearn-prd.md](docs/01-product/adaptlearn-prd.md) (v1.5.6, closed —
 archive verdict in §7d, vindication note at the top). Successor seed:
 [docs/01-product/successor-product-prd-draft.md](docs/01-product/successor-product-prd-draft.md).
 

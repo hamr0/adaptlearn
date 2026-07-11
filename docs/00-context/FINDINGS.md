@@ -907,3 +907,63 @@ categorical separation); executed inheritance transmits so completely that the g
 moves to the risks an 8-gen window cannot show (F20). The successor takes both: inherit the
 run-as-executed, verdict-gate what enters the lineage, and let attribution (V2 contrast bits)
 say which knob earned the green.
+
+## F21 — BARELOOP DE-RISK PROBE (menu breadth): the primitive-menu axis is WIRED IN — one
+## admitted verb flipped 0/3 cap-halt to 3/3 green@1 where it had purchase, moved nothing
+## where it was inert; and partial retrieval POISONED gap attribution
+
+**Track note:** this is successor (bareloop) de-risk work run in the adaptlearn sandbox —
+same posture as F20. Pre-registered before spend in `poc/menu-breadth-prereg.md` (question,
+falsifier, categorical read, grounded amendments); runner `poc/probe-menu-breadth.mjs`;
+evidence `docs/archive/evidence/menu-breadth-rpcu95/`. The archive record is unchanged.
+
+**Question (bareloop design decision #3):** the successor discloses the full bare-suite
+primitive menu but admits verbs per job. Is menu breadth a live contrast variable — does
+admitting one more *callable* verb change outcome — or is the registry decoration? M3
+kill-switch logic on a new axis. The extra verb was litectx `impact` (schema v1's named v2
+exclusion), chosen because its relevance is structural and binary (callers exist or don't) —
+the one extra primitive whose load-bearingness cannot be rigged by tuning the base menu.
+
+**Design:** menus one knob apart (A = [recall], C = [recall, impact]); MAIN task = fix
+`formatLabel` under 8 caller-module constraints (recall k=5 structurally cannot enumerate 8;
+impact returns all 8, bodies via the get() fetch-toll); FALSIFIER task = fix a zero-caller
+leaf parser (impact provably inert, conventions recall-surfaceable in notes); identical world
+furniture, shared close, cap 4, clipipe. Four machinery negatives measured token-free before
+spend: stubs red / references green, impact 8/8, recall 4/8, A/C exactly-one-block contrast.
+
+**Results (12/12 cells):**
+- MAIN: A 0/3 green (3× cap-halt@4, §5b category confirmed on every spine) — C 3/3 green@1.
+- FALSIFIER: A 3/3 green@1 — C 3/3 green@1 (the impact op *fired* and injected its inert
+  "no callers" form: op presence moved nothing; only content did).
+- Pre-registered read: **WIRED-IN**, no confound → bareloop builds the admission registry
+  (disclosure → request-red → admit). The B-arm (disclosed-but-locked) is the registered
+  follow-up, to run in bareloop.
+- Cleanest cut — iteration 1, uncontaminated (real code, both arms, all reps): C green@1 3/3;
+  A red@1 3/3 failing exactly {badge, price, qty} — the three callers recall did not surface.
+  The failure signature IS the information gap, deterministic across reps.
+
+**Mechanism finding (unexpected, the probe's most valuable output):** partial retrieval
+doesn't just under-inform — it **poisons gap attribution**. The A worker took recall's 4
+callers as the complete set and *dismissed the 3 real failing tests as another repo's noise*
+(verbatim in main-A-0's final artifact: it "ignored the … badge/price/qty failures as
+unrelated to this repo's four callers"). Ranked top-k ⇒ false confidence of completeness ⇒
+genuine close evidence discarded. Structural-exhaustive verbs earn admission by preventing
+evidence MISATTRIBUTION, not by adding context — the worker-side rhyme of F16/F18's "verdict
+admits, contrast attributes."
+
+**Instrument caveat (honest bound):** A's iterations 2–4 are contaminated — under the
+confusing gap the worker broke persona and emitted prose with a mid-text fenced block;
+`stripFences` (probe copy AND graduated `interpret.js:27` — port note only, repo closed)
+strips only leading/trailing fences, so prose landed in the artifact → SyntaxError gaps
+replaced test-level feedback for the rest of the run. "A can never green at cap 4" is NOT
+established; the @1 contrast and 0/3-at-cap under this instrument are. bareloop port notes:
+(1) a non-code artifact must red as its own category (**artifact-red**), never corrupt the
+close signal; (2) artifact extraction must handle prose-wrapped fences. Notably the persona
+break occurred ONLY in the narrow arm — plausibly downstream of the info gap itself, but not
+cleanly attributable.
+
+**Lib friction (filed as A3):** a world under bare `git init` indexes NOTHING silently —
+litectx `collectFiles` (`src/indexer.js:41`) trusts `git ls-files`, which is empty in a
+commit-less repo, and `index()` gives no signal that zero files were collected. Found live by
+machinery negative #2 (impact 0/8) before any token burned; fixed here by committing seed
+files (the honest fix — litectx targets real repos). Ask: surface an empty collect.

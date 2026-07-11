@@ -1,0 +1,7 @@
+{"type":"run-start","capRuns":4,"close":"node --test /tmp/probe-menu-rpcu95/falsifier-A-0/closes/leaf.test.mjs","seq":1,"ts":"2026-07-11T06:33:51.772Z"}
+{"type":"iteration-start","iteration":1,"seq":2,"ts":"2026-07-11T06:33:51.772Z"}
+{"type":"hook-op","op":"recall","hits":9,"iteration":1,"seq":3,"ts":"2026-07-11T06:33:51.777Z"}
+{"type":"worker-result","iteration":1,"costUsd":0.209738,"seq":4,"ts":"2026-07-11T06:34:07.993Z"}
+{"type":"middle-done","iteration":1,"seq":5,"ts":"2026-07-11T06:34:07.993Z"}
+{"type":"close-verdict","iteration":1,"verdict":"satisfied","seq":6,"ts":"2026-07-11T06:34:08.571Z"}
+{"type":"run-end","outcome":"green","iterations":1,"seq":7,"ts":"2026-07-11T06:34:08.571Z"}

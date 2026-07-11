@@ -93,6 +93,14 @@
 > closed twice over: the mechanism proven, the claim demonstrated post-archive on a valid
 > instrument, and the successor's core mechanism de-risked. This PRD takes no further notes;
 > anything after this line belongs to the successor's repo.
+>
+> **v1.5.6 (2026-07-11, pointer only — the v1.5.5 closure stands):** one successor-track probe
+> ran in this sandbox after closure, F20-style (bareloop's machinery does not exist yet): F21,
+> the menu-breadth kill-switch for bareloop design decision #3. Read: WIRED-IN (one admitted
+> verb flipped 0/3 cap-halt@4 to 3/3 green@1 where structurally load-bearing; falsifier arms
+> identical), plus a mechanism finding — partial retrieval poisons gap attribution. Nothing in
+> this experiment's claim, falsifier, thresholds, or verdict is touched; the record lives in
+> FINDINGS F21 + `poc/menu-breadth-prereg.md`. This line is a pointer, not a reopening.
 
 **adaptlearn** is an experiment: can an agent's *harness* — not its plan, not its code — be an
 emergent, adapting artifact? It consumes the bare suite (`bareagent`, `litectx`, `bareguard`) and

@@ -167,3 +167,26 @@ bareagent prefers to stay CLI-agnostic; `'claude-json'` can then be a shipped pr
 
 Switching the M2+ shell provider binding for local runs from counts-capping to real
 token/cost capping, and deleting the F2 workaround note.
+
+## A3 — litectx: `index()` is silent when `collectFiles` finds zero files (commit-less git repo)
+
+**Status:** OPEN (2026-07-11; workaround in consumer — seed worlds commit their files).
+
+### The gap (grounded)
+
+`collectFiles` (`src/indexer.js:41`) prefers `git ls-files` and only falls back to the fs walk
+when the git call THROWS. In a repo where `git init` ran but nothing is committed/tracked,
+`ls-files` succeeds with empty output → `files = []` → `index()` completes "successfully"
+having indexed nothing: `impact()` returns null for every symbol, `recall({kind:'code'})` is
+empty, `getNode()` null — all indistinguishable from "symbol doesn't exist." Cost a live
+debugging loop in adaptlearn's F21 probe (caught token-free by a machinery negative).
+
+### The ask (exact)
+
+Either (a) `index()` returns/exposes a collected-file count and warns (or throws with an
+actionable message) when a non-empty root collects zero files, or (b) `collectFiles` falls
+back to the fs walk when `ls-files` returns empty on a root that visibly contains includable
+files. (a) is smaller and preserves git-semantics purity; (b) is friendlier. Either kills the
+silent-blind-index footgun.
+
+**Finding:** FINDINGS.md F21. **Repo:** `litectx` (`src/indexer.js`).
