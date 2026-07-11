@@ -97,7 +97,12 @@ the suite and filing what's missing upstream is an explicit secondary goal.
 close-authoring UX (describe a job → get an honest per-step close chain; predicate > GOLD
 arbiter > rubric-advisory hierarchy per relayfact); job/schedule model (bareagent Scheduler,
 budget per run via bareguard); multi-provider worker seam (SP-2); the panel; per-job channel
-declarations; the primitive request-red registry.
+declarations; the primitive request-red registry — de-risked post-archive by F21/F22 (menu
+axis wired; admission chain author→dispatch→green@1 proven end-to-end; author selection and
+authoring-time asks are cargo-cult, so admission keys on run evidence: request-red frequency +
+outcome contrast); the upstream ledger (spec + reference impl:
+`docs/plans/2026-07-11-upstream-ledger-design.md`, `poc/upstream-ledger.mjs` — port, don't
+rewrite the classifier table).
 
 ## Post-SP-1 amendments (2026-07-10, F16 — supersedes the boundary-map framing above)
 

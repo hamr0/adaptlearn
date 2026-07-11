@@ -11,6 +11,24 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 the registered exceptions: bareloop de-risk probes run in this sandbox because the machinery
 and evidence conventions live here.)
 
+## [0.11.4] — 2026-07-11 — upstream-ledger feature spec + reference implementation (bareloop-destined)
+
+### Added
+- **`docs/plans/2026-07-11-upstream-ledger-design.md`** — reactive lib/primitive incident
+  monitoring, the A1/A2/A3 upstream-ask flow mechanized: 8 incident classes derived from the
+  spines (provider-red, runtime-red, silent-degradation via per-job `primitive-smoke`
+  known-answer events, capability-gap = request-red ∧ cap-halt, …), deduplicated by
+  `lib:verb:class:normalized-signature` into one append-only JSONL both consumers (workflow
+  debugging) and the maintainer (upstream fixes) read; status lifecycle
+  open→filed→fixed→consumed, human-appended — filing stays human. Close reds and bare
+  cap-halts are deliberate exclusions (workflow stories, never lib bugs).
+- **`poc/upstream-ledger.mjs`** — stdlib-only reference collector (selftest 8/8 incl. two
+  must-produce-nothing negatives; the dedupe fixture caught a real normalization bug).
+  Validated against the archived F21/F22 spines: re-derived this session's true incident
+  history (provider crash ×3 as ONE incident, timeout as a distinct signature,
+  capability-gap:impact ×3, request-red:impact ×15) with zero false positives from ~100
+  close reds. Idempotent re-runs; ledger reconstructible from spines.
+
 ## [0.11.3] — 2026-07-11 — bareloop de-risk probe #2: menu disclosure (F22) — record unchanged
 
 ### Added
