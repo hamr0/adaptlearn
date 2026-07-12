@@ -7,9 +7,19 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-(nothing — the record is closed; successor work lands in the bareloop repo. 0.11.2/0.11.3 are
-the registered exceptions: bareloop de-risk probes run in this sandbox because the machinery
-and evidence conventions live here.)
+(the record is closed; successor work lands in the bareloop repo. 0.11.2–0.11.5 are the
+registered exceptions: bareloop de-risk probes run in this sandbox because the machinery and
+evidence conventions live here.)
+
+### Docs (post-0.11.5, record-keeping only)
+- **CYBERNETICS.md:** the Davies ch.5 VSM decomposition rewritten as an explicit five-step
+  block — one entry per subsystem (S1 operations … S5 identity) with role, Davies' key
+  question, and the system's incarnation in this machinery; previously one dense paragraph.
+- **CYBERNETICS.md §5c:** dated F23 retro-read note added to the amplification bullet — the
+  F21 attribution-poisoning mechanism failed replication (single contaminated cell; the
+  narrow arm hunts, it doesn't dismiss), the declared-truncation rule is hygiene, and the
+  amplification half stands (wide-menu value = whole constraint set at once). Both edits
+  synced to bareloop's mirror copy (its own O-addendum untouched).
 
 ## [0.11.5] — 2026-07-12 — bareloop de-risk probe F23 (declared truncation) + successor seed PRD §11 checklist
 
