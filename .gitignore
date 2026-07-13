@@ -14,3 +14,7 @@ node_modules/
 # chasing each new scratch dir with its own line.
 .*/
 !.github/
+
+# Editor swap files
+*.kate-swp
+.*.kate-swp
