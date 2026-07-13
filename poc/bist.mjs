@@ -47,16 +47,21 @@ function spineFile() {
 
 /**
  * Write a tiny real `node --test` fixture and return the close argv for it.
+ * The argv names the test FILE, never its directory: `node --test <dir>` treats the
+ * dir as an entry file (MODULE_NOT_FOUND, exit 1), so a dir argv reds every close
+ * regardless of the tests inside — the VEC-2 control false positive of run 1
+ * (prereg §"Run-1 instrument fix").
  * @param {boolean} passing true -> a test that passes (green close); false -> one that fails (red close)
- * @returns {string[]} argv ['node','--test',dir]
+ * @returns {string[]} argv ['node','--test',file]
  */
 function fixtureArgv(passing) {
   const dir = tmpDir('bist-fix-');
   const body = passing
     ? "import { test } from 'node:test';\ntest('bist-green', () => {});\n"
     : "import { test } from 'node:test';\nimport assert from 'node:assert';\ntest('bist-red', () => { assert.strictEqual(1, 2); });\n";
-  writeFileSync(path.join(dir, 'fixture.test.mjs'), body);
-  return ['node', '--test', dir];
+  const file = path.join(dir, 'fixture.test.mjs');
+  writeFileSync(file, body);
+  return ['node', '--test', file];
 }
 
 // Close-argv faults are simulated by a close that ignores its input and stuck-exits.

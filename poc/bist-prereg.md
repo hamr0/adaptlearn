@@ -87,3 +87,20 @@ read-back paths.
 - `node poc/bist.mjs` — CONTROL + DETECTION; exit 0 iff control clean ∧ all faults detected.
 - `node poc/bist.mjs --falsify` — FALSIFIER; exit 0 iff every sabotaged vector misses.
 - Per-row table printed; outcomes reported, never asserted in prose.
+
+## Run-1 instrument fix — 2026-07-13 (control false positive, leak-searched)
+
+Run 1 (hamr): FALSIFIER 8/8 MISS; DETECTION 8/8 rows, 7/7 faults; **CONTROL 6/7 — VEC-2
+false positive** (green fixture → `needs_revision` on the good instrument). Leak-search
+per §readouts found the mundane cause before any catalog change: the fixture argv passed
+the fixture **directory** to `node --test`, which treats a dir as an entry file
+(MODULE_NOT_FOUND → exit 1) rather than scanning it — so every fixture close exited red
+regardless of its tests. Verified both directions outside the suite: file-argv green
+fixture exits 0, file-argv red fixture exits 1 (Node v22.22.2).
+
+Consequence honestly stated: VEC-1's run-1 CONTROL pass was **for the wrong reason** (its
+red came from the loader error, not the failing assertion) — the false positive on VEC-2
+is what exposed it, which is the control arm doing its job. Fix: argv names the test file
+(`['node','--test',<file>]`), a fixture repair, no assertion widened, no catalog change.
+Per §readouts the whole suite re-runs from scratch; run-1 numbers are void for the GREEN
+readout and kept here as the instrument-fix record.
