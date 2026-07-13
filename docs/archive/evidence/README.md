@@ -22,6 +22,7 @@ non-load-bearing).
 | `menu-disclosure-hhD2yp` | bareloop probe #2, run 1 — RUN CELLS VOID (op-composition clobber + provider crashes; postmortem in the prereg). Authoring cells load-bearing: `authored/` per-cell configs, `spines/` of the voided runs | F22 (run-1 postmortem; cargo-cult first observation) |
 | `menu-disclosure-RuUllB` | bareloop probe #2, run 2 — COMPLETE (18 author + 9 run cells, 0 excluded): `authored/`, `spines/`, `artifacts/`, `console.log` | F22 (admission chain 3/3 green@1; cargo-cult replicated; lock-discrimination failed replication; leak unsupported); prereg `poc/menu-disclosure-prereg.md` |
 | `truncation-declared-E1wCrp` | bareloop probe #3 — declared truncation (12 runs, clipipe, 0 excluded): `spines/<cell>.jsonl` (incl. per-iteration `meter` events), `artifacts/<cell>-artifact-<iter>.mjs` (EVERY iteration, not just final), `console.log`; world + negatives reproducible from `poc/probe-truncation-declared.mjs` (`--negatives-only`) | F23 (NULL — label not load-bearing; F21 poisoning mechanism failed replication; hunting; artifact-red revalidated); prereg `poc/truncation-declared-prereg.md` |
+| *(no archive — by design)* | bareloop V-item probe V9 — instrument BIST, token-free and deterministic: replay with `node poc/bist.mjs` / `--falsify`; run-1 instrument fix + run-2 tables recorded in the prereg | F24 (GREEN — control 7/7, 7/7 faults detected, falsifier 8/8 miss; run-1 control caught a real fixture bug); prereg `poc/bist-prereg.md` |
 
 Re-run the analyses against any directory here:
 
