@@ -7,6 +7,10 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
+### Changed
+
+- **Agent/IDE scratch gitignored and de-tracked.** `.gitignore` now default-denies every dot-directory (`.*/`), re-admitting only what ships (`.github/`). Per-machine agent/IDE state (`.claude/`, `.litectx/`, `.idea/`, …) regenerates locally and only added noise and churn; any already-committed copies are removed from tracking (local files kept on disk). Repo hygiene only.
+
 (the record is closed; successor work lands in the bareloop repo. 0.11.2–0.11.8 are the
 registered exceptions: bareloop de-risk probes run in this sandbox because the machinery and
 evidence conventions live here. **With 0.11.8 the sandbox is complete** — every Boolean-floor

@@ -92,6 +92,14 @@ security-critical code.
 **Lightweight over complex. Surgical changes only. Open-source only.** No secrets in the tree
 (env at runtime; only `.env.example` committed).
 
+For full standards (testing, twelve-factor, deployment), see `.claude/remember/AGENT_RULES.md`.
+
 <!-- MEMORY:START -->
 @.claude/remember/MEMORY.md
 <!-- MEMORY:END -->
+
+<!-- AGENT_RULES:START -->
+Consult when building something new or adding a feature — a standards guide, not hot
+context like MEMORY.md above:
+@.claude/remember/AGENT_RULES.md
+<!-- AGENT_RULES:END -->
