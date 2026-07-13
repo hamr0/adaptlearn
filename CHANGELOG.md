@@ -7,9 +7,30 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-(the record is closed; successor work lands in the bareloop repo. 0.11.2–0.11.5 are the
+(the record is closed; successor work lands in the bareloop repo. 0.11.2–0.11.6 are the
 registered exceptions: bareloop de-risk probes run in this sandbox because the machinery and
 evidence conventions live here.)
+
+## [0.11.6] — 2026-07-13 — Boolean-floor registration + V9 instrument-BIST probe (F24, GREEN)
+
+### Added
+- **CYBERNETICS.md §"The Boolean floor"** — five gate-level borrows registered (B1 signal
+  restoration = predicate close, B2 noise margins/forbidden zone = §5b own-categories, B3
+  edge-triggered vs transparent latch = F18/F19 named structurally, B4 stuck-at/BIST, B5
+  truth-table probing = M3 generalized), V-items V9–V13 continuing the series; mirrored to
+  bareloop (own addendum untouched) alongside its PRD addendum v1.10 (the five as
+  things-to-try, V9 nominated first).
+- **F24 (`docs/00-context/FINDINGS.md`)** — V9 instrument BIST: GREEN on all three
+  pre-registered arms (CONTROL 7/7 pass, DETECTION 8/8 rows / 7/7 distinct faults,
+  FALSIFIER 8/8 sabotaged vectors MISS — no detection incidental). Run 1's control arm
+  caught a real fixture bug before anything trusted the instrument (`node --test <dir>`
+  loads the dir as an entry file → every fixture close red; VEC-1 had been passing for the
+  wrong reason) — the pre-flight demonstrating its value one level early. Spec ships to
+  bareloop `docs/plans/`; the script stays POC (upstream-ledger pattern).
+- **`poc/bist-prereg.md` + `poc/bist.mjs`** — prereg (7-fault stuck-at catalog, 7 vectors,
+  control/detection/falsifier arms, both null shapes pre-worded; run-1 instrument-fix
+  record and run-2 results appended) and the token-free runner (built by opus-4.8 to the
+  prereg, reviewed against it; deterministic, free to replay).
 
 ### Docs (post-0.11.5, record-keeping only)
 - **CYBERNETICS.md:** the Davies ch.5 VSM decomposition rewritten as an explicit five-step

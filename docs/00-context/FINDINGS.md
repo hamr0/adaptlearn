@@ -1074,3 +1074,46 @@ amplifier rule does NOT enter. The floor survives — ranked views never claim e
 exhaustive views may — but re-grounded: it rests on the manifest/honesty principle (injection-
 side twin of ledger ABSENT-not-fabricated), not on a demonstrated poisoning mechanism. The
 successor seed PRD §11 amplifier-manifest item is annotated accordingly.
+
+## F24 — BARELOOP V-ITEM PROBE (V9 instrument BIST): GREEN — a token-free stuck-at
+## catalog + vector suite over the real instrument components detects 7/7 faults with
+## zero control false positives, every vector proven load-bearing by sabotage; and the
+## control arm caught a real fixture bug before anything trusted the instrument
+
+**Track note:** first of the five Boolean-floor candidates (CYBERNETICS §B4, V9; bareloop
+PRD addendum v1.10, hamr assignment — V9 nominated first). Token-free: no model calls;
+the worker seam is out of scope by design. Pre-registered in `poc/bist-prereg.md` before
+any code ran; runner `poc/bist.mjs` (built by opus-4.8 to the prereg, reviewed against it;
+POC, never ships). Evidence = the prereg's results section; the suite is deterministic and
+free to replay (`node poc/bist.mjs` / `--falsify`).
+
+**Question:** can a vector suite over the REAL instrument components (ralph's close mapping
+and loop, the spine emitter, the validator) detect every fault in a declared stuck-at
+catalog (close stuck-green/-red, spine dropping/seq-freezing/ts-misplacing, validator
+stuck-green, escalation-summarizing) with zero false positives on the good instrument —
+where each vector's detection power survives mutation-validation (sabotaged vector must
+MISS)? Motivation: F23's contaminated instrument cell was an undetected instrument fault
+found only after tokens were spent.
+
+**Results (run 2, whole suite, post instrument-fix):** GREEN on all three pre-registered
+arms — CONTROL 7/7 pass, DETECTION 8/8 rows / 7/7 distinct faults (each caught by its
+paired assertion: line-count, seq-monotonicity, ts-final-key, byte-identity, named-red
+presence — never by incidental crash), FALSIFIER 8/8 sabotaged vectors MISS (no detection
+was incidental; the F22 replica-negative lesson mechanized and passed).
+
+**The unplanned demonstration (run 1):** CONTROL flagged VEC-2 as a false positive — the
+green fixture redded on the good instrument. Leak-search-before-map-rewrite found the
+mundane cause: `node --test <dir>` treats a directory argv as an entry FILE
+(MODULE_NOT_FOUND → exit 1), so every fixture close was red regardless of its tests — and
+VEC-1's run-1 pass was therefore red-for-the-wrong-reason. The control arm caught a real
+instrument bug one level earlier than the design intended, which is the strongest
+argument the probe produced: the wrong-reason green/red class (F5's sibling) is exactly
+what a pre-flight exists to catch, and counts-only reads would never have surfaced it.
+Fix was a fixture repair (file argv), no assertion widened, suite re-run whole per prereg.
+
+**Consequence for bareloop (V9 answered):** the spec — catalog + vectors + three arms, one
+shared read-back function used against good and faulted components, sabotage rows proving
+each assertion load-bearing — ships to bareloop `docs/plans/` for a rewrite against its own
+components (upstream-ledger pattern: spec travels, POC never does). Suggested consumption
+point: a pre-flight gate before any probe/job instrument is trusted (N-ladder instrument
+hygiene). V10–V13 remain unrun candidates; nothing here fires them.

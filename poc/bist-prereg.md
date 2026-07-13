@@ -104,3 +104,24 @@ is what exposed it, which is the control arm doing its job. Fix: argv names the 
 (`['node','--test',<file>]`), a fixture repair, no assertion widened, no catalog change.
 Per §readouts the whole suite re-runs from scratch; run-1 numbers are void for the GREEN
 readout and kept here as the instrument-fix record.
+
+## Results — run 2, 2026-07-13 (hamr, post-fix, whole suite from scratch)
+
+**READOUT: GREEN** — the pre-registered green criteria met on every arm, no exclusions:
+
+- **CONTROL 7/7 PASS** (zero false positives; VEC-2 now `verdict=satisfied`, VEC-1 red for
+  the right reason — real failing assertion, nonempty gap).
+- **DETECTION 8/8 rows, 7/7 distinct faults** — each fault caught by its paired vector's
+  own assertion: F-C1 `satisfied` on the red fixture (VEC-1) and `green` with a satisfied
+  verdict on a broken artifact (VEC-6); F-C2 `needs_revision` on the green fixture; F-S1
+  `line count 4!=7`; F-S2 `seq 1!=2`; F-S3 `ts not final key`; F-E1 `byteEqual=false`;
+  F-V1 both named reds absent.
+- **FALSIFIER 8/8 MISS** — every sabotaged vector fails to detect its paired fault; no
+  STILL-DETECTED rows, so no vector's detection power is incidental (each assertion is
+  load-bearing).
+
+Per the pre-worded GREEN readout: the BIST is viable as a probe pre-flight; the **spec
+(catalog + vectors + arms) ships to bareloop** (copied to its `docs/plans/`); the script
+stays POC and is never shipped. Run-1's control catch (a real fixture bug found by the
+control arm before any probe trusted the instrument) is itself the mechanism working one
+level early. Recorded as FINDINGS **F24**.
