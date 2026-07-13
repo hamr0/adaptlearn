@@ -7,9 +7,34 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-(the record is closed; successor work lands in the bareloop repo. 0.11.2–0.11.6 are the
+(the record is closed; successor work lands in the bareloop repo. 0.11.2–0.11.7 are the
 registered exceptions: bareloop de-risk probes run in this sandbox because the machinery and
 evidence conventions live here.)
+
+## [0.11.7] — 2026-07-13 — V10 forbidden-zone audit probe (F25, GAP)
+
+### Added
+- **F25 (`docs/00-context/FINDINGS.md`)** — V10 forbidden-zone audit over the real close
+  chain: the pre-registered GAP readout. CONTROL 2/2 IN-BAND, FALSIFIER 6/6 classifiers
+  flip (each proven measuring, not asserting), and per-row: Z-3 signal-killed close is
+  COERCED to `needs_revision exitCode=null` and then retried to cap (§5b violated in
+  behavior — the headline gap, P3 confirmed); Z-2 timeout COLLAPSED into `broken-close`
+  (P2 confirmed, hygiene-level); Z-4 crash-at-load is an *invisible* coercion — byte-shape
+  identical to an honest red at the runClose seam, so P4's COERCED classification is
+  recorded WRONG in an unanticipated shape while its mechanism claim is demonstrated
+  sharper (exit code alone cannot carry judged-vs-crashed); Z-1/Z-5/Z-6 NAMED (P1/P5/P6
+  confirmed). Three build rules ship to bareloop: `close-killed`, `close-timeout`, and a
+  judgment-rendered signal making `close-crashed` auditable at all.
+- **`poc/forbidden-zone-prereg.md` + `poc/fzone.mjs`** — prereg (6-row outcome catalog,
+  binding P1–P7, three arms, pre-worded readouts) registered before any code; runner built
+  by opus-4.8 to the prereg and reviewed against it (one pure evidence-only classifier,
+  real seams, real spine read-back; POC, never ships). Token-free, deterministic,
+  replayable (`node poc/fzone.mjs` / `--falsify`; Z-2 performs a declared real ~120s
+  timeout wait). No adaptlearn machinery fix by design — the sandbox is closed; the fix is
+  a bareloop close-chain obligation.
+
+### Changed
+- **CYBERNETICS.md V10** annotated ANSWERED: GAP (F25).
 
 ## [0.11.6] — 2026-07-13 — Boolean-floor registration + V9 instrument-BIST probe (F24, GREEN)
 

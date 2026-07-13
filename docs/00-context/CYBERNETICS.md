@@ -365,6 +365,15 @@ rule from a minting requirement into an ongoing coverage metric. → V13
   that are neither clean green nor clean red (the F5 validate-then-crash class, unparseable
   artifacts, partial suites); each maps to a named red or escalation; coercing one to a
   verdict is itself the instrument fault.
+  **ANSWERED 2026-07-13 (F25, 0.11.7): GAP** — audited against this repo's real close chain
+  (token-free, prereg `poc/forbidden-zone-prereg.md`, runner `poc/fzone.mjs`): control 2/2
+  clean, falsifier 6/6 classifiers flip, and the shipped chain holds one live coercion
+  (signal-killed close → `needs_revision exitCode=null`, then RETRIED to cap — §5b violated
+  in behavior), one collapse (timeout pooled into `broken-close`), and one *invisible*
+  coercion (crash-at-load reads byte-shape-identical to an honest red; no exit-code mapping
+  can separate them). Three build rules ship to bareloop: `close-killed`, `close-timeout`,
+  and a judgment-rendered signal so `close-crashed` is even auditable. No adaptlearn fix by
+  design (sandbox closed).
 - **V11 (any claim instrument):** transparent-path lint (§B3) — the instrument's declared
   condition list marks every information path as clocked (advances only at run boundary,
   write-enabled by verdict) or metered; an unmetered continuous path is the F18 confound,

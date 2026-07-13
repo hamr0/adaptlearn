@@ -1117,3 +1117,50 @@ each assertion load-bearing — ships to bareloop `docs/plans/` for a rewrite ag
 components (upstream-ledger pattern: spec travels, POC never does). Suggested consumption
 point: a pre-flight gate before any probe/job instrument is trusted (N-ladder instrument
 hygiene). V10–V13 remain unrun candidates; nothing here fires them.
+
+## F25 — BARELOOP V-ITEM PROBE (V10 forbidden-zone audit): GAP — the shipped close
+## chain coerces one forbidden-zone outcome to a verdict (signal-killed close reads as
+## needs_revision and gets RETRIED), collapses another (timeout pooled into broken-close),
+## and one coercion is structurally invisible at the seam (crash-at-load ≡ honest red)
+
+**Track note:** second of the five Boolean-floor candidates (CYBERNETICS §B2, V10; the
+handoff's nominated next probe). Token-free, deterministic, replayable (`node poc/fzone.mjs`
+/ `--falsify`; the audit's Z-2 row performs a real ~120s spawnSync-timeout wait, declared in
+the prereg). Pre-registered in `poc/forbidden-zone-prereg.md` before any code ran; runner
+`poc/fzone.mjs` (built by opus-4.8 to the prereg, reviewed against it; POC, never ships).
+Evidence = the prereg's results section; no archive by design (V9/F24 precedent).
+
+**Question:** enumerate every outcome the REAL close chain (`runClose` mapping, `ralph`
+escalation naming, `validateConfig` edge behavior) can produce that is in neither clean band
+(green: exit 0, judged; red: nonzero exit, judged-and-failing) — does the machinery map each
+to a named non-verdict category, or silently coerce it to a verdict (§B2: coercion is itself
+the instrument fault; the F5 class generalized)? One pure evidence-only classifier scores
+every row (it never knows which row it is reading); falsifier arm = opposite-class synthetic
+evidence must FLIP each classifier.
+
+**Results (official run):** the pre-worded **GAP** shape — CONTROL 2/2 IN-BAND, FALSIFIER
+6/6 FLIP, and per-row against the binding predictions: Z-1 missing-binary NAMED
+(`broken-close`, P1✓); Z-2 timeout COLLAPSED into broken-close, no name of its own (P2✓,
+hygiene-level); **Z-3 signal-killed close COERCED (P3✓, the headline):** no spawn error +
+`status=null` falls through to `needs_revision exitCode=null`, and `ralph` then RETRIES the
+broken arbiter and burns the cap to a cap-halt — a §5b violation in behavior (broken close
+must escalate, never retry); Z-5 novel throw-category relayed verbatim (P5✓); Z-6 validator
+garbage → named `parse-error`, never throws (P6✓). **Z-4 crash-at-load: P4 WRONG, in an
+unanticipated shape** — the crashed close reads back byte-shape-identical to the honest
+control red (`needs_revision exitCode=1 gap=nonempty`), so the evidence-only classifier
+returns IN-BAND: the coercion exists by construction (zero tests executed) but is INVISIBLE
+at the runClose seam. Exit code alone cannot carry the judged-vs-crashed distinction — the
+sharper form of P4's own mechanism claim, and exactly the class behind V9's run-1
+wrong-reason verdicts. The builder honored the no-bending rule (no gap-grepping added to
+rescue the prediction). P7 holds via Z-3 ∧ Z-2; its Z-4 half void as written.
+
+**Consequence for bareloop (V10 answered):** three build rules ship with the prereg —
+(1) `close-killed` as its own named escalation (the tell: `status===null`, no spawn error;
+never a red); (2) `close-timeout` named distinctly from `broken-close` (the decision-ready
+options differ: raise the timeout vs fix the argv); (3) the hard obligation: an auditable
+close must expose a judgment-rendered signal (executed-test count or structured verdict
+artifact) and treat "exit nonzero ∧ zero tests executed" as `close-crashed` — no exit-code
+mapping can do this alone. Per the prereg, no machinery fix lands in adaptlearn (sandbox
+closed; bareloop's close chain is a rewrite). V11–V13 remain: V13 is the last
+sandbox-hostable probe (retro-computable toggle coverage); V11/V12 are registered build
+rules awaiting their seams.
