@@ -1164,3 +1164,72 @@ mapping can do this alone. Per the prereg, no machinery fix lands in adaptlearn 
 closed; bareloop's close chain is a rewrite). V11–V13 remain: V13 is the last
 sandbox-hostable probe (retro-computable toggle coverage); V11/V12 are registered build
 rules awaiting their seams.
+
+## F26 — BARELOOP V-ITEM PROBE (V13 toggle coverage): the METRIC is validated (control
+## exact, 3/3 comparison rules falsifier-proven) but the ARCHIVE cannot support clean
+## toggle attribution — the unconfounded tier is barren, and a re-authoring arm's
+## "toggle" was shown carrying the WRONG SIGN
+
+**Track note:** last of the five Boolean-floor candidates (CYBERNETICS §B5, V13) and the
+last sandbox-hostable probe — V11/V12 are bareloop build rules with no sandbox to host them.
+Token-free, offline, retro-only (archived ledgers + persisted configs; no model calls, no new
+runs), deterministic (`node poc/toggles.mjs` / `--falsify`). Pre-registered in
+`poc/toggle-coverage-prereg.md` before any code ran; runner `poc/toggles.mjs` (opus-4.8 built
+it to the prereg and hit its session limit mid-verification, having already self-diagnosed a
+control-fixture bug — a 3-knob diff masquerading as the 2-knob fixture, which had left
+sabotage (a) INTACT; its fix was applied, one off-menu `loop.shape` value corrected, and the
+official runs were done here).
+
+**Question (§B5):** verifying a gate means toggling one input and watching the output switch
+— an input whose toggle never changes the output is not wired in. Per config knob, does the
+ledger hold ≥1 observed TOGGLE (a pair of runs whose configs differ in exactly one knob and
+whose outcome classes differ)? Zero toggles ⇒ unwired-until-proven. Two pair tiers, never
+pooled: **T-strict** (same world/gen/arm, cross-lineage — nothing varies but the knob) and
+**T-lineage** (same arm/lineage, consecutive gens — the mutation ladder, with the task
+change declared as a confound).
+
+**The metric passes as an instrument.** CONTROL reproduces a six-fixture ground-truth table
+exactly (true toggle; same-outcome pair counted as a pair with no toggle; never-varying knob
+flagged; two-knob pair rejected; order-only kinds diff read as identical; mirrored
+recall.kinds coupling counted as one knob). FALSIFIER 3/3: co-occurrence pairing (≤2 knobs),
+outcome-blindness, and order-sensitive kinds each CHANGE the control answer — every locked
+comparison rule is load-bearing, none decorative.
+
+**The archive fails it, in a shape the prereg did not word (recorded first).** T-strict —
+the only unconfounded tier — is **essentially barren across the whole archive**: 0 pairs in
+`attempt3`, `sp1`, `f19`; 2–3 in `sp3`/`f20`; **zero toggles in every world**. Within a
+(gen, arm) group the two lineages carry divergent mutation histories, so they virtually never
+differ by exactly one knob. Nearly all toggle evidence sits in the confounded tier.
+(`attempt2` skipped outright: configs were never persisted there.)
+
+**P1 WRONG, instructively.** Predicted: F16's g0 gated-rules episode-recall acquisition
+participates in zero single-knob pairs at either tier. Observed: 2 T-lineage pairs, one
+registering a toggle (`g0L1→g1L1`, `memory.recall.kinds`, red → green-grind). Reading the
+rows: that toggle is a set-delta of **−episode +doc** across a **task change** (dur→bytes)
+on a pair whose g1 config was **re-authored, not mutated** (`knobMutated=null`). Consumed
+naively it attributes the improvement to *removing* episode-recall — **the wrong sign**,
+against the project's strongest result (episode recall: 20/20 green, green@1 0.80 vs 0.00).
+At the trustworthy tier, sp1 has zero pairs on every knob — so P1's *mechanism* holds exactly
+where it can be trusted while its *letter* is false. **New sub-finding:** a lineage pair is
+one-knob only if it *was* a mutation step; an arm that re-authors between generations
+silently breaks that semantics, and its toggles can point backwards.
+
+**P2 CONFIRMED.** `attempt3`, gated-rules L1, g3→g4: a genuine mutation-step toggle on
+`memory.recall.kinds` (green-grind → green@1) — the F15 lock is toggle-VISIBLE and
+mechanically countable, exactly the contrast the extractor should have been required to cite.
+
+**P3 CONFIRMED — the punchline on real data.** `hooks.on-green`: **0 pairs, 0 toggles, in
+every mappable world** → UNWIRED-until-proven everywhere. An axis present in the schema, the
+mutation catalog, and every config, with zero ledger evidence it ever changed an outcome.
+**P4 CONFIRMED** (token-free, deterministic, sub-second).
+
+**Consequence for bareloop (V13 answered):** the metric ships with a design obligation —
+(1) **toggle coverage is a ledger DESIGN requirement, not a post-hoc query**: a cohort must
+deliberately emit T-strict sibling cells (same task/gen/arm, one knob apart), or the clean
+tier stays empty as it did here; (2) **never count a toggle across a re-authoring boundary**
+(require `knobMutated` set — else the sign can invert); (3) **ship the UNWIRED flag**,
+`hooks.on-green` being the worked example; (4) keep the three falsifier-proven comparison
+rules. Spec carried to bareloop `docs/plans/`. No adaptlearn machinery change (sandbox
+closed). **With V13 answered, the sandbox is complete**: V9 (F24) and V10 (F25) answered by
+probe, V13 (F26) answered by retro-audit, V11/V12 transferred as registered bareloop build
+rules awaiting the seams they constrain — nothing structurally hostable remains here.

@@ -385,3 +385,13 @@ rule from a minting requirement into an ongoing coverage metric. → V13
 - **V13 (bareloop, ledger):** toggle coverage (§B5) — computable per knob from the existing
   ledger: ≥1 observed contrast toggle, or the knob is flagged unwired-until-proven. Extends
   V2 from minting requirement to ongoing coverage metric.
+  **ANSWERED 2026-07-13 (F26, 0.11.8): METRIC VALIDATED, ARCHIVE INSUFFICIENT** — control
+  exact, 3/3 comparison rules falsifier-proven load-bearing; `hooks.on-green` flagged
+  UNWIRED in every world (0 pairs, 0 toggles — the punchline on real data) and F15's lock
+  found toggle-visible. But the unconfounded tier (same task/gen/arm, one knob apart) is
+  **barren across the whole archive** — sibling lineages carry divergent mutation histories
+  — and a re-authoring arm's "toggle" was caught carrying the **wrong sign** (−episode
+  reading as an improvement across a task change, on a pair that was not a mutation step).
+  Correction to the registration: toggle coverage is a ledger **design** requirement, not a
+  post-hoc query — the cohort must emit one-knob sibling cells, and no toggle may be counted
+  across a re-authoring boundary.

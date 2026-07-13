@@ -7,9 +7,39 @@ patch = corrections). Versions before code exist are retroactive spec milestones
 
 ## [Unreleased]
 
-(the record is closed; successor work lands in the bareloop repo. 0.11.2–0.11.7 are the
+(the record is closed; successor work lands in the bareloop repo. 0.11.2–0.11.8 are the
 registered exceptions: bareloop de-risk probes run in this sandbox because the machinery and
-evidence conventions live here.)
+evidence conventions live here. **With 0.11.8 the sandbox is complete** — every Boolean-floor
+V-item is answered by probe (V9/F24, V10/F25, V13/F26) or transferred to bareloop as a
+registered build rule with its firing trigger (V11, V12). Nothing structurally hostable
+remains here.)
+
+## [0.11.8] — 2026-07-13 — V13 toggle-coverage probe (F26; metric validated, archive insufficient)
+
+### Added
+- **F26 (`docs/00-context/FINDINGS.md`)** — V13 toggle coverage, the last sandbox-hostable
+  probe. The METRIC passes as an instrument: CONTROL reproduces a six-fixture ground-truth
+  table exactly, FALSIFIER 3/3 (co-occurrence pairing, outcome-blindness, order-sensitive
+  kinds each change the control answer — every comparison rule load-bearing). The ARCHIVE
+  fails it in an unanticipated shape: the unconfounded tier (same task/gen/arm, one knob
+  apart) is barren in every world, so the ledgers cannot support clean attribution; P1
+  recorded WRONG — F16's acquisition does appear in lineage pairs, but one of them carries
+  the **wrong sign** (−episode reading as an improvement across a task change, on a
+  re-authored pair that was never a mutation step). P2 confirmed (F15's lock is
+  toggle-visible), P3 confirmed (`hooks.on-green`: 0 pairs / 0 toggles in every world →
+  UNWIRED-until-proven), P4 confirmed. Four build rules ship to bareloop, headlined by:
+  toggle coverage is a ledger **design** requirement, not a post-hoc query.
+- **`poc/toggle-coverage-prereg.md` + `poc/toggles.mjs`** — prereg (locked comparison rules,
+  two pair tiers, binding P1–P4, pre-worded readouts) registered before any code; runner
+  built by opus-4.8 to the prereg (it self-diagnosed a control-fixture bug — a 3-knob diff
+  masquerading as the 2-knob fixture, which had left one sabotage INTACT — before hitting
+  its session limit; fix applied and official runs done in-session). Token-free, offline,
+  deterministic, sub-second.
+
+### Changed
+- **CYBERNETICS.md V13** annotated ANSWERED (metric validated, archive insufficient), with
+  the registration corrected: coverage must be designed into the ledger, and no toggle may
+  be counted across a re-authoring boundary.
 
 ## [0.11.7] — 2026-07-13 — V10 forbidden-zone audit probe (F25, GAP)
 

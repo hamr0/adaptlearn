@@ -1,6 +1,6 @@
 {
   "name": "adaptlearn",
-  "version": "0.11.7",
+  "version": "0.11.8",
   "description": "Experiment: can an agent's harness be an emergent, adapting artifact across runs?",
   "type": "module",
   "license": "Apache-2.0",
