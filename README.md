@@ -13,7 +13,7 @@
 <p align="center">
   <img src="https://img.shields.io/github/package-json/v/hamr0/adaptlearn?label=version&color=2a4f8c" alt="version (auto from package.json)">
   <img src="https://img.shields.io/badge/license-Apache%202.0-2a4f8c" alt="license: Apache 2.0">
-  <img src="https://img.shields.io/badge/status-ARCHIVED%20·%20claim%20vindicated%20post--archive-2a7a4f" alt="status">
+  <img src="https://img.shields.io/badge/status-ARCHIVED%20·%20claim%20vindicated%20·%20lab%20bench%20F21–F26-2a7a4f" alt="status">
 </p>
 
 **An experiment: can an agent's *harness* — not its plan, not its code — be an emergent artifact that improves across runs?**
@@ -130,9 +130,37 @@ A footnote for the curious: the diagnosis was materially helped by 1948–1972 c
 [docs/00-context/CYBERNETICS.md](docs/00-context/CYBERNETICS.md) — including the
 pre-registered reading rule that stopped us from mis-concluding a second time.
 
+## The lab bench — what the sandbox was used for after closure (F21–F26)
+
+Once the claim closed, the repo kept working as what it now is: a **lab for agentic
+automation and context engineering** — a place where a question about harnesses, instruments,
+or memory can be made falsifiable and answered cheaply, before the successor
+([bareloop](https://github.com/hamr0/bareloop)) spends real tokens on it. Every probe is
+pre-registered (predictions written before code), carries a control and a falsifier arm, and
+reports whatever it finds — including "my prediction was wrong."
+
+Two on **context engineering** (what the agent is allowed to see, and what that costs):
+**F21/F22** proved the primitive-menu axis is real (one admitted verb flips a task from
+never-passing to passing first try) and the admission chain works end-to-end — while showing
+authors will grab a disclosed tool they don't need (cargo-cult), so *what the agent asks for
+is not evidence*. **F23** tested whether a summarizer must declare what it truncated: not
+load-bearing, and it demoted an earlier "finding" that turned out to live in one contaminated
+instrument cell.
+
+Three on **the instrument itself** — the machinery that judges, records, and validates
+(CYBERNETICS §B1–B5, the gate-level borrows): **F24** built a chip-style self-test that
+deliberately breaks the judge, the logbook, and the validator seven ways and proves the checks
+catch every one; it works, and it caught a real bug on its first run. **F25** enumerated the
+outcomes that are neither a clean pass nor a clean fail and found the judge *rounds them to a
+verdict*: a judge killed mid-verdict is read as "your code failed" and then re-run until the
+budget dies. **F26** asked whether the ledger can prove each config knob ever mattered: the
+metric works, but the archived data can't support it — and one "toggle" it surfaced pointed
+the wrong way. All three now ship as build rules to the successor.
+
 Full numbers, prediction scorecards, and the no-papering-over log:
-[docs/00-context/FINDINGS.md](docs/00-context/FINDINGS.md) (F1–F22; F21–F22 are post-closure bareloop de-risk probes). Governing spec:
-[docs/01-product/adaptlearn-prd.md](docs/01-product/adaptlearn-prd.md) (v1.5.7, closed —
+[docs/00-context/FINDINGS.md](docs/00-context/FINDINGS.md) (F1–F26; F21–F26 are post-closure
+bareloop de-risk probes, each with a prereg in [`poc/`](poc/)). Governing spec:
+[docs/01-product/adaptlearn-prd.md](docs/01-product/adaptlearn-prd.md) (v1.5.9, closed —
 archive verdict in §7d, vindication note at the top). Successor seed:
 [docs/01-product/successor-product-prd-draft.md](docs/01-product/successor-product-prd-draft.md).
 

@@ -40,6 +40,14 @@ remains here.)
 - **CYBERNETICS.md V13** annotated ANSWERED (metric validated, archive insufficient), with
   the registration corrected: coverage must be designed into the ledger, and no toggle may
   be counted across a re-authoring boundary.
+- **PRD v1.5.8 + v1.5.9 (pointer-only annotations, the closure stands)** — the post-archive
+  pointer chain had stopped at v1.5.7/F22 and is now complete: v1.5.8 records F23 (declared
+  truncation, NULL), v1.5.9 records the whole Boolean-floor track (F24 GREEN, F25 GAP, F26
+  metric-validated/archive-insufficient) and states that the sandbox is complete — nothing
+  structurally hostable remains. No change to claim, falsifier, thresholds, or verdict.
+- **README** — new "The lab bench" section naming what the sandbox is now used for (agentic
+  automation + context-engineering probes), with F21–F26 in plain terms; findings pointer
+  corrected F1–F22 → F1–F26; status badge notes the lab-bench track.
 
 ## [0.11.7] — 2026-07-13 — V10 forbidden-zone audit probe (F25, GAP)
 

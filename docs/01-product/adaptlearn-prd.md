@@ -109,6 +109,33 @@
 > replication and was downgraded per the pre-registered read); the §4b disclosure-leak
 > concern unsupported. Record untouched; details in FINDINGS F22 +
 > `poc/menu-disclosure-prereg.md`.
+>
+> **v1.5.8 (2026-07-12, pointer only — the closure stands):** successor-track probe #3 (F23,
+> declared truncation): pre-registered NULL — the truncation declaration is NOT load-bearing
+> (gated as HYGIENE under bareloop PRD v1.7 #3), and the null arrived in a shape the prereg
+> had not worded, because F21's attribution-poisoning mechanism **failed replication** under
+> the fixed instrument (its original evidence lived in a single contaminated instrument cell,
+> not in general doctrine). Record untouched; details in FINDINGS F23 +
+> `poc/truncation-declared-prereg.md`.
+>
+> **v1.5.9 (2026-07-13, pointer only — the closure stands; THE SANDBOX IS NOW COMPLETE):** the
+> Boolean-floor V-item track (CYBERNETICS §B1–B5) ran its three sandbox-hostable probes, all
+> token-free, none touching this experiment's claim, falsifier, thresholds, or verdict:
+> **F24 (V9, instrument BIST) GREEN** — a stuck-at fault catalog over the real close/spine/
+> validator detects 7/7 faults with zero control false positives, every vector proven
+> load-bearing by sabotage; its control arm caught a real fixture bug before anything trusted
+> the instrument. **F25 (V10, forbidden-zone audit) GAP** — the shipped close chain *coerces*
+> a signal-killed close into an ordinary red and then retries the broken arbiter to cap (§5b
+> violated in behavior); a timeout collapses into `broken-close`; and a crash-at-load is
+> *structurally invisible* at the seam (byte-identical to an honest red — exit code cannot
+> carry the judged-vs-crashed distinction). **F26 (V13, toggle coverage)** — the metric is
+> validated (control exact, all three comparison rules falsifier-proven; `hooks.on-green`
+> flagged UNWIRED in every world) but the archived ledgers **cannot support clean
+> attribution**: the unconfounded tier is barren everywhere, and a re-authored pair's
+> "toggle" was caught pointing the wrong way. V11/V12 transferred to bareloop as registered
+> build rules awaiting their seams. Details in FINDINGS F24–F26 + `poc/bist-prereg.md`,
+> `poc/forbidden-zone-prereg.md`, `poc/toggle-coverage-prereg.md`; specs carried to bareloop
+> `docs/plans/`. **Nothing structurally hostable remains in this sandbox.**
 
 **adaptlearn** is an experiment: can an agent's *harness* — not its plan, not its code — be an
 emergent, adapting artifact? It consumes the bare suite (`bareagent`, `litectx`, `bareguard`) and
